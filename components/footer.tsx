@@ -21,10 +21,10 @@ const footerColumns = [
 ];
 
 const socialIcons = [
-  { src: "/assets/uniqo-social-1.svg", label: "TikTok" },
-  { src: "/assets/uniqo-social-2.svg", label: "X" },
-  { src: "/assets/uniqo-social-3.svg", label: "Telegram" },
-  { src: "/assets/uniqo-social-4.svg", label: "LinkedIn" }
+  { src: "/assets/uniqo-social-website.svg", label: "Website" },
+  { src: "/assets/uniqo-social-x.svg", label: "X" },
+  { src: "/assets/uniqo-social-telegram.svg", label: "Telegram" },
+  { src: "/assets/uniqo-social-linkedin.svg", label: "LinkedIn" }
 ];
 
 export function Footer() {
@@ -39,7 +39,7 @@ export function Footer() {
           viewport={{ once: true }}
           transition={{ duration: 0.65, ease }}
         >
-          <Image src="/assets/uniqo-footer-logo.png" alt="Uniqo" width={137} height={36} className="h-auto w-[136px]" />
+          <Image src="/assets/uniqo-logo.svg" alt="Uniqo" width={867} height={224} className="h-auto w-[136px] invert" />
           <p className="mt-[53px] max-w-[414px] text-[25.14px] font-medium leading-[1.102] text-white opacity-40">
             A financial technology company reimagining how the world pays. Smarter, safer, and designed for total control.
           </p>

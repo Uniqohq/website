@@ -52,20 +52,22 @@ export function Pricing() {
           Three ways.
         </h2>
         <p className="mt-[18px] max-w-[520px] text-[25.674px] font-medium leading-[1.102] text-[#7c7c7c]">Choose the plan that fits your life. Upgrade or downgrade anytime.</p>
-        <div className="relative mt-[86px] flex h-[82.441px] w-[444.678px] rounded-full border border-black">
+        <div className="relative mt-[56px] flex h-[58px] w-full max-w-[340px] rounded-full border border-black md:mt-[86px] md:h-[82.441px] md:max-w-none md:w-[444.678px]">
           <motion.span
             layout
             transition={{ type: "spring", stiffness: 390, damping: 34, mass: 0.8 }}
-            className={`absolute top-[-1px] h-[82.441px] rounded-full bg-black ${billing === "monthly" ? "left-[-1px] w-[207.678px]" : "left-[206px] w-[237px]"}`}
+            className={`absolute top-[-1px] h-[58px] rounded-full bg-black md:h-[82.441px] ${
+              billing === "monthly" ? "left-[-1px] w-[47%] md:w-[207.678px]" : "left-[47%] w-[53%] md:left-[206px] md:w-[237px]"
+            }`}
           />
           {(["monthly", "yearly"] as const).map((item) => (
             <button
               key={item}
               type="button"
               onClick={() => setBilling(item)}
-              className={`relative z-10 flex h-full items-center justify-center rounded-full text-[33.579px] font-medium leading-[0.94] transition-colors duration-300 ${
+              className={`relative z-10 flex h-full items-center justify-center rounded-full text-[22px] font-medium leading-[0.94] transition-colors duration-300 md:text-[33.579px] ${
                 billing === item ? "text-white" : "text-black"
-              } ${item === "monthly" ? "w-[207.678px]" : "w-[237px]"}`}
+              } ${item === "monthly" ? "w-[47%] md:w-[207.678px]" : "w-[53%] md:w-[237px]"}`}
             >
               {item === "monthly" ? "Monthly" : "Yearly"}
             </button>
@@ -144,10 +146,10 @@ export function Pricing() {
           className="relative max-w-full justify-self-center overflow-visible"
         >
           <CardImage
-            src="/assets/uniqo-pricing-arctic-card.png"
+            src="/assets/uniqo-card-arctic.png"
             alt="Uniqo Arctic card"
-            width={683}
-            height={462}
+            width={4800}
+            height={3000}
             className="relative z-10 w-[min(82vw,683px)] shadow-[0_38px_70px_rgba(0,0,0,0.12)]"
           />
         </motion.div>

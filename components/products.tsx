@@ -12,24 +12,24 @@ const products = [
     name: "Arctic",
     copy: "Clean, subtle and timeless. For everyday spending.",
     image: "/assets/uniqo-card-arctic.png",
-    width: 522,
-    height: 353
+    width: 4800,
+    height: 3000
   },
   {
     number: "02",
     name: "Mindnight",
     copy: "Bold, minimal and refined. For those who go further.",
     image: "/assets/uniqo-card-midnight.png",
-    width: 522,
-    height: 353
+    width: 4800,
+    height: 3000
   },
   {
     number: "03",
     name: "Graphite",
     copy: "Strong, reliable and distinct. For your business and beyond",
     image: "/assets/uniqo-card-graphite.png",
-    width: 522,
-    height: 353
+    width: 4800,
+    height: 3000
   }
 ];
 
@@ -42,28 +42,28 @@ function ProductCard({ product, index }: { product: (typeof products)[number]; i
       whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-120px" }}
       transition={{ duration: 0.72, ease, delay: index * 0.11 }}
-      className="flex h-[740px] w-full flex-col rounded-[35px] bg-[#f7f7f7] px-[30px] pb-[33px] pt-[30px]"
+      className="flex h-auto min-h-[560px] w-full flex-col rounded-[35px] bg-[#f7f7f7] px-[24px] pb-[28px] pt-[24px] md:h-[740px] md:px-[30px] md:pb-[33px] md:pt-[30px]"
     >
-      <div className="h-[281.25px] w-full overflow-visible">
+      <div className="aspect-[1.6] w-full overflow-visible">
         <CardImage
           src={product.image}
           alt={`${product.name} Uniqo card`}
           width={product.width}
           height={product.height}
-          className="ml-[-36px] mt-[-36px] h-auto w-[522px] max-w-none"
+          className="h-full w-full object-contain"
         />
       </div>
-      <div className="mt-[83px] w-[340px] font-medium leading-[1.102]">
-        <span className="text-[19.939px] text-[#7c7c7c]">{product.number}</span>
-        <h3 className="mt-[5px] text-[41.456px] text-black">{product.name}</h3>
-        <p className="mt-[31px] text-[25.674px] text-[#7c7c7c]">{product.copy}</p>
+      <div className="mt-[52px] w-full max-w-[340px] font-medium leading-[1.102] md:mt-[83px]">
+        <span className="text-[16px] text-[#7c7c7c] md:text-[19.939px]">{product.number}</span>
+        <h3 className="mt-[5px] text-[32px] text-black md:text-[41.456px]">{product.name}</h3>
+        <p className="mt-[22px] text-[20px] text-[#7c7c7c] md:mt-[31px] md:text-[25.674px]">{product.copy}</p>
       </div>
       <button
         type="button"
         aria-label={`View ${product.name}`}
-        className="mt-auto flex size-[75px] items-center justify-center rounded-full bg-[#f0f0f0] text-black"
+        className="mt-auto flex size-[60px] items-center justify-center rounded-full bg-[#f0f0f0] text-black md:size-[75px]"
       >
-        <ArrowRight size={34} strokeWidth={2.05} />
+        <ArrowRight className="size-[28px] md:size-[34px]" strokeWidth={2.05} />
       </button>
     </motion.article>
   );

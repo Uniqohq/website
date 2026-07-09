@@ -13,7 +13,7 @@ export function Header() {
     <header className="fixed inset-x-0 top-0 z-50">
       <div className="container flex h-[96px] items-center justify-between backdrop-blur-0">
         <a href="#" aria-label="Uniqo home" className="flex items-center">
-          <Image src="/assets/uniqo-logo.png" alt="Uniqo" width={103} height={27} priority className="h-auto w-[102px]" />
+          <Image src="/assets/uniqo-logo.svg" alt="Uniqo" width={867} height={224} priority className="h-auto w-[102px]" />
         </a>
         <nav className="hidden items-center gap-[66px] text-[17.681px] font-medium leading-[1.102] text-black md:flex">
           {navItems.map((item) => (

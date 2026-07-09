@@ -17,12 +17,16 @@ export function Hero() {
   const arcticY = useTransform(scrollYProgress, [0, 0.35], [0, -24]);
   const midnightY = useTransform(scrollYProgress, [0.22, 0.5, 0.72], [28, 0, -20]);
   const graphiteY = useTransform(scrollYProgress, [0.62, 1], [30, 0]);
+  const indicatorOpacity = useTransform(scrollYProgress, [0, 0.86, 1], [1, 1, 0]);
 
   return (
-    <section ref={ref} className="relative min-h-[1780px] overflow-visible bg-[radial-gradient(circle_at_50%_50%,#e9e9ec_0%,#eeeff0_100%)]">
-      <div className="pointer-events-none fixed left-[91.68px] top-[375.93px] z-40 hidden h-32 w-2 md:block">
-        <Image src="/assets/uniqo-card-indicators.png" alt="" width={8} height={128} className="h-32 w-2" />
-      </div>
+    <section ref={ref} className="relative min-h-[1080px] overflow-visible bg-[radial-gradient(circle_at_50%_50%,#e9e9ec_0%,#eeeff0_100%)]">
+      <motion.div
+        style={reducedMotion ? undefined : { opacity: indicatorOpacity }}
+        className="pointer-events-none fixed left-[91.68px] top-[375.93px] z-40 hidden h-32 w-2 md:block"
+      >
+        <Image src="/assets/uniqo-card-indicators.svg" alt="" width={8} height={128} className="h-32 w-2" />
+      </motion.div>
       <div className="sticky top-0 mx-auto flex min-h-[1080px] w-full max-w-[565px] flex-col items-center justify-center px-4 pb-[86px] pt-[180px] text-center">
         <motion.div
           initial={reducedMotion ? false : { opacity: 0, y: 28, scale: 0.96 }}
@@ -50,10 +54,10 @@ export function Hero() {
           </motion.div>
           <motion.div style={reducedMotion ? undefined : { opacity: midnightOpacity, y: midnightY }} className="absolute inset-0">
             <CardImage
-              src="/assets/uniqo-hero-card.png"
+              src="/assets/uniqo-card-midnight.png"
               alt="Uniqo Midnight card"
-              width={565}
-              height={353}
+              width={4800}
+              height={3000}
               priority
               className="h-full w-full object-contain shadow-[0_42px_78px_rgba(0,0,0,0.16)]"
             />

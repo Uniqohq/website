@@ -85,21 +85,21 @@ export function Security() {
           whileInView={reducedMotion ? undefined : { opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.75, ease, delay: 0.1 }}
-          className="relative flex min-w-0 items-end justify-center gap-[96px] overflow-hidden px-6 pt-4"
+          className="relative flex min-w-0 flex-col items-center justify-end gap-6 overflow-hidden px-6 pt-4 md:flex-row md:items-end md:gap-[96px]"
         >
           <CardImage
             src="/assets/uniqo-card-midnight.png"
             alt="Uniqo card security preview"
             width={522}
             height={353}
-            className="mb-[82px] w-[min(42vw,420px)] rotate-[-7deg]"
+            className="mb-0 w-[min(78vw,420px)] rotate-[-7deg] md:mb-[82px] md:w-[min(42vw,420px)]"
           />
           <CardImage
             src="/assets/uniqo-phone-mockup.png"
             alt="Uniqo phone capture screen"
             width={1310}
             height={2708}
-            className="h-[330px] w-auto self-end object-contain"
+            className="h-[260px] w-auto self-center object-contain md:h-[330px] md:self-end"
           />
         </motion.div>
       </motion.div>
