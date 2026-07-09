@@ -20,7 +20,10 @@ export function Hero() {
   const indicatorThree = useTransform(scrollYProgress, [0.36, 0.47, 0.72], [0.25, 1, 1]);
 
   return (
-    <section ref={ref} className="relative h-[360vh] overflow-visible bg-[radial-gradient(circle_at_50%_50%,#e9e9ec_0%,#eeeff0_100%)]">
+    <section
+      ref={ref}
+      className="relative h-[380vh] overflow-visible bg-[radial-gradient(circle_at_50%_50%,#e9e9ec_0%,#eeeff0_100%)] md:h-[410vh] lg:h-[450vh] xl:h-[470vh]"
+    >
       <motion.div
         style={reducedMotion ? undefined : { opacity: indicatorOpacity }}
         className="pointer-events-none fixed left-[91.68px] top-[375.93px] z-40 hidden md:block"
