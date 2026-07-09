@@ -2,6 +2,20 @@
 
 import { useEffect } from "react";
 
+function getBurstColor(target: Element) {
+  const background = window.getComputedStyle(target).backgroundColor;
+  const match = background.match(/\d+(\.\d+)?/g);
+
+  if (!match || match.length < 3) {
+    return "#111";
+  }
+
+  const [red, green, blue] = match.slice(0, 3).map(Number);
+  const luminance = (0.2126 * red + 0.7152 * green + 0.0722 * blue) / 255;
+
+  return luminance < 0.38 ? "#fff" : "#111";
+}
+
 export function ClickBurst() {
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {
@@ -11,28 +25,33 @@ export function ClickBurst() {
         return;
       }
 
-      const bounds = target.getBoundingClientRect();
-      const x = event.clientX - bounds.left;
-      const y = event.clientY - bounds.top;
-      const count = 9;
+      const count = 7 + Math.floor(Math.random() * 4);
+      const color = getBurstColor(target);
 
       for (let index = 0; index < count; index += 1) {
         const particle = document.createElement("span");
-        const angle = -160 + index * 40 + (index % 2 === 0 ? 11 : -9);
-        const distance = 24 + (index % 4) * 7;
-        const length = 7 + (index % 3) * 3;
-        const rotation = angle + 74 + (index % 2 === 0 ? 18 : -16);
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 18 + Math.random() * 42;
+        const length = 5 + Math.random() * 8;
+        const height = Math.random() > 0.72 ? 3 : 2;
+        const drift = (Math.random() - 0.5) * 18;
+        const rotation = Math.random() * 220 - 110;
+        const duration = 360 + Math.random() * 240;
 
         particle.className = "burst-particle";
-        particle.style.left = `${x}px`;
-        particle.style.top = `${y}px`;
+        particle.style.left = `${event.clientX}px`;
+        particle.style.top = `${event.clientY}px`;
         particle.style.width = `${length}px`;
-        particle.style.setProperty("--burst-x", `${Math.cos((angle * Math.PI) / 180) * distance}px`);
-        particle.style.setProperty("--burst-y", `${Math.sin((angle * Math.PI) / 180) * distance}px`);
+        particle.style.height = `${height}px`;
+        particle.style.animationDuration = `${duration}ms`;
+        particle.style.setProperty("--burst-x", `${Math.cos(angle) * distance + drift}px`);
+        particle.style.setProperty("--burst-y", `${Math.sin(angle) * distance - 8 - Math.random() * 22}px`);
         particle.style.setProperty("--burst-rotate", `${rotation}deg`);
+        particle.style.setProperty("--burst-end-rotate", `${rotation + Math.random() * 180 - 90}deg`);
+        particle.style.setProperty("--burst-color", color);
 
-        target.appendChild(particle);
-        window.setTimeout(() => particle.remove(), 620);
+        document.body.appendChild(particle);
+        window.setTimeout(() => particle.remove(), duration + 80);
       }
     };
 

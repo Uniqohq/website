@@ -128,7 +128,7 @@ export function Footer() {
           </motion.div>
         ))}
       </div>
-      <div className="container border-t border-[rgba(255,255,255,0.11)]">
+      <div className="container">
         <div className="grid grid-cols-[1.35fr_1fr_1fr_1fr] gap-8 py-[clamp(18px,1.2vw,23px)] text-[clamp(14px,0.92vw,17.7px)] font-medium leading-[1.102] text-white opacity-40">
           <span className="col-span-3">© 2026 FrameLabs LLC. All rights reserved.</span>
           <div className="col-start-4 flex items-center justify-start gap-[clamp(14px,0.88vw,17px)]">

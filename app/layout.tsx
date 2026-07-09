@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BottomDepthFade } from "@/components/bottom-depth-fade";
 import { ClickBurst } from "@/components/click-burst";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import "./globals.css";
@@ -28,6 +29,7 @@ export default function RootLayout({
         <SmoothScroll />
         <ClickBurst />
         {children}
+        <BottomDepthFade />
       </body>
     </html>
   );

@@ -9,7 +9,7 @@ const ease = [0.16, 1, 0.3, 1] as const;
 const securityCards = [
   {
     title: "Fraud Detection",
-    copy: "Card analyzes every transaction in real time and blocks suspicious activity before it causes harm.",
+    copy: "Blocks suspicious payments before they cause harm.",
     icon: Shield
   },
   {

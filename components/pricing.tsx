@@ -81,11 +81,10 @@ export function Pricing() {
             initial={reducedMotion ? false : { opacity: 0 }}
             whileInView={reducedMotion ? undefined : { opacity: 1 }}
             viewport={{ once: true, margin: "-120px" }}
-            whileHover={reducedMotion ? undefined : { scale: 1.024, y: -7 }}
+            whileHover={reducedMotion ? undefined : { scale: 1.009 }}
             transition={{
               opacity: { duration: 0.72, ease, delay: index * 0.1 },
-              scale: { type: "spring", stiffness: 300, damping: 30 },
-              y: { type: "spring", stiffness: 300, damping: 30 }
+              scale: { type: "spring", stiffness: 180, damping: 24, mass: 0.8 }
             }}
             className={`flex min-h-[540px] transform-gpu flex-col gap-[28px] rounded-[28px] pb-[24px] pl-[28px] pr-[24px] pt-[38px] ${
               plan.dark ? "bg-[linear-gradient(144.34deg,#252729_0%,#1c1e1f_127.74%)] text-white" : "bg-[#f7f7f7] text-black"
