@@ -57,9 +57,9 @@ export function Security() {
               </div>
               <h3 className="text-[31px] font-medium leading-[1.102]">{card.title}</h3>
               <p className="mt-[20px] text-[20px] font-medium leading-[1.102] text-[#7c7c7c]">{card.copy}</p>
-              <button type="button" aria-label={card.title} className="burst-hover mt-auto flex size-[55px] items-center justify-center rounded-full bg-[#f0f0f0]">
+              <a href="/waitlist" aria-label={card.title} className="burst-hover mt-auto flex size-[55px] items-center justify-center rounded-full bg-[#f0f0f0]">
                 <ArrowRight size={25} strokeWidth={2.05} />
-              </button>
+              </a>
             </motion.article>
           );
         })}
@@ -76,9 +76,9 @@ export function Security() {
           <p className="mt-[18px] max-w-[620px] text-[23px] font-medium leading-[1.102] text-[#7c7c7c]">
             If your card is lost, anyone can tap it with their phone to contact you securely and help return it.
           </p>
-          <button type="button" aria-label="Lost card help" className="burst-hover mt-auto flex size-[64px] items-center justify-center rounded-full bg-[#f0f0f0]">
+          <a href="/waitlist" aria-label="Lost card help" className="burst-hover mt-auto flex size-[64px] items-center justify-center rounded-full bg-[#f0f0f0]">
             <ArrowRight size={30} strokeWidth={2.05} />
-          </button>
+          </a>
         </div>
         <motion.div
           initial={reducedMotion ? false : { opacity: 0 }}

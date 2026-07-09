@@ -119,14 +119,14 @@ export function Pricing() {
                 </li>
               ))}
             </ul>
-            <button
-              type="button"
-              className={`burst-hover mt-auto h-[62px] w-full rounded-[16px] text-[22px] font-medium leading-[0.94] ${
+            <a
+              href="/waitlist"
+              className={`burst-hover mt-auto flex h-[62px] w-full items-center justify-center rounded-[16px] text-[22px] font-medium leading-[0.94] ${
                 plan.dark ? "bg-white text-black" : "border border-[#dbdcde] bg-white text-black"
               }`}
             >
               {plan.cta}
-            </button>
+            </a>
           </motion.article>
         ))}
       </div>
@@ -138,7 +138,7 @@ export function Pricing() {
             Start with Arctic.
           </h3>
           <p className="mt-[36px] max-w-[421px] text-[28px] font-medium leading-[0.94] text-[#7c7c7c]">You can upgrade, downgrade or cancel in any time</p>
-          <a href="#" className="burst-hover mt-[36px] inline-flex h-[62px] w-[190px] items-center justify-center rounded-[13px] bg-black text-[20px] font-medium leading-[1.102] text-white">
+          <a href="/waitlist" className="burst-hover mt-[36px] inline-flex h-[62px] w-[190px] items-center justify-center rounded-[13px] bg-black text-[20px] font-medium leading-[1.102] text-white">
             Get your card
           </a>
         </div>

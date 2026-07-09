@@ -58,13 +58,13 @@ function ProductCard({ product, index }: { product: (typeof products)[number]; i
         <h3 className="mt-[5px] text-[32px] text-black md:text-[41.456px]">{product.name}</h3>
         <p className="mt-[22px] text-[20px] text-[#7c7c7c] md:mt-[31px] md:text-[25.674px]">{product.copy}</p>
       </div>
-      <button
-        type="button"
+      <a
+        href="/waitlist"
         aria-label={`View ${product.name}`}
         className="burst-hover mt-auto flex size-[60px] items-center justify-center rounded-full bg-[#f0f0f0] text-black md:size-[75px]"
       >
         <ArrowRight className="size-[28px] md:size-[34px]" strokeWidth={2.05} />
-      </button>
+      </a>
     </motion.article>
   );
 }

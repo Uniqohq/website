@@ -23,7 +23,7 @@ export function Header() {
           ))}
         </nav>
         <a
-          href="#pricing"
+          href="/waitlist"
           className="burst-hover flex h-[52.759px] w-[163.655px] items-center justify-center rounded-[11px] bg-black text-[17.681px] font-medium leading-[1.102] text-white"
         >
           Get your card
