@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { BottomDepthFade } from "@/components/bottom-depth-fade";
 import { ClickBurst } from "@/components/click-burst";
 import { SmoothScroll } from "@/components/smooth-scroll";
+import { SITE_VERSION } from "@/lib/site-version";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -25,7 +27,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-product="uniqo" data-owner="framelabs">
-      <body data-product="uniqo" data-owner="framelabs">
+      <body data-product="uniqo" data-owner="framelabs" data-version={SITE_VERSION}>
+        <Script
+          id="uniqo-version"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `window.version=${JSON.stringify(SITE_VERSION)};window.uniqoVersion=${JSON.stringify(SITE_VERSION)};`
+          }}
+        />
         <SmoothScroll />
         <ClickBurst />
         {children}

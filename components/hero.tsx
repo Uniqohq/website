@@ -11,18 +11,18 @@ export function Hero() {
   const reducedMotion = useReducedMotion();
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const arcticOpacity = useTransform(scrollYProgress, [0, 0.09, 0.17], [1, 1, 0]);
-  const midnightOpacity = useTransform(scrollYProgress, [0.14, 0.22, 0.3, 0.38], [0, 1, 1, 0]);
-  const graphiteOpacity = useTransform(scrollYProgress, [0.34, 0.44, 0.98], [0, 1, 1]);
-  const indicatorOpacity = useTransform(scrollYProgress, [0, 0.68, 0.78], [1, 1, 0]);
-  const indicatorOne = useTransform(scrollYProgress, [0, 0.11, 0.2], [1, 1, 0.25]);
-  const indicatorTwo = useTransform(scrollYProgress, [0.16, 0.24, 0.32, 0.42], [0.25, 1, 1, 0.25]);
-  const indicatorThree = useTransform(scrollYProgress, [0.36, 0.47, 0.72], [0.25, 1, 1]);
+  const arcticOpacity = useTransform(scrollYProgress, [0, 0.14, 0.26], [1, 1, 0]);
+  const midnightOpacity = useTransform(scrollYProgress, [0.22, 0.34, 0.52, 0.64], [0, 1, 1, 0]);
+  const graphiteOpacity = useTransform(scrollYProgress, [0.58, 0.74, 0.995], [0, 1, 1]);
+  const indicatorOpacity = useTransform(scrollYProgress, [0, 0.82, 0.93], [1, 1, 0]);
+  const indicatorOne = useTransform(scrollYProgress, [0, 0.17, 0.28], [1, 1, 0.25]);
+  const indicatorTwo = useTransform(scrollYProgress, [0.24, 0.37, 0.56, 0.68], [0.25, 1, 1, 0.25]);
+  const indicatorThree = useTransform(scrollYProgress, [0.62, 0.76, 0.9], [0.25, 1, 1]);
 
   return (
     <section
       ref={ref}
-      className="relative h-[380vh] overflow-visible bg-[radial-gradient(circle_at_50%_50%,#e9e9ec_0%,#eeeff0_100%)] md:h-[410vh] lg:h-[450vh] xl:h-[470vh]"
+      className="relative h-[420vh] overflow-visible bg-[radial-gradient(circle_at_50%_50%,#e9e9ec_0%,#eeeff0_100%)] md:h-[500vh] lg:h-[540vh] xl:h-[560vh]"
     >
       <motion.div
         style={reducedMotion ? undefined : { opacity: indicatorOpacity }}
