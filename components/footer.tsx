@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
+import { useState } from "react";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -27,43 +29,97 @@ const socialIcons = [
   { src: "/assets/uniqo-social-linkedin.svg", label: "LinkedIn" }
 ];
 
+const regions = [
+  { label: "United States", menuLabel: "United States (Default)", flag: "/assets/flags/us.svg" },
+  { label: "European Union", flag: "/assets/flags/eu.svg" },
+  { label: "United Kingdom", flag: "/assets/flags/gb.svg" },
+  { label: "Canada", flag: "/assets/flags/ca.svg" },
+  { label: "Australia", flag: "/assets/flags/au.svg" },
+  { label: "Singapore", flag: "/assets/flags/sg.svg" },
+  { label: "United Arab Emirates", flag: "/assets/flags/ae.svg" },
+  { label: "Japan", flag: "/assets/flags/jp.svg" }
+];
+
+function RegionDropdown() {
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState(regions[0]);
+
+  return (
+    <div className="relative w-full max-w-[222px]">
+      <button
+        type="button"
+        onClick={() => setOpen((value) => !value)}
+        className="flex h-[43px] w-full items-center justify-between rounded-full border border-white/10 bg-[#050506] py-[5px] pl-[6px] pr-[14px] text-left text-[16px] font-medium leading-none text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05),0_0_0_1px_rgba(255,255,255,0.04)]"
+      >
+        <span className="flex min-w-0 items-center gap-[10px]">
+          <span className="flex size-[31px] shrink-0 items-center justify-center overflow-hidden rounded-full bg-white/10">
+            <Image src={selected.flag} alt="" width={31} height={31} className="h-full w-full object-cover" />
+          </span>
+          <span className="truncate">{selected.label}</span>
+        </span>
+        <ChevronDown className={`size-[17px] shrink-0 text-white/72 transition-transform duration-200 ${open ? "rotate-180" : ""}`} strokeWidth={2.35} />
+      </button>
+      {open ? (
+        <div className="absolute bottom-[50px] left-0 z-50 grid w-[222px] overflow-hidden rounded-[16px] border border-white/10 bg-[#111112] py-[6px] shadow-[0_18px_45px_rgba(0,0,0,0.35)]">
+          {regions.map((region) => (
+            <button
+              key={region.label}
+              type="button"
+              onClick={() => {
+                setSelected(region);
+                setOpen(false);
+              }}
+              className="flex h-[34px] items-center gap-[9px] px-[12px] text-left text-[13px] font-medium text-white/78"
+            >
+              <Image src={region.flag} alt="" width={24} height={16} className="h-[16px] w-[24px] rounded-[3px] object-cover" />
+              <span className="truncate">{region.menuLabel ?? region.label}</span>
+            </button>
+          ))}
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
 export function Footer() {
   const reducedMotion = useReducedMotion();
 
   return (
-    <footer className="h-auto border-t border-[rgba(255,255,255,0.11)] bg-[#050506] text-white md:h-[535px]">
-      <div className="container relative grid gap-12 py-[62px] md:grid-cols-[1.35fr_1fr_1fr_1fr]">
+    <footer className="relative flex min-h-[clamp(430px,24vw,460px)] flex-col justify-between overflow-visible border-t border-[rgba(255,255,255,0.11)] bg-[#050506] text-white">
+      <div className="container relative grid grid-cols-[1.35fr_1fr_1fr_1fr] gap-8 py-[clamp(38px,2.45vw,47px)]">
         <motion.div
-          initial={reducedMotion ? false : { opacity: 0, y: 34 }}
-          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+          initial={reducedMotion ? false : { opacity: 0 }}
+          whileInView={reducedMotion ? undefined : { opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.65, ease }}
         >
-          <Image src="/assets/uniqo-logo.svg" alt="Uniqo" width={867} height={224} className="h-auto w-[136px] invert" />
-          <p className="mt-[53px] max-w-[414px] text-[25.14px] font-medium leading-[1.102] text-white opacity-40">
+          <Image src="/assets/uniqo-logo.svg" alt="Uniqo" width={867} height={224} className="h-auto w-[clamp(94px,5.1vw,98px)] invert" />
+          <p className="mt-[clamp(24px,1.95vw,37px)] max-w-[300px] text-[clamp(14px,0.92vw,17.7px)] font-medium leading-[1.102] text-white opacity-40">
             A financial technology company reimagining how the world pays. Smarter, safer, and designed for total control.
           </p>
-          <Image src="/assets/uniqo-country.png" alt="United States" width={180} height={42} className="mt-[53px] h-auto w-[179px]" />
+          <div className="mt-[clamp(24px,1.95vw,37px)]">
+            <RegionDropdown />
+          </div>
         </motion.div>
         {footerColumns.map((column, columnIndex) => (
           <motion.div
             key={column.title}
-            initial={reducedMotion ? false : { opacity: 0, y: 28 }}
-            whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+            initial={reducedMotion ? false : { opacity: 0 }}
+            whileInView={reducedMotion ? undefined : { opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.62, ease, delay: 0.08 + columnIndex * 0.08 }}
           >
-            <h3 className="text-[21.439px] font-medium leading-[1.102] text-white opacity-40">{column.title}</h3>
-            <ul className="mt-[45px] grid gap-4">
+            <h3 className="text-[clamp(12px,0.78vw,15px)] font-medium leading-[1.102] text-white opacity-40">{column.title}</h3>
+            <ul className="mt-[clamp(24px,1.64vw,31px)] grid gap-[clamp(8px,0.6vw,11px)]">
               {column.links.map((link, index) => (
                 <motion.li
                   key={link}
-                  initial={reducedMotion ? false : { opacity: 0, y: 10 }}
-                  whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+                  initial={reducedMotion ? false : { opacity: 0 }}
+                  whileInView={reducedMotion ? undefined : { opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, ease, delay: 0.18 + columnIndex * 0.06 + index * 0.035 }}
                 >
-                  <a href="#" className="text-[25.143px] font-medium leading-[1.102] text-white opacity-66">
+                  <a href="#" className="text-[clamp(14px,0.92vw,17.7px)] font-medium leading-[1.102] text-white opacity-66">
                     {link}
                   </a>
                 </motion.li>
@@ -73,20 +129,20 @@ export function Footer() {
         ))}
       </div>
       <div className="container border-t border-[rgba(255,255,255,0.11)]">
-        <div className="flex flex-col gap-8 py-[33px] text-[25.143px] font-medium leading-[1.102] text-white opacity-40 md:flex-row md:items-center md:justify-between">
-          <span>© 2026 FrameLabs LLC. All rights reserved.</span>
-          <div className="flex items-center gap-[24px]">
+        <div className="grid grid-cols-[1.35fr_1fr_1fr_1fr] gap-8 py-[clamp(18px,1.2vw,23px)] text-[clamp(14px,0.92vw,17.7px)] font-medium leading-[1.102] text-white opacity-40">
+          <span className="col-span-3">© 2026 FrameLabs LLC. All rights reserved.</span>
+          <div className="col-start-4 flex items-center justify-start gap-[clamp(14px,0.88vw,17px)]">
             {socialIcons.map((icon, index) => (
               <motion.a
                 key={icon.label}
                 href="#"
                 aria-label={icon.label}
-                initial={reducedMotion ? false : { opacity: 0, scale: 0.88 }}
-                whileInView={reducedMotion ? undefined : { opacity: 1, scale: 1 }}
+                initial={reducedMotion ? false : { opacity: 0 }}
+                whileInView={reducedMotion ? undefined : { opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, ease, delay: 0.2 + index * 0.04 }}
               >
-                <Image src={icon.src} alt="" width={28} height={28} className="size-[27.526px]" />
+                <Image src={icon.src} alt="" width={28} height={28} className="size-[clamp(18px,1vw,19px)]" />
               </motion.a>
             ))}
           </div>

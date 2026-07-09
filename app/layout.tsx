@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { ClickBurst } from "@/components/click-burst";
+import { SmoothScroll } from "@/components/smooth-scroll";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -6,7 +8,13 @@ export const metadata: Metadata = {
   description: "The card that thinks before it pays.",
   creator: "FrameLabs LLC",
   publisher: "FrameLabs LLC",
-  metadataBase: new URL("https://uniqo.one")
+  metadataBase: new URL("https://uniqo.one"),
+  icons: {
+    icon: [
+      { url: "/favicon_light.svg", media: "(prefers-color-scheme: light)", type: "image/svg+xml" },
+      { url: "/favicon_dark.svg", media: "(prefers-color-scheme: dark)", type: "image/svg+xml" }
+    ]
+  }
 };
 
 export default function RootLayout({
@@ -16,7 +24,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-product="uniqo" data-owner="framelabs">
-      <body data-product="uniqo" data-owner="framelabs">{children}</body>
+      <body data-product="uniqo" data-owner="framelabs">
+        <SmoothScroll />
+        <ClickBurst />
+        {children}
+      </body>
     </html>
   );
 }

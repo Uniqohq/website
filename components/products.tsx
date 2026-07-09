@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Paintbrush } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { CardImage } from "./card-image";
 
@@ -17,7 +17,7 @@ const products = [
   },
   {
     number: "02",
-    name: "Mindnight",
+    name: "Midnight",
     copy: "Bold, minimal and refined. For those who go further.",
     image: "/assets/uniqo-card-midnight.png",
     width: 4800,
@@ -38,8 +38,8 @@ function ProductCard({ product, index }: { product: (typeof products)[number]; i
 
   return (
     <motion.article
-      initial={reducedMotion ? false : { opacity: 0, y: 54 }}
-      whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+      initial={reducedMotion ? false : { opacity: 0 }}
+      whileInView={reducedMotion ? undefined : { opacity: 1 }}
       viewport={{ once: true, margin: "-120px" }}
       transition={{ duration: 0.72, ease, delay: index * 0.11 }}
       className="flex h-auto min-h-[560px] w-full flex-col rounded-[35px] bg-[#f7f7f7] px-[24px] pb-[28px] pt-[24px] md:h-[740px] md:px-[30px] md:pb-[33px] md:pt-[30px]"
@@ -61,7 +61,7 @@ function ProductCard({ product, index }: { product: (typeof products)[number]; i
       <button
         type="button"
         aria-label={`View ${product.name}`}
-        className="mt-auto flex size-[60px] items-center justify-center rounded-full bg-[#f0f0f0] text-black md:size-[75px]"
+        className="burst-hover mt-auto flex size-[60px] items-center justify-center rounded-full bg-[#f0f0f0] text-black md:size-[75px]"
       >
         <ArrowRight className="size-[28px] md:size-[34px]" strokeWidth={2.05} />
       </button>
@@ -85,21 +85,21 @@ export function Products() {
         ))}
       </div>
       <motion.div
-        initial={reducedMotion ? false : { opacity: 0, y: 20 }}
-        whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+        initial={reducedMotion ? false : { opacity: 0 }}
+        whileInView={reducedMotion ? undefined : { opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease, delay: 0.15 }}
-        className="mt-[31px] flex h-[115px] flex-col gap-5 rounded-[35px] bg-[#f7f7f7] px-[19px] py-5 text-[25.674px] font-medium leading-[1.102] md:flex-row md:items-center md:justify-between"
+        className="mt-[31px] flex min-h-[92px] flex-col gap-4 rounded-[30px] bg-[#f7f7f7] px-[22px] py-[14px] text-[25.674px] font-medium leading-[1.102] md:flex-row md:items-center md:justify-between md:pr-[25px]"
       >
-        <div className="flex items-center gap-[55px]">
-          <span className="flex size-[75px] items-center justify-center rounded-[25px] bg-[#f0f0f0]">
-            <ArrowRight size={34} strokeWidth={2.05} />
+        <div className="flex items-center gap-[36px]">
+          <span className="flex size-[58px] items-center justify-center rounded-[20px] bg-[#f0f0f0]">
+            <Paintbrush size={28} strokeWidth={2.05} />
           </span>
           <span>More designs, limited editions and exclusive drops.</span>
         </div>
-        <a href="#pricing" className="flex items-center gap-[32px]">
+        <a href="#pricing" className="burst-hover flex items-center gap-[22px]">
           Discover all cards
-          <ArrowRight size={34} strokeWidth={2.05} />
+          <ArrowRight size={31} strokeWidth={2.05} />
         </a>
       </motion.div>
       </div>

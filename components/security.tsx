@@ -46,8 +46,8 @@ export function Security() {
           return (
             <motion.article
               key={card.title}
-              initial={reducedMotion ? false : { opacity: 0, y: 44 }}
-              whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+              initial={reducedMotion ? false : { opacity: 0 }}
+              whileInView={reducedMotion ? undefined : { opacity: 1 }}
               viewport={{ once: true, margin: "-120px" }}
               transition={{ duration: 0.68, ease, delay: index * 0.09 }}
               className="flex min-h-[420px] flex-col rounded-[35px] bg-[#f7f7f7] p-[34px]"
@@ -57,7 +57,7 @@ export function Security() {
               </div>
               <h3 className="text-[31px] font-medium leading-[1.102]">{card.title}</h3>
               <p className="mt-[20px] text-[20px] font-medium leading-[1.102] text-[#7c7c7c]">{card.copy}</p>
-              <button type="button" aria-label={card.title} className="mt-auto flex size-[55px] items-center justify-center rounded-full bg-[#f0f0f0]">
+              <button type="button" aria-label={card.title} className="burst-hover mt-auto flex size-[55px] items-center justify-center rounded-full bg-[#f0f0f0]">
                 <ArrowRight size={25} strokeWidth={2.05} />
               </button>
             </motion.article>
@@ -65,41 +65,41 @@ export function Security() {
         })}
       </div>
       <motion.div
-        initial={reducedMotion ? false : { opacity: 0, y: 46 }}
-        whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+        initial={reducedMotion ? false : { opacity: 0 }}
+        whileInView={reducedMotion ? undefined : { opacity: 1 }}
         viewport={{ once: true, margin: "-120px" }}
         transition={{ duration: 0.75, ease }}
-        className="mt-[31px] grid min-h-[330px] overflow-hidden rounded-[35px] bg-[#f7f7f7] md:grid-cols-[0.9fr_1.4fr]"
+        className="mt-[31px] grid h-[330px] overflow-hidden rounded-[35px] bg-[#f7f7f7] md:grid-cols-[0.95fr_1.25fr]"
       >
         <div className="flex flex-col p-[34px]">
-          <h3 className="max-w-[500px] text-[41.456px] font-medium leading-[1.102]">Lost your card? Someone else can return it.</h3>
-          <p className="mt-[22px] max-w-[520px] text-[25.674px] font-medium leading-[1.102] text-[#7c7c7c]">
+          <h3 className="max-w-[660px] text-[40px] font-medium leading-[1.102]">Lost your card? Someone else can return it.</h3>
+          <p className="mt-[18px] max-w-[620px] text-[23px] font-medium leading-[1.102] text-[#7c7c7c]">
             If your card is lost, anyone can tap it with their phone to contact you securely and help return it.
           </p>
-          <button type="button" aria-label="Lost card help" className="mt-auto flex size-[75px] items-center justify-center rounded-full bg-[#f0f0f0]">
-            <ArrowRight size={34} strokeWidth={2.05} />
+          <button type="button" aria-label="Lost card help" className="burst-hover mt-auto flex size-[64px] items-center justify-center rounded-full bg-[#f0f0f0]">
+            <ArrowRight size={30} strokeWidth={2.05} />
           </button>
         </div>
         <motion.div
-          initial={reducedMotion ? false : { opacity: 0, x: 54 }}
-          whileInView={reducedMotion ? undefined : { opacity: 1, x: 0 }}
+          initial={reducedMotion ? false : { opacity: 0 }}
+          whileInView={reducedMotion ? undefined : { opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.75, ease, delay: 0.1 }}
-          className="relative flex min-w-0 flex-col items-center justify-end gap-6 overflow-hidden px-6 pt-4 md:flex-row md:items-end md:gap-[96px]"
+          className="relative min-h-[330px] min-w-0 overflow-hidden px-6"
         >
           <CardImage
             src="/assets/uniqo-card-midnight.png"
             alt="Uniqo card security preview"
             width={522}
             height={353}
-            className="mb-0 w-[min(78vw,420px)] rotate-[-7deg] md:mb-[82px] md:w-[min(42vw,420px)]"
+            className="absolute left-[4%] top-[42px] w-[min(52vw,392px)] rotate-[-7deg] md:left-[2%] md:top-[46px] md:w-[min(31vw,392px)]"
           />
           <CardImage
             src="/assets/uniqo-phone-mockup.png"
             alt="Uniqo phone capture screen"
             width={1310}
             height={2708}
-            className="h-[260px] w-auto self-center object-contain md:h-[330px] md:self-end"
+            className="absolute bottom-[-116px] right-[6%] h-[388px] w-auto object-contain md:bottom-[-120px] md:right-[8%] md:h-[420px]"
           />
         </motion.div>
       </motion.div>

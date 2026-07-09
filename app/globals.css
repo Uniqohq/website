@@ -22,20 +22,30 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  overflow-x: clip;
   background: var(--uniqo-bg);
 }
 
 body {
   min-height: 100vh;
   margin: 0;
-  overflow-x: hidden;
+  overflow-x: clip;
   background: var(--uniqo-bg);
   color: var(--uniqo-ink);
   font-family: var(--font-sans);
   letter-spacing: 0;
   -webkit-font-smoothing: antialiased;
   text-rendering: geometricPrecision;
+}
+
+h1,
+h2,
+h3,
+p,
+li,
+a,
+button {
+  text-wrap: pretty;
 }
 
 a {
@@ -45,6 +55,40 @@ a {
 
 button {
   font: inherit;
+}
+
+.burst-hover {
+  position: relative;
+  overflow: visible;
+  isolation: isolate;
+}
+
+.burst-particle {
+  position: absolute;
+  z-index: 4;
+  height: 2px;
+  border-radius: 999px;
+  background: #111;
+  pointer-events: none;
+  transform: translate(-50%, -50%) rotate(var(--burst-rotate)) scaleX(0.45);
+  transform-origin: center;
+  animation: burst-particle 560ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes burst-particle {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--burst-rotate)) scaleX(0.35);
+  }
+
+  22% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--burst-x)), calc(-50% + var(--burst-y))) rotate(var(--burst-rotate)) scaleX(1);
+  }
 }
 
 ::selection {

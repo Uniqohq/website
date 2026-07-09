@@ -1,46 +1,50 @@
 "use client";
 
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
-const ease = [0.16, 1, 0.3, 1] as const;
+const manifestoText =
+  "Uniqo is a financial technology company reimagining how the world pays. No unnecessary features. No hidden fees. Just a card that puts you in charge.";
 
 export function Manifesto() {
-  const reducedMotion = useReducedMotion();
   const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const paragraphY = useTransform(scrollYProgress, [0.35, 0.78], [120, 0]);
-  const paragraphOpacity = useTransform(scrollYProgress, [0.35, 0.65], [0, 1]);
-  const lines = ["We don’t build", "another bank."];
+  const textRef = useRef<HTMLParagraphElement>(null);
+  const [endX, setEndX] = useState(-3000);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const textX = useTransform(scrollYProgress, [0.02, 0.94], [0, endX]);
+
+  useEffect(() => {
+    const updateEndX = () => {
+      const left = Math.min(Math.max(window.innerWidth * 0.08542, 42), 164);
+      const textWidth = textRef.current?.scrollWidth ?? 4111.32;
+      setEndX(window.innerWidth - left - textWidth - 48);
+    };
+
+    updateEndX();
+    window.addEventListener("resize", updateEndX);
+
+    return () => window.removeEventListener("resize", updateEndX);
+  }, []);
 
   return (
-    <section id="manifesto" ref={ref} className="relative min-h-[854px] overflow-hidden bg-[#ececee]">
-      <div className="container sticky top-0 flex min-h-[854px] flex-col justify-start pt-[43.51px]">
-      <div>
-        {lines.map((line, index) => (
-          <div key={line} className="overflow-hidden">
-            <motion.h2
-              initial={reducedMotion ? false : { y: "110%" }}
-              whileInView={reducedMotion ? undefined : { y: 0 }}
-              viewport={{ once: true, margin: "-120px" }}
-              transition={{ duration: 0.82, ease, delay: index * 0.08 }}
-              className="whitespace-nowrap text-[clamp(78px,13.526vw,259.709px)] font-medium leading-[0.94] tracking-normal"
-            >
-              {line}
-            </motion.h2>
-          </div>
-        ))}
-      </div>
-      <motion.p
-        style={reducedMotion ? undefined : { y: paragraphY, opacity: paragraphOpacity }}
-        className="mt-auto pb-[145px] text-center text-[clamp(34px,3.33vw,63.944px)] font-medium leading-[1.102] text-[rgba(0,0,0,0.4)]"
-      >
-        <span className="text-black">Uniqo</span> is a financial technology company reimagining how the world pays. No unnecessary features. No hidden fees. Just a card that puts you in charge.
-      </motion.p>
-      <div className="absolute bottom-[61px] left-1/2 -translate-x-1/2 -rotate-90">
-        <Image src="/assets/uniqo-scroll-indicator.png" alt="" width={28} height={44} className="h-[43px] w-[27px]" />
-      </div>
+    <section id="manifesto" ref={ref} className="relative h-[340vh] overflow-visible bg-[#ececee]">
+      <div className="sticky top-0 h-[854px] overflow-hidden bg-[#ececee]">
+        <h2 className="absolute left-[clamp(42px,8.542vw,164px)] top-[43.51px] w-[min(82.917vw,1592px)] text-[clamp(96px,13.526vw,259.709px)] font-medium leading-[0.94] tracking-normal text-black">
+          We don’t build
+          <br />
+          another bank.
+        </h2>
+        <motion.p
+          ref={textRef}
+          style={{ x: textX }}
+          className="absolute left-[clamp(42px,8.542vw,164px)] top-[635px] h-[70px] w-[4111.32px] whitespace-nowrap text-center text-[clamp(30px,3.33vw,63.9436px)] font-medium leading-[1.102] text-[#8d8f91]"
+        >
+          {manifestoText}
+        </motion.p>
+        <div className="absolute left-[calc(50%_-_13.585px)] top-[765px] h-[43.32px] w-[27.17px] -rotate-90">
+          <Image src="/assets/uniqo-scroll-indicator.png" alt="" width={28} height={44} className="h-[43.32px] w-[27.17px]" />
+        </div>
       </div>
     </section>
   );
