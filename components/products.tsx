@@ -12,68 +12,76 @@ const products = [
     name: "Arctic",
     copy: "Clean, subtle and timeless. For everyday spending.",
     image: "/assets/uniqo-card-arctic.png",
-    width: 429,
-    height: 255
+    width: 522,
+    height: 353
   },
   {
     number: "02",
-    name: "Midnight",
+    name: "Mindnight",
     copy: "Bold, minimal and refined. For those who go further.",
     image: "/assets/uniqo-card-midnight.png",
-    width: 429,
-    height: 255
+    width: 522,
+    height: 353
   },
   {
     number: "03",
     name: "Graphite",
     copy: "Strong, reliable and distinct. For your business and beyond",
     image: "/assets/uniqo-card-graphite.png",
-    width: 432,
-    height: 255
+    width: 522,
+    height: 353
   }
 ];
+
+function ProductCard({ product, index }: { product: (typeof products)[number]; index: number }) {
+  const reducedMotion = useReducedMotion();
+
+  return (
+    <motion.article
+      initial={reducedMotion ? false : { opacity: 0, y: 54 }}
+      whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-120px" }}
+      transition={{ duration: 0.72, ease, delay: index * 0.11 }}
+      className="flex h-[740px] w-full flex-col rounded-[35px] bg-[#f7f7f7] px-[30px] pb-[33px] pt-[30px]"
+    >
+      <div className="h-[281.25px] w-full overflow-visible">
+        <CardImage
+          src={product.image}
+          alt={`${product.name} Uniqo card`}
+          width={product.width}
+          height={product.height}
+          className="ml-[-36px] mt-[-36px] h-auto w-[522px] max-w-none"
+        />
+      </div>
+      <div className="mt-[83px] w-[340px] font-medium leading-[1.102]">
+        <span className="text-[19.939px] text-[#7c7c7c]">{product.number}</span>
+        <h3 className="mt-[5px] text-[41.456px] text-black">{product.name}</h3>
+        <p className="mt-[31px] text-[25.674px] text-[#7c7c7c]">{product.copy}</p>
+      </div>
+      <button
+        type="button"
+        aria-label={`View ${product.name}`}
+        className="mt-auto flex size-[75px] items-center justify-center rounded-full bg-[#f0f0f0] text-black"
+      >
+        <ArrowRight size={34} strokeWidth={2.05} />
+      </button>
+    </motion.article>
+  );
+}
 
 export function Products() {
   const reducedMotion = useReducedMotion();
 
   return (
-    <section id="products" className="container py-12">
-      <div className="mb-16">
+    <section id="products" className="bg-[#ececee]">
+      <div className="container min-h-[1218px] py-[58px]">
+      <div className="mb-[99px]">
         <span className="section-kicker">02</span>
-        <h2 className="section-title mt-4">Products</h2>
+        <h2 className="section-title mt-[9px]">Products</h2>
       </div>
-      <div className="grid gap-7 md:grid-cols-3">
+      <div className="grid gap-[31px] md:grid-cols-3">
         {products.map((product, index) => (
-          <motion.article
-            key={product.name}
-            initial={reducedMotion ? false : { opacity: 0, y: 34 }}
-            whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.65, ease, delay: index * 0.08 }}
-            className="group flex min-h-[470px] flex-col rounded-[22px] bg-white p-8 shadow-[0_1px_0_rgba(0,0,0,0.03)] transition-all duration-500 hover:-translate-y-[6px] hover:shadow-[0_28px_80px_rgba(12,13,16,0.12)]"
-          >
-            <div className="overflow-hidden rounded-[14px]">
-              <CardImage
-                src={product.image}
-                alt={`${product.name} Uniqo card`}
-                width={product.width}
-                height={product.height}
-                className="h-auto w-full transition-transform duration-700 group-hover:scale-[1.02]"
-              />
-            </div>
-            <div className="mt-10">
-              <span className="text-[12px] font-bold text-[#a0a1a5]">{product.number}</span>
-              <h3 className="mt-2 text-[28px] font-extrabold leading-none">{product.name}</h3>
-              <p className="mt-4 max-w-[250px] text-[15px] font-semibold leading-[1.15] text-[#85878c]">{product.copy}</p>
-            </div>
-            <button
-              type="button"
-              aria-label={`View ${product.name}`}
-              className="mt-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#f3f3f4] text-black transition-transform duration-500 group-hover:translate-x-1"
-            >
-              <ArrowRight size={20} strokeWidth={2.4} />
-            </button>
-          </motion.article>
+          <ProductCard key={product.name} product={product} index={index} />
         ))}
       </div>
       <motion.div
@@ -81,19 +89,20 @@ export function Products() {
         whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease, delay: 0.15 }}
-        className="mt-7 flex flex-col gap-5 rounded-[22px] bg-white px-6 py-5 text-[15px] font-bold shadow-[0_1px_0_rgba(0,0,0,0.03)] md:flex-row md:items-center md:justify-between"
+        className="mt-[31px] flex h-[115px] flex-col gap-5 rounded-[35px] bg-[#f7f7f7] px-[19px] py-5 text-[25.674px] font-medium leading-[1.102] md:flex-row md:items-center md:justify-between"
       >
-        <div className="flex items-center gap-4">
-          <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#f4f4f5]">
-            <ArrowRight size={18} strokeWidth={2.4} />
+        <div className="flex items-center gap-[55px]">
+          <span className="flex size-[75px] items-center justify-center rounded-[25px] bg-[#f0f0f0]">
+            <ArrowRight size={34} strokeWidth={2.05} />
           </span>
           <span>More designs, limited editions and exclusive drops.</span>
         </div>
-        <a href="#pricing" className="flex items-center gap-4">
+        <a href="#pricing" className="flex items-center gap-[32px]">
           Discover all cards
-          <ArrowRight size={20} strokeWidth={2.4} />
+          <ArrowRight size={34} strokeWidth={2.05} />
         </a>
       </motion.div>
+      </div>
     </section>
   );
 }

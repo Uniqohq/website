@@ -18,7 +18,7 @@ export function CardImage({ src, alt, width, height, className, priority }: Card
       height={height}
       priority={priority}
       className={className}
-      sizes="(max-width: 768px) 90vw, 34vw"
+      sizes="(max-width: 768px) 90vw, (max-width: 1280px) 45vw, 700px"
     />
   );
 }

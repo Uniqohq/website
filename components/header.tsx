@@ -11,11 +11,11 @@ const navItems = [
 export function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      <div className="container flex h-20 items-center justify-between">
+      <div className="container flex h-[96px] items-center justify-between backdrop-blur-0">
         <a href="#" aria-label="Uniqo home" className="flex items-center">
-          <Image src="/assets/uniqo-logo.png" alt="Uniqo" width={68} height={18} priority className="h-auto w-[68px]" />
+          <Image src="/assets/uniqo-logo.png" alt="Uniqo" width={103} height={27} priority className="h-auto w-[102px]" />
         </a>
-        <nav className="hidden items-center gap-12 text-[12px] font-bold text-black md:flex">
+        <nav className="hidden items-center gap-[66px] text-[17.681px] font-medium leading-[1.102] text-black md:flex">
           {navItems.map((item) => (
             <a key={item.label} href={item.href}>
               {item.label}
@@ -24,7 +24,7 @@ export function Header() {
         </nav>
         <a
           href="#pricing"
-          className="rounded-[8px] bg-black px-7 py-3 text-[12px] font-bold text-white transition-transform duration-500 hover:-translate-y-0.5"
+          className="flex h-[52.759px] w-[163.655px] items-center justify-center rounded-[11px] bg-black text-[17.681px] font-medium leading-[1.102] text-white"
         >
           Get your card
         </a>

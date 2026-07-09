@@ -33,69 +33,77 @@ export function Security() {
   const reducedMotion = useReducedMotion();
 
   return (
-    <section id="security" className="container overflow-hidden py-20">
-      <div className="mb-14">
+    <section id="security" className="bg-[#ececee]">
+      <div className="container min-h-[1220px] overflow-hidden py-[58px]">
+      <div className="mb-[78px]">
         <span className="section-kicker">03</span>
-        <h2 className="section-title mt-4">Security</h2>
-        <p className="section-copy mt-4 max-w-[290px]">Built to protect your money, before anything happens</p>
+        <h2 className="section-title mt-[9px]">Security</h2>
+        <p className="mt-[16px] max-w-[330px] text-[25.674px] font-medium leading-[1.102] text-[#7c7c7c]">Built to protect your money, before anything happens</p>
       </div>
-      <div className="grid gap-7 md:grid-cols-4">
+      <div className="grid gap-[31px] md:grid-cols-4">
         {securityCards.map((card, index) => {
           const Icon = card.icon;
           return (
             <motion.article
               key={card.title}
-              initial={reducedMotion ? false : { opacity: 0, y: 28 }}
+              initial={reducedMotion ? false : { opacity: 0, y: 44 }}
               whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.62, ease, delay: index * 0.07 }}
-              className="flex min-h-[270px] flex-col rounded-[20px] bg-white p-7"
+              viewport={{ once: true, margin: "-120px" }}
+              transition={{ duration: 0.68, ease, delay: index * 0.09 }}
+              className="flex min-h-[420px] flex-col rounded-[35px] bg-[#f7f7f7] p-[34px]"
             >
-              <div className="mb-12 flex h-[52px] w-[52px] items-center justify-center rounded-[14px] bg-[#f4f4f5]">
-                <Icon size={27} strokeWidth={2.15} />
+              <div className="mb-[82px] flex size-[75px] items-center justify-center rounded-[25px] bg-[#f0f0f0]">
+                <Icon size={34} strokeWidth={2.05} />
               </div>
-              <h3 className="text-[20px] font-extrabold leading-[1.02]">{card.title}</h3>
-              <p className="mt-4 text-[13px] font-semibold leading-[1.16] text-[#85878c]">{card.copy}</p>
-              <button type="button" aria-label={card.title} className="mt-auto flex h-11 w-11 items-center justify-center rounded-full bg-[#f4f4f5]">
-                <ArrowRight size={18} strokeWidth={2.4} />
+              <h3 className="text-[31px] font-medium leading-[1.102]">{card.title}</h3>
+              <p className="mt-[20px] text-[20px] font-medium leading-[1.102] text-[#7c7c7c]">{card.copy}</p>
+              <button type="button" aria-label={card.title} className="mt-auto flex size-[55px] items-center justify-center rounded-full bg-[#f0f0f0]">
+                <ArrowRight size={25} strokeWidth={2.05} />
               </button>
             </motion.article>
           );
         })}
       </div>
       <motion.div
-        initial={reducedMotion ? false : { opacity: 0, y: 30 }}
+        initial={reducedMotion ? false : { opacity: 0, y: 46 }}
         whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
+        viewport={{ once: true, margin: "-120px" }}
         transition={{ duration: 0.75, ease }}
-        className="mt-7 grid min-h-[220px] overflow-hidden rounded-[20px] bg-white md:grid-cols-[1fr_1.35fr]"
+        className="mt-[31px] grid min-h-[330px] overflow-hidden rounded-[35px] bg-[#f7f7f7] md:grid-cols-[0.9fr_1.4fr]"
       >
-        <div className="flex flex-col p-8">
-          <h3 className="max-w-[260px] text-[28px] font-extrabold leading-[0.96]">Lost your card? Someone else can return it.</h3>
-          <p className="mt-4 max-w-[300px] text-[14px] font-semibold leading-[1.15] text-[#85878c]">
+        <div className="flex flex-col p-[34px]">
+          <h3 className="max-w-[500px] text-[41.456px] font-medium leading-[1.102]">Lost your card? Someone else can return it.</h3>
+          <p className="mt-[22px] max-w-[520px] text-[25.674px] font-medium leading-[1.102] text-[#7c7c7c]">
             If your card is lost, anyone can tap it with their phone to contact you securely and help return it.
           </p>
-          <button type="button" aria-label="Lost card help" className="mt-auto flex h-11 w-11 items-center justify-center rounded-full bg-[#f4f4f5]">
-            <ArrowRight size={18} strokeWidth={2.4} />
+          <button type="button" aria-label="Lost card help" className="mt-auto flex size-[75px] items-center justify-center rounded-full bg-[#f0f0f0]">
+            <ArrowRight size={34} strokeWidth={2.05} />
           </button>
         </div>
         <motion.div
-          initial={reducedMotion ? false : { opacity: 0, x: 42 }}
+          initial={reducedMotion ? false : { opacity: 0, x: 54 }}
           whileInView={reducedMotion ? undefined : { opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.75, ease, delay: 0.1 }}
-          className="relative flex min-w-0 items-end justify-center gap-16 overflow-hidden px-6 pt-4"
+          className="relative flex min-w-0 items-end justify-center gap-[96px] overflow-hidden px-6 pt-4"
         >
           <CardImage
-            src="/assets/uniqo-security-card.png"
+            src="/assets/uniqo-card-midnight.png"
             alt="Uniqo card security preview"
-            width={348}
-            height={300}
-            className="mb-8 w-[min(45vw,348px)] rotate-[-7deg] drop-shadow-[0_18px_32px_rgba(12,13,18,0.22)]"
+            width={522}
+            height={353}
+            className="mb-[82px] w-[min(42vw,420px)] rotate-[-7deg]"
           />
-          <CardImage src="/assets/uniqo-phone-mockup.png" alt="Uniqo phone capture screen" width={219} height={354} className="w-[min(26vw,219px)] self-end" />
+          <CardImage
+            src="/assets/uniqo-phone-mockup.png"
+            alt="Uniqo phone capture screen"
+            width={1310}
+            height={2708}
+            className="h-[330px] w-auto self-end object-contain"
+          />
         </motion.div>
       </motion.div>
+      </div>
     </section>
   );
 }
