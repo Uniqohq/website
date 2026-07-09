@@ -6,7 +6,7 @@
   "homepage": "https://uniqo.one",
   "repository": {
     "type": "git",
-    "url": "https://github.com/uniqo-one/website.git"
+    "url": "https://github.com/Uniqohq/website.git"
   },
   "scripts": {
     "dev": "next dev",

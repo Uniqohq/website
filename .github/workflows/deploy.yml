@@ -1,21 +1,38 @@
-name: Deploy Website
+name: Website CI and Deploy
 
 on:
+  pull_request:
   push:
     branches:
       - main
   workflow_dispatch:
 
 jobs:
-  deploy:
+  verify:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - uses: docker/setup-buildx-action@v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
 
-      - name: Build image
-        run: docker build -t uniqo-website:ci .
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: verify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Package release
+        run: tar --exclude='.git' --exclude='node_modules' --exclude='.next' -czf website-release.tar.gz .
 
       - name: Configure SSH
         run: |
@@ -24,7 +41,12 @@ jobs:
           chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -p "${{ secrets.DEPLOY_PORT || 22 }}" "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts
 
-      - name: Deploy
+      - name: Upload release
+        run: |
+          scp -i ~/.ssh/deploy_key -P "${{ secrets.DEPLOY_PORT || 22 }}" website-release.tar.gz \
+            "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/tmp/uniqo-website-${{ github.sha }}.tar.gz"
+
+      - name: Deploy release
         run: |
           ssh -i ~/.ssh/deploy_key -p "${{ secrets.DEPLOY_PORT || 22 }}" "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}" \
-            'cd /srv/uniqo/website && git fetch origin main && git reset --hard origin/main && docker compose up -d --build'
+            "/srv/uniqo/infrastructure/current/scripts/deploy-website.sh /tmp/uniqo-website-${{ github.sha }}.tar.gz ${{ github.sha }}"
