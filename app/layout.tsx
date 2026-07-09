@@ -32,7 +32,28 @@ export default function RootLayout({
           id="uniqo-version"
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
-            __html: `window.version=${JSON.stringify(SITE_VERSION)};window.uniqoVersion=${JSON.stringify(SITE_VERSION)};`
+            __html: `
+              Object.defineProperty(window, "version", {
+                value: ${JSON.stringify(SITE_VERSION)},
+                configurable: true,
+                writable: false
+              });
+              Object.defineProperty(window, "uniqoVersion", {
+                value: ${JSON.stringify(SITE_VERSION)},
+                configurable: true,
+                writable: false
+              });
+              Object.defineProperty(globalThis, "version", {
+                value: ${JSON.stringify(SITE_VERSION)},
+                configurable: true,
+                writable: false
+              });
+              Object.defineProperty(globalThis, "uniqoVersion", {
+                value: ${JSON.stringify(SITE_VERSION)},
+                configurable: true,
+                writable: false
+              });
+            `
           }}
         />
         <SmoothScroll />
