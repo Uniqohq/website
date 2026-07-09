@@ -1,7 +1,10 @@
 "use client";
 
 import { ArrowRight, Check } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
+
+const ease = [0.16, 1, 0.3, 1] as const;
 
 export function WaitlistForm() {
   const [email, setEmail] = useState("");
@@ -9,13 +12,13 @@ export function WaitlistForm() {
 
   return (
     <form
-      className="mt-[34px] w-full max-w-[568px]"
+      className="mx-auto mt-[36px] w-full max-w-[568px]"
       onSubmit={(event) => {
         event.preventDefault();
         setSubmitted(true);
       }}
     >
-      <div className="flex min-h-[72px] flex-col gap-3 rounded-[18px] bg-white p-[7px] shadow-[0_28px_80px_rgba(0,0,0,0.06)] md:flex-row md:items-center">
+      <div className="flex min-h-[72px] flex-col gap-3 rounded-[18px] bg-white p-[7px] shadow-[0_22px_70px_rgba(0,0,0,0.045)] md:flex-row md:items-center">
         <input
           required
           type="email"
@@ -33,15 +36,33 @@ export function WaitlistForm() {
           <ArrowRight size={21} strokeWidth={2.1} />
         </button>
       </div>
-      <div className="mt-[18px] min-h-[28px] text-[18px] font-medium leading-[1.25] text-[#7c7c7c]">
-        {submitted ? (
-          <span className="inline-flex items-center gap-[9px] text-black">
-            <Check size={20} strokeWidth={2.2} />
-            You're on the list. We'll email you before launch.
-          </span>
-        ) : (
-          "No spam. Just launch access and important availability updates."
-        )}
+      <div className="mt-[18px] min-h-[28px] text-center text-[18px] font-medium leading-[1.25] text-[#7c7c7c]">
+        <AnimatePresence mode="wait">
+          {submitted ? (
+            <motion.span
+              key="submitted"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.28, ease }}
+              className="inline-flex items-center justify-center gap-[9px] text-black"
+            >
+              <Check size={20} strokeWidth={2.2} />
+              You're on the list. We'll email you before launch.
+            </motion.span>
+          ) : (
+            <motion.span
+              key="idle"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.28, ease }}
+              className="block"
+            >
+              No spam. Just launch access and important availability updates.
+            </motion.span>
+          )}
+        </AnimatePresence>
       </div>
     </form>
   );

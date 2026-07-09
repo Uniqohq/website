@@ -9,6 +9,7 @@ export function BottomDepthFade() {
     const footer = document.querySelector("footer");
 
     if (!footer) {
+      setHidden(true);
       return;
     }
 

@@ -93,7 +93,9 @@ export function Footer() {
           viewport={{ once: true }}
           transition={{ duration: 0.65, ease }}
         >
-          <Image src="/assets/uniqo-logo.svg" alt="Uniqo" width={867} height={224} className="h-auto w-[clamp(94px,5.1vw,98px)] invert" />
+          <a href="/" aria-label="Uniqo home" className="inline-flex">
+            <Image src="/assets/uniqo-logo.svg" alt="Uniqo" width={867} height={224} className="h-auto w-[clamp(94px,5.1vw,98px)] invert" />
+          </a>
           <p className="mt-[clamp(24px,1.95vw,37px)] max-w-[300px] text-[clamp(14px,0.92vw,17.7px)] font-medium leading-[1.102] text-white opacity-40">
             A financial technology company reimagining how the world pays. Smarter, safer, and designed for total control.
           </p>
@@ -119,7 +121,7 @@ export function Footer() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, ease, delay: 0.18 + columnIndex * 0.06 + index * 0.035 }}
                 >
-                  <a href="#" className="text-[clamp(14px,0.92vw,17.7px)] font-medium leading-[1.102] text-white opacity-66">
+                  <a href="/waitlist" className="text-[clamp(14px,0.92vw,17.7px)] font-medium leading-[1.102] text-white opacity-66">
                     {link}
                   </a>
                 </motion.li>
@@ -135,7 +137,7 @@ export function Footer() {
             {socialIcons.map((icon, index) => (
               <motion.a
                 key={icon.label}
-                href="#"
+                href="/waitlist"
                 aria-label={icon.label}
                 initial={reducedMotion ? false : { opacity: 0 }}
                 whileInView={reducedMotion ? undefined : { opacity: 1 }}
