@@ -32,7 +32,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Package release
-        run: tar --exclude='.git' --exclude='node_modules' --exclude='.next' -czf website-release.tar.gz .
+        run: tar --exclude='.git' --exclude='node_modules' --exclude='.next' -czf "$RUNNER_TEMP/website-release.tar.gz" .
 
       - name: Configure SSH
         run: |
@@ -43,7 +43,7 @@ jobs:
 
       - name: Upload release
         run: |
-          scp -i ~/.ssh/deploy_key -P "${{ secrets.DEPLOY_PORT || 22 }}" website-release.tar.gz \
+          scp -i ~/.ssh/deploy_key -P "${{ secrets.DEPLOY_PORT || 22 }}" "$RUNNER_TEMP/website-release.tar.gz" \
             "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/tmp/uniqo-website-${{ github.sha }}.tar.gz"
 
       - name: Deploy release
