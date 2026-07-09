@@ -49,4 +49,4 @@ jobs:
       - name: Deploy release
         run: |
           ssh -i ~/.ssh/deploy_key -p "${{ secrets.DEPLOY_PORT || 22 }}" "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}" \
-            "/srv/uniqo/infrastructure/current/scripts/deploy-website.sh /tmp/uniqo-website-${{ github.sha }}.tar.gz ${{ github.sha }}"
+            "/bin/bash /srv/uniqo/infrastructure/current/scripts/deploy-website.sh /tmp/uniqo-website-${{ github.sha }}.tar.gz ${{ github.sha }}"
