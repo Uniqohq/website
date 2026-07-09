@@ -22,18 +22,18 @@ export function WaitlistPageContent() {
           Back to site
         </a>
       </motion.header>
-      <section className="container flex min-h-[calc(100vh-96px)] items-center justify-center pb-[96px] pt-[24px]">
+      <section className="container flex min-h-[calc(100vh-96px)] items-center justify-center pb-[96px] pt-[12px]">
         <motion.div
           initial={{ opacity: 0, y: 24, scale: 0.985 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.78, ease }}
-          className="mx-auto flex w-full max-w-[820px] flex-col items-center text-center"
+          className="mx-auto flex w-full max-w-[660px] flex-col items-center text-center"
         >
           <motion.h1
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.72, ease, delay: 0.08 }}
-            className="max-w-[780px] text-[clamp(58px,7.2vw,138px)] font-medium leading-[0.94] tracking-normal"
+            className="max-w-[640px] text-[clamp(46px,5.4vw,92px)] font-medium leading-[0.94] tracking-normal"
           >
             Uniqo is not live yet.
           </motion.h1>
@@ -41,7 +41,7 @@ export function WaitlistPageContent() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.68, ease, delay: 0.18 }}
-            className="mt-[28px] max-w-[620px] text-[clamp(22px,1.75vw,33.579px)] font-medium leading-[1.102] text-[#7c7c7c]"
+            className="mt-[22px] max-w-[520px] text-[clamp(18px,1.24vw,24px)] font-medium leading-[1.18] text-[#7c7c7c]"
           >
             We are preparing access by region. Leave your email and we will let you in when Uniqo opens.
           </motion.p>

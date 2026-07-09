@@ -1,0 +1,10 @@
+services:
+  website:
+    build: .
+    container_name: uniqo-website
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      NEXT_PUBLIC_WAITLIST_API_URL: https://api.uniqo.one
+    ports:
+      - "127.0.0.1:3020:3000"
