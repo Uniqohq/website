@@ -4,11 +4,13 @@ import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion
 import Image from "next/image";
 import { useRef } from "react";
 import { CardImage } from "./card-image";
+import { useSiteLocale } from "./site-locale";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
 export function Hero() {
   const reducedMotion = useReducedMotion();
+  const { copy } = useSiteLocale();
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const arcticOpacity = useTransform(scrollYProgress, [0, 0.14, 0.26], [1, 1, 0]);
@@ -81,12 +83,12 @@ export function Hero() {
         >
           <span className="mb-[clamp(12px,2vh,21px)] text-[19.939px] font-medium leading-[1.102] text-[#7c7c7c]">01</span>
           <h1 className="max-w-none text-[clamp(32px,2.394vw,45.974px)] font-medium leading-[1.102] tracking-normal">
-            <span className="whitespace-nowrap">The card</span>
+            <span className="whitespace-nowrap">{copy.hero.titleTop}</span>
             <br />
-            <span className="whitespace-nowrap">that thinks before it pays</span>
+            <span className="whitespace-nowrap">{copy.hero.titleBottom}</span>
           </h1>
           <p className="mt-[clamp(16px,2.4vh,26px)] max-w-[560px] text-[clamp(18px,1.25vw,24px)] font-normal leading-[1.102] text-black opacity-40">
-            Uniqo analyzes in real time so you always pay smarter, faster and with total control
+            {copy.hero.copy}
           </p>
         </motion.div>
         <motion.a

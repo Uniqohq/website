@@ -3,37 +3,29 @@
 import { ArrowRight, Paintbrush } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { CardImage } from "./card-image";
+import { useSiteLocale } from "./site-locale";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
 const products = [
   {
-    number: "01",
-    name: "Arctic",
-    copy: "Clean, subtle and timeless. For everyday spending.",
     image: "/assets/uniqo-card-arctic.png",
     width: 4800,
     height: 3000
   },
   {
-    number: "02",
-    name: "Midnight",
-    copy: "Bold, minimal and refined. For those who go further.",
     image: "/assets/uniqo-card-midnight.png",
     width: 4800,
     height: 3000
   },
   {
-    number: "03",
-    name: "Graphite",
-    copy: "Strong, reliable and distinct. For your business and beyond",
     image: "/assets/uniqo-card-graphite.png",
     width: 4800,
     height: 3000
   }
 ];
 
-function ProductCard({ product, index }: { product: (typeof products)[number]; index: number }) {
+function ProductCard({ product, index }: { product: (typeof products)[number] & { number: string; name: string; copy: string }; index: number }) {
   const reducedMotion = useReducedMotion();
 
   return (
@@ -71,16 +63,18 @@ function ProductCard({ product, index }: { product: (typeof products)[number]; i
 
 export function Products() {
   const reducedMotion = useReducedMotion();
+  const { copy } = useSiteLocale();
+  const localizedProducts = products.map((product, index) => ({ ...product, ...copy.products.cards[index] }));
 
   return (
     <section id="products" className="bg-[#ececee]">
       <div className="container min-h-[1218px] py-[58px]">
       <div className="mb-[99px]">
         <span className="section-kicker">02</span>
-        <h2 className="section-title mt-[9px]">Products</h2>
+        <h2 className="section-title mt-[9px]">{copy.products.title}</h2>
       </div>
       <div className="grid gap-[31px] md:grid-cols-3">
-        {products.map((product, index) => (
+        {localizedProducts.map((product, index) => (
           <ProductCard key={product.name} product={product} index={index} />
         ))}
       </div>
@@ -95,10 +89,10 @@ export function Products() {
           <span className="flex size-[58px] items-center justify-center rounded-[20px] bg-[#f0f0f0]">
             <Paintbrush size={28} strokeWidth={2.05} />
           </span>
-          <span>More designs, limited editions and exclusive drops.</span>
+          <span>{copy.products.moreDesigns}</span>
         </div>
         <a href="#pricing" className="burst-hover flex items-center gap-[22px]">
-          Discover all cards
+          {copy.products.discover}
           <ArrowRight size={31} strokeWidth={2.05} />
         </a>
       </motion.div>

@@ -3,45 +3,40 @@
 import { ArrowRight, BellRing, Shield, SlidersHorizontal, Snowflake } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { CardImage } from "./card-image";
+import { useSiteLocale } from "./site-locale";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
 const securityCards = [
   {
-    title: "Fraud Detection",
-    copy: "Blocks suspicious payments before they cause harm.",
     icon: Shield
   },
   {
-    title: "Freeze in One Tap",
-    copy: "Lock your card instantly from the app. Unfreeze it when you're ready.",
     icon: Snowflake
   },
   {
-    title: "Real-time Alerts",
-    copy: "Get notified instantly about every transaction, login and security event.",
     icon: BellRing
   },
   {
-    title: "You're in Control",
-    copy: "Set limits, control where your card works and manage everything your way.",
     icon: SlidersHorizontal
   }
 ];
 
 export function Security() {
   const reducedMotion = useReducedMotion();
+  const { copy } = useSiteLocale();
+  const localizedCards = securityCards.map((card, index) => ({ ...card, ...copy.security.cards[index] }));
 
   return (
     <section id="security" className="bg-[#ececee]">
       <div className="container min-h-[1220px] overflow-hidden py-[58px]">
       <div className="mb-[78px]">
         <span className="section-kicker">03</span>
-        <h2 className="section-title mt-[9px]">Security</h2>
-        <p className="mt-[16px] max-w-[330px] text-[25.674px] font-medium leading-[1.102] text-[#7c7c7c]">Built to protect your money, before anything happens</p>
+        <h2 className="section-title mt-[9px]">{copy.security.title}</h2>
+        <p className="mt-[16px] max-w-[330px] text-[25.674px] font-medium leading-[1.102] text-[#7c7c7c]">{copy.security.copy}</p>
       </div>
       <div className="grid gap-[31px] md:grid-cols-4">
-        {securityCards.map((card, index) => {
+        {localizedCards.map((card, index) => {
           const Icon = card.icon;
           return (
             <motion.article
@@ -72,9 +67,9 @@ export function Security() {
         className="mt-[31px] grid h-[330px] overflow-hidden rounded-[35px] bg-[#f7f7f7] md:grid-cols-[0.95fr_1.25fr]"
       >
         <div className="flex flex-col p-[34px]">
-          <h3 className="max-w-[660px] text-[40px] font-medium leading-[1.102]">Lost your card? Someone else can return it.</h3>
+          <h3 className="max-w-[660px] text-[40px] font-medium leading-[1.102]">{copy.security.lostCardTitle}</h3>
           <p className="mt-[18px] max-w-[620px] text-[23px] font-medium leading-[1.102] text-[#7c7c7c]">
-            If your card is lost, anyone can tap it with their phone to contact you securely and help return it.
+            {copy.security.lostCardCopy}
           </p>
           <a href="/waitlist" aria-label="Lost card help" className="burst-hover mt-auto flex size-[64px] items-center justify-center rounded-full bg-[#f0f0f0]">
             <ArrowRight size={30} strokeWidth={2.05} />

@@ -4,35 +4,24 @@ import { Check } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useState } from "react";
 import { CardImage } from "./card-image";
+import { useSiteLocale } from "./site-locale";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
 const plans = [
   {
-    name: "Arctic",
-    copy: "Build for essentials.",
     monthly: "$0",
     yearly: "$0",
-    features: ["Virtual card", "Up to 3 physical card", "Real-time push'es", "Spending insights", "Card freeze"],
-    cta: "Get started",
     dark: false
   },
   {
-    name: "Midnight",
-    copy: "More control.",
     monthly: "$4.99",
     yearly: "$49.99",
-    features: ["Everything in Arctic", "Up to 5 physical cards", "AI spending categories", "Smart limits", "Priority support"],
-    cta: "Choose midnight",
     dark: true
   },
   {
-    name: "Graphite",
-    copy: "Total control.",
     monthly: "$9.99",
     yearly: "$99.99",
-    features: ["Everything in Midnight", "Unlimited physical cards", "AI purchase approval", "Merchant control", "Travel insurance"],
-    cta: "Choose graphite",
     dark: true
   }
 ];
@@ -40,6 +29,8 @@ const plans = [
 export function Pricing() {
   const [billing, setBilling] = useState<"monthly" | "yearly">("monthly");
   const reducedMotion = useReducedMotion();
+  const { copy } = useSiteLocale();
+  const localizedPlans = plans.map((plan, index) => ({ ...plan, ...copy.pricing.plans[index] }));
 
   return (
     <section id="pricing" className="bg-[#ececee]">
@@ -47,11 +38,11 @@ export function Pricing() {
       <div className="mx-auto mb-[72px] flex max-w-[520px] flex-col items-center text-center">
         <span className="section-kicker">04</span>
         <h2 className="mt-[12px] text-[clamp(52px,3.6vw,69px)] font-medium leading-[0.94]">
-          One card.
+          {copy.pricing.titleTop}
           <br />
-          Three ways.
+          {copy.pricing.titleBottom}
         </h2>
-        <p className="mt-[16px] max-w-[430px] text-[20px] font-medium leading-[1.102] text-[#7c7c7c]">Choose the plan that fits your life. Upgrade or downgrade anytime.</p>
+        <p className="mt-[16px] max-w-[430px] text-[20px] font-medium leading-[1.102] text-[#7c7c7c]">{copy.pricing.copy}</p>
         <div className="relative mt-[52px] flex h-[58px] w-full max-w-[340px] rounded-full border border-black md:h-[62px] md:max-w-none md:w-[336px]">
           <motion.span
             layout
@@ -69,13 +60,13 @@ export function Pricing() {
                 billing === item ? "text-white" : "text-black"
               } ${item === "monthly" ? "w-[47%] md:w-[157px]" : "w-[53%] md:w-[181px]"}`}
             >
-              {item === "monthly" ? "Monthly" : "Yearly"}
+              {item === "monthly" ? copy.pricing.monthly : copy.pricing.yearly}
             </button>
           ))}
         </div>
       </div>
       <div className="mx-auto grid max-w-[1160px] gap-[24px] md:grid-cols-3">
-        {plans.map((plan, index) => (
+        {localizedPlans.map((plan, index) => (
           <motion.article
             key={plan.name}
             initial={reducedMotion ? false : { opacity: 0 }}
@@ -104,7 +95,7 @@ export function Pricing() {
                 >
                   <p className="text-[38px]">{billing === "monthly" ? plan.monthly : plan.yearly}</p>
                   <p className={`mt-[12px] text-[22px] ${plan.dark ? "text-[#cbcbcb]" : "text-[#7c7c7c]"}`}>
-                    / {billing === "monthly" ? "month" : "year"}
+                    / {billing === "monthly" ? copy.pricing.month : copy.pricing.year}
                   </p>
                 </motion.div>
               </AnimatePresence>
@@ -131,13 +122,13 @@ export function Pricing() {
       <div className="mt-[96px] grid items-center gap-12 md:grid-cols-[0.9fr_1.1fr]">
         <div>
           <h3 className="max-w-[540px] text-[54px] font-medium leading-[0.94]">
-            Not sure yet?
+            {copy.pricing.startTitleTop}
             <br />
-            Start with Arctic.
+            {copy.pricing.startTitleBottom}
           </h3>
-          <p className="mt-[36px] max-w-[421px] text-[28px] font-medium leading-[0.94] text-[#7c7c7c]">You can upgrade, downgrade or cancel in any time</p>
+          <p className="mt-[36px] max-w-[421px] text-[28px] font-medium leading-[0.94] text-[#7c7c7c]">{copy.pricing.startCopy}</p>
           <a href="/waitlist" className="burst-hover mt-[36px] inline-flex h-[62px] w-[190px] items-center justify-center rounded-[13px] bg-black text-[20px] font-medium leading-[1.102] text-white">
-            Get your card
+            {copy.pricing.startCta}
           </a>
         </div>
         <motion.div

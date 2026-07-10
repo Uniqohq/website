@@ -3,10 +3,12 @@
 import { ArrowRight, Check } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
+import { useSiteLocale } from "./site-locale";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
 export function WaitlistForm() {
+  const { copy } = useSiteLocale();
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
@@ -31,12 +33,12 @@ export function WaitlistForm() {
 
           if (!response.ok) {
             const body = await response.json().catch(() => null);
-            throw new Error(body?.error ?? "Could not join the waitlist. Please try again.");
+            throw new Error(body?.error ?? copy.waitlist.error);
           }
 
           setSubmitted(true);
         } catch (caughtError) {
-          setError(caughtError instanceof Error ? caughtError.message : "Could not join the waitlist. Please try again.");
+          setError(caughtError instanceof Error ? caughtError.message : copy.waitlist.error);
         } finally {
           setLoading(false);
         }
@@ -51,8 +53,8 @@ export function WaitlistForm() {
             setEmail(event.target.value);
             setError("");
           }}
-          placeholder="Email address"
-          aria-label="Email address"
+          placeholder={copy.waitlist.email}
+          aria-label={copy.waitlist.email}
           className="min-h-[50px] min-w-0 flex-1 rounded-[11px] bg-transparent px-[16px] text-[18px] font-medium leading-[1.102] text-black outline-none placeholder:text-[#8d8f91]"
         />
         <button
@@ -60,7 +62,7 @@ export function WaitlistForm() {
           disabled={loading}
           className="burst-hover inline-flex h-[50px] shrink-0 items-center justify-center gap-[10px] rounded-[11px] bg-black px-[18px] text-[16px] font-medium leading-[1.102] text-white"
         >
-          {loading ? "Joining" : "Join waitlist"}
+          {loading ? copy.waitlist.joining : copy.waitlist.join}
           <ArrowRight size={19} strokeWidth={2.1} />
         </button>
       </div>
@@ -87,7 +89,7 @@ export function WaitlistForm() {
               className="inline-flex items-center justify-center gap-[9px] text-black"
             >
               <Check size={20} strokeWidth={2.2} />
-              You're on the list. We'll email you before launch.
+              {copy.waitlist.success}
             </motion.span>
           ) : (
             <motion.span
@@ -98,7 +100,7 @@ export function WaitlistForm() {
               transition={{ duration: 0.28, ease }}
               className="block"
             >
-              No spam. Just launch access and important availability updates.
+              {copy.waitlist.idle}
             </motion.span>
           )}
         </AnimatePresence>
