@@ -10,14 +10,19 @@ export function Manifesto() {
   const textRef = useRef<HTMLParagraphElement>(null);
   const { copy, language } = useSiteLocale();
   const [endX, setEndX] = useState(-3000);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const textX = useTransform(scrollYProgress, [0.02, 0.82], [0, endX]);
+  const [scrollDistance, setScrollDistance] = useState(1800);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
+  const textX = useTransform(scrollYProgress, [0.03, 0.97], [0, endX]);
+  const textTransform = useTransform(textX, (value) => `translate3d(${value}px, 0, 0)`);
 
   useLayoutEffect(() => {
     const updateEndX = () => {
       const left = Math.min(Math.max(window.innerWidth * 0.08542, 42), 164);
       const textWidth = textRef.current?.getBoundingClientRect().width ?? 4111.32;
-      setEndX(window.innerWidth - left - textWidth - 48);
+      const nextEndX = window.innerWidth - left - textWidth - 48;
+
+      setEndX(nextEndX);
+      setScrollDistance(Math.min(Math.max(Math.abs(nextEndX) / 1.55, 1400), 2600));
     };
 
     const frame = window.requestAnimationFrame(updateEndX);
@@ -31,10 +36,15 @@ export function Manifesto() {
   }, [language, copy.manifesto.line]);
 
   return (
-    <section id="manifesto" ref={ref} className="relative h-[340vh] overflow-visible bg-[#ececee]">
-      <div className="sticky top-0 h-[854px] overflow-hidden bg-[#ececee]">
+    <section
+      id="manifesto"
+      ref={ref}
+      style={{ height: `calc(100dvh + ${scrollDistance}px)` }}
+      className="relative overflow-visible bg-[#ececee]"
+    >
+      <div className="sticky top-0 h-[100dvh] overflow-hidden bg-[#ececee]">
         <h2
-          className={`absolute left-[clamp(42px,8.542vw,164px)] top-[112px] font-medium leading-[0.94] tracking-normal text-black ${
+          className={`absolute left-[clamp(42px,8.542vw,164px)] top-[clamp(96px,13.1dvh,112px)] font-medium leading-[0.94] tracking-normal text-black ${
             language === "ru"
               ? "w-[min(88vw,1680px)] text-[clamp(82px,11vw,211px)]"
               : "w-[min(82.917vw,1592px)] text-[clamp(96px,13.526vw,259.709px)]"
@@ -46,12 +56,12 @@ export function Manifesto() {
         </h2>
         <motion.p
           ref={textRef}
-          style={{ x: textX }}
-          className="absolute left-[clamp(42px,8.542vw,164px)] top-[635px] h-[70px] w-max whitespace-nowrap text-left text-[clamp(30px,3.33vw,63.9436px)] font-medium leading-[1.102] text-[#8d8f91]"
+          style={{ transform: textTransform }}
+          className="absolute left-[clamp(42px,8.542vw,164px)] top-[min(74.36dvh,635px)] h-[70px] w-max whitespace-nowrap text-left text-[clamp(30px,3.33vw,63.9436px)] font-medium leading-[1.102] text-[#8d8f91] will-change-transform"
         >
           {copy.manifesto.line}
         </motion.p>
-        <div className="absolute left-[calc(50%_-_13.585px)] top-[765px] h-[43.32px] w-[27.17px] -rotate-90">
+        <div className="absolute left-[calc(50%_-_13.585px)] top-[min(89.6dvh,765px)] h-[43.32px] w-[27.17px] -rotate-90">
           <Image src="/assets/uniqo-scroll-indicator.png" alt="" width={28} height={44} className="h-[43.32px] w-[27.17px]" />
         </div>
       </div>
