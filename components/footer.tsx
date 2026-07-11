@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSiteLocale } from "./site-locale";
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -25,15 +25,48 @@ const regions = [
   { flag: "/assets/flags/jp.svg" }
 ];
 
+function useDropdownDismiss(open: boolean, close: () => void) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) {
+      return;
+    }
+
+    const onPointerDown = (event: PointerEvent) => {
+      if (!ref.current?.contains(event.target as Node)) {
+        close();
+      }
+    };
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        close();
+      }
+    };
+
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [close, open]);
+
+  return ref;
+}
+
 function RegionDropdown() {
   const { copy } = useSiteLocale();
   const localizedRegions = regions.map((region, index) => ({ ...region, ...copy.footer.regions[index] }));
   const [open, setOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const selected = localizedRegions[selectedIndex];
+  const dropdownRef = useDropdownDismiss(open, () => setOpen(false));
 
   return (
-    <div className="relative w-full max-w-[222px]">
+    <div ref={dropdownRef} className="relative w-full max-w-[222px]">
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
@@ -73,16 +106,17 @@ function LanguageDropdown() {
   const { language, setLanguage, copy } = useSiteLocale();
   const [open, setOpen] = useState(false);
   const selected = copy.footer.languages.find((item) => item.code === language) ?? copy.footer.languages[0];
+  const dropdownRef = useDropdownDismiss(open, () => setOpen(false));
 
   return (
-    <div className="relative w-[72px] shrink-0">
+    <div ref={dropdownRef} className="relative w-[72px] shrink-0">
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
         className="flex h-[36px] w-full items-center justify-between rounded-full border border-white/10 bg-[#050506] pl-[12px] pr-[9px] text-left text-[13px] font-medium leading-none text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05),0_0_0_1px_rgba(255,255,255,0.04)]"
       >
         <span>{selected.short}</span>
-        <ChevronDown className={`size-[13px] shrink-0 text-white/72 transition-transform duration-200 ${open ? "rotate-180" : ""}`} strokeWidth={2.35} />
+        <ChevronDown className={`size-[15px] shrink-0 text-white/72 transition-transform duration-200 ${open ? "rotate-180" : ""}`} strokeWidth={2.35} />
       </button>
       {open ? (
         <div className="absolute bottom-[43px] right-0 z-50 grid w-[108px] overflow-hidden rounded-[14px] border border-white/10 bg-[#111112] py-[6px] shadow-[0_18px_45px_rgba(0,0,0,0.35)]">
