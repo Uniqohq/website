@@ -66,7 +66,7 @@ function RegionDropdown() {
   const dropdownRef = useDropdownDismiss(open, () => setOpen(false));
 
   return (
-    <div ref={dropdownRef} className="relative w-[72px] shrink-0">
+    <div ref={dropdownRef} className="relative w-full max-w-[222px]">
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
@@ -109,7 +109,7 @@ function LanguageDropdown() {
   const dropdownRef = useDropdownDismiss(open, () => setOpen(false));
 
   return (
-    <div ref={dropdownRef} className="relative w-full max-w-[222px]">
+    <div ref={dropdownRef} className="relative w-[72px] shrink-0">
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
