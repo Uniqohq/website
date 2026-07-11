@@ -9,10 +9,9 @@ import { useSiteLocale } from "./site-locale";
 const ease = [0.16, 1, 0.3, 1] as const;
 
 const socialIcons = [
-  { src: "/assets/uniqo-social-website.svg", label: "Website" },
-  { src: "/assets/uniqo-social-x.svg", label: "X" },
-  { src: "/assets/uniqo-social-telegram.svg", label: "Telegram" },
-  { src: "/assets/uniqo-social-linkedin.svg", label: "LinkedIn" }
+  { src: "/assets/uniqo-social-website.svg", label: "TikTok", href: "https://www.tiktok.com/@uniqohq" },
+  { src: "/assets/uniqo-social-x.svg", label: "X", href: "https://x.com/uniqohq" },
+  { src: "/assets/uniqo-social-telegram.svg", label: "Telegram", href: "https://t.me/uniqohq" }
 ];
 
 const regions = [
@@ -164,7 +163,9 @@ export function Footer() {
             {socialIcons.map((icon, index) => (
               <motion.a
                 key={icon.label}
-                href="/waitlist"
+                href={icon.href}
+                target="_blank"
+                rel="noreferrer"
                 aria-label={icon.label}
                 initial={reducedMotion ? false : { opacity: 0 }}
                 whileInView={reducedMotion ? undefined : { opacity: 1 }}

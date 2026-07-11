@@ -44,24 +44,23 @@ export function Manifesto() {
     >
       <div className="sticky top-0 h-[100dvh] overflow-hidden bg-[#ececee]">
         <h2
-          className={`absolute left-[clamp(42px,8.542vw,164px)] top-[clamp(96px,13.1dvh,112px)] font-medium leading-[0.94] tracking-normal text-black ${
+          className={`absolute left-[clamp(24px,8.542vw,164px)] right-[clamp(24px,4vw,76px)] top-[clamp(96px,13.1dvh,112px)] font-medium leading-[0.94] tracking-normal text-black ${
             language === "ru"
-              ? "w-[min(88vw,1680px)] text-[clamp(82px,11vw,211px)]"
-              : "w-[min(82.917vw,1592px)] text-[clamp(96px,13.526vw,259.709px)]"
+              ? "text-[clamp(46px,11vw,211px)]"
+              : "text-[clamp(48px,13.526vw,259.709px)]"
           }`}
         >
-          {copy.manifesto.headingTop}
-          <br />
-          {copy.manifesto.headingBottom}
+          <span className="block whitespace-nowrap">{copy.manifesto.headingTop}</span>
+          <span className="block whitespace-nowrap">{copy.manifesto.headingBottom}</span>
         </h2>
         <motion.p
           ref={textRef}
           style={{ transform: textTransform }}
-          className="absolute left-[clamp(42px,8.542vw,164px)] top-[min(74.36dvh,635px)] h-[70px] w-max whitespace-nowrap text-left text-[clamp(30px,3.33vw,63.9436px)] font-medium leading-[1.102] text-[#8d8f91] will-change-transform"
+          className="absolute left-[clamp(24px,8.542vw,164px)] top-[52dvh] h-[70px] w-max whitespace-nowrap text-left text-[clamp(30px,3.33vw,63.9436px)] font-medium leading-[1.102] text-[#8d8f91] will-change-transform md:top-[min(74.36dvh,635px)]"
         >
           {copy.manifesto.line}
         </motion.p>
-        <div className="absolute left-[calc(50%_-_13.585px)] top-[min(89.6dvh,765px)] h-[43.32px] w-[27.17px] -rotate-90">
+        <div className="absolute left-[calc(50%_-_13.585px)] top-[75dvh] h-[43.32px] w-[27.17px] -rotate-90 md:top-[min(89.6dvh,765px)]">
           <Image src="/assets/uniqo-scroll-indicator.png" alt="" width={28} height={44} className="h-[43.32px] w-[27.17px]" />
         </div>
       </div>
