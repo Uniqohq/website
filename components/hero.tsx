@@ -13,9 +13,9 @@ export function Hero() {
   const { copy } = useSiteLocale();
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
-  const arcticOpacity = useTransform(scrollYProgress, [0, 0.16, 0.3], [1, 1, 0]);
-  const midnightOpacity = useTransform(scrollYProgress, [0.22, 0.36, 0.54, 0.68], [0, 1, 1, 0]);
-  const graphiteOpacity = useTransform(scrollYProgress, [0.6, 0.76, 0.9], [0, 1, 1]);
+  const midnightOpacity = useTransform(scrollYProgress, [0, 0.16, 0.3], [1, 1, 0]);
+  const graphiteOpacity = useTransform(scrollYProgress, [0.22, 0.36, 0.54, 0.68], [0, 1, 1, 0]);
+  const arcticOpacity = useTransform(scrollYProgress, [0.6, 0.76, 0.9], [0, 1, 1]);
   const indicatorOpacity = useTransform(scrollYProgress, [0, 0.88, 0.98], [1, 1, 0]);
   const indicatorOne = useTransform(scrollYProgress, [0, 0.18, 0.3], [1, 1, 0.25]);
   const indicatorTwo = useTransform(scrollYProgress, [0.24, 0.38, 0.56, 0.7], [0.25, 1, 1, 0.25]);
@@ -44,20 +44,7 @@ export function Hero() {
           className="relative mb-[clamp(22px,4dvh,84px)] aspect-[1.6] w-[min(92vw,565px,58dvh)] overflow-visible"
         >
           <motion.div
-            style={reducedMotion ? undefined : { opacity: arcticOpacity }}
-            className="absolute inset-0 transform-gpu will-change-[opacity]"
-          >
-            <CardImage
-              src="/assets/uniqo-card-arctic.png"
-              alt="Uniqo Arctic card"
-              width={522}
-              height={353}
-              priority
-              className="h-full w-full object-contain"
-            />
-          </motion.div>
-          <motion.div
-            style={reducedMotion ? undefined : { opacity: midnightOpacity }}
+            style={reducedMotion ? { opacity: 1 } : { opacity: midnightOpacity }}
             className="absolute inset-0 transform-gpu will-change-[opacity]"
           >
             <CardImage
@@ -70,12 +57,25 @@ export function Hero() {
             />
           </motion.div>
           <motion.div
-            style={reducedMotion ? undefined : { opacity: graphiteOpacity }}
+            style={reducedMotion ? { opacity: 0 } : { opacity: graphiteOpacity }}
             className="absolute inset-0 transform-gpu will-change-[opacity]"
           >
             <CardImage
               src="/assets/uniqo-card-graphite.png"
               alt="Uniqo Graphite card"
+              width={522}
+              height={353}
+              priority
+              className="h-full w-full object-contain"
+            />
+          </motion.div>
+          <motion.div
+            style={reducedMotion ? { opacity: 0 } : { opacity: arcticOpacity }}
+            className="absolute inset-0 transform-gpu will-change-[opacity]"
+          >
+            <CardImage
+              src="/assets/uniqo-card-arctic.png"
+              alt="Uniqo Arctic card"
               width={522}
               height={353}
               priority
