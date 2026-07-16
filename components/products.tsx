@@ -34,7 +34,7 @@ function ProductCard({ product, index }: { product: (typeof products)[number] & 
       whileInView={reducedMotion ? undefined : { opacity: 1 }}
       viewport={{ once: true, margin: "-120px" }}
       transition={{ duration: 0.72, ease, delay: index * 0.11 }}
-      className="flex h-auto min-h-[560px] w-full flex-col rounded-[35px] bg-[#f7f7f7] px-[24px] pb-[28px] pt-[24px] md:h-[740px] md:px-[30px] md:pb-[33px] md:pt-[30px]"
+      className="flex h-auto min-h-[560px] min-w-0 w-full flex-col rounded-[35px] bg-[#f7f7f7] px-[24px] pb-[28px] pt-[24px] md:h-[740px] md:px-[30px] md:pb-[33px] md:pt-[30px]"
     >
       <div className="aspect-[1.6] w-full overflow-visible">
         <CardImage
@@ -73,7 +73,7 @@ export function Products() {
         <span className="section-kicker">02</span>
         <h2 className="section-title mt-[9px]">{copy.products.title}</h2>
       </div>
-      <div className="grid gap-[31px] md:grid-cols-3">
+      <div className="grid min-w-0 gap-[31px] md:grid-cols-[repeat(3,minmax(0,1fr))]">
         {localizedProducts.map((product, index) => (
           <ProductCard key={product.name} product={product} index={index} />
         ))}
@@ -85,13 +85,13 @@ export function Products() {
         transition={{ duration: 0.6, ease, delay: 0.15 }}
         className="mt-[31px] flex min-h-[92px] flex-col gap-4 rounded-[30px] bg-[#f7f7f7] px-[22px] py-[14px] text-[25.674px] font-medium leading-[1.102] md:flex-row md:items-center md:justify-between md:pr-[25px]"
       >
-        <div className="flex items-center gap-[36px]">
+        <div className="flex min-w-0 items-center gap-[36px]">
           <span className="flex size-[58px] items-center justify-center rounded-[20px] bg-[#f0f0f0]">
             <Paintbrush size={28} strokeWidth={2.05} />
           </span>
-          <span>{copy.products.moreDesigns}</span>
+          <span className="min-w-0">{copy.products.moreDesigns}</span>
         </div>
-        <a href="#pricing" className="burst-hover flex items-center gap-[22px]">
+        <a href="#pricing" className="burst-hover flex shrink-0 items-center gap-[22px]">
           {copy.products.discover}
           <ArrowRight size={31} strokeWidth={2.05} />
         </a>

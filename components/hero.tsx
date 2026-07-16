@@ -12,7 +12,8 @@ export function Hero() {
   const reducedMotion = useReducedMotion();
   const { copy } = useSiteLocale();
   const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
+  const progressRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: progressRef, offset: ["start start", "end end"] });
   const midnightOpacity = useTransform(scrollYProgress, [0, 0.16, 0.3], [1, 1, 0]);
   const graphiteOpacity = useTransform(scrollYProgress, [0.22, 0.36, 0.54, 0.68], [0, 1, 1, 0]);
   const arcticOpacity = useTransform(scrollYProgress, [0.6, 0.76, 0.9], [0, 1, 1]);
@@ -26,6 +27,11 @@ export function Hero() {
       ref={ref}
       className="relative h-[calc(100dvh+1800px)] overflow-visible bg-[radial-gradient(circle_at_50%_50%,#e9e9ec_0%,#eeeff0_100%)] md:h-[calc(100dvh+2200px)]"
     >
+      <div
+        ref={progressRef}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[calc(100dvh+1300px)] md:h-[calc(100dvh+1550px)]"
+      />
       <motion.div
         style={reducedMotion ? undefined : { opacity: indicatorOpacity }}
         className="pointer-events-none fixed left-[91.68px] top-[375.93px] z-40 hidden md:block"
