@@ -50,19 +50,27 @@ export const siteCopy = {
           name: "Arctic",
           copy: "Build for essentials.",
           cta: "Get started",
-          features: ["Virtual card", "Up to 3 physical card", "Real-time push'es", "Spending insights", "Card freeze"]
+          features: ["Virtual card", "1 physical card", "Instant notifications", "Spending insights", "Freeze / Unfreeze card"]
         },
         {
           name: "Midnight",
           copy: "More control.",
           cta: "Choose midnight",
-          features: ["Everything in Arctic", "Up to 5 physical cards", "AI spending categories", "Smart limits", "Priority support"]
+          features: ["Everything in Arctic", "Up to 5 virtual cards", "AI spending categories", "Smart limits", "Priority support", "Premium card designs"]
         },
         {
           name: "Graphite",
           copy: "Total control.",
           cta: "Choose graphite",
-          features: ["Everything in Midnight", "Unlimited physical cards", "AI purchase approval", "Merchant control", "Travel insurance"]
+          features: [
+            "Everything in Midnight",
+            "Unlimited virtual cards",
+            "AI purchase approval",
+            "Merchant control",
+            "Dynamic card number",
+            "Limited edition cards",
+            "Travel insurance"
+          ]
         }
       ]
     },
@@ -156,19 +164,27 @@ export const siteCopy = {
           name: "Arctic",
           copy: "База для главного.",
           cta: "Начать",
-          features: ["Виртуальная карта", "До 3 физических карт", "Мгновенные пуши", "Аналитика трат", "Заморозка карты"]
+          features: ["Виртуальная карта", "1 физическая карта", "Мгновенные уведомления", "Аналитика трат", "Заморозка / разморозка карты"]
         },
         {
           name: "Midnight",
           copy: "Больше контроля.",
           cta: "Выбрать Midnight",
-          features: ["Все из Arctic", "До 5 физических карт", "AI-категории трат", "Умные лимиты", "Приоритетная поддержка"]
+          features: ["Всё из Arctic", "До 5 виртуальных карт", "AI-категории трат", "Умные лимиты", "Приоритетная поддержка", "Премиальные дизайны карт"]
         },
         {
           name: "Graphite",
           copy: "Максимум контроля.",
           cta: "Выбрать Graphite",
-          features: ["Все из Midnight", "Безлимит физических карт", "AI-подтверждение покупок", "Контроль мерчантов", "Страхование поездок"]
+          features: [
+            "Всё из Midnight",
+            "Безлимитные виртуальные карты",
+            "AI-подтверждение покупок",
+            "Контроль мерчантов",
+            "Динамический номер карты",
+            "Лимитированные карты",
+            "Страхование поездок"
+          ]
         }
       ]
     },
