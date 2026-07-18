@@ -46,8 +46,8 @@ export function Manifesto() {
         <h2
           className={`absolute left-[clamp(24px,8.542vw,164px)] right-[clamp(24px,4vw,76px)] top-[clamp(96px,13.1dvh,112px)] font-medium leading-[0.94] tracking-normal text-black ${
             language === "ru"
-              ? "text-[clamp(46px,11vw,211px)]"
-              : "text-[clamp(48px,13.526vw,259.709px)]"
+              ? "text-[clamp(38px,11vw,211px)]"
+              : "text-[clamp(42px,13.526vw,259.709px)]"
           }`}
         >
           <span className="block whitespace-nowrap">{copy.manifesto.headingTop}</span>

@@ -56,7 +56,14 @@ export const siteCopy = {
           name: "Midnight",
           copy: "More control.",
           cta: "Choose midnight",
-          features: ["Everything in Arctic", "Up to 5 virtual cards", "AI spending categories", "Smart limits", "Priority support", "Premium card designs"]
+          features: [
+            "Everything in Arctic",
+            "Up to 5 virtual cards",
+            "Change card number instantly",
+            "One-time cards",
+            "AI spending categories",
+            "Premium card designs"
+          ]
         },
         {
           name: "Graphite",
@@ -65,10 +72,11 @@ export const siteCopy = {
           features: [
             "Everything in Midnight",
             "Unlimited virtual cards",
-            "AI purchase approval",
             "Merchant control",
+            "Country lock",
+            "Time-based card rules",
+            "AI fraud protection",
             "Dynamic card number",
-            "Limited edition cards",
             "Travel insurance"
           ]
         }
@@ -170,7 +178,14 @@ export const siteCopy = {
           name: "Midnight",
           copy: "Больше контроля.",
           cta: "Выбрать Midnight",
-          features: ["Всё из Arctic", "До 5 виртуальных карт", "AI-категории трат", "Умные лимиты", "Приоритетная поддержка", "Премиальные дизайны карт"]
+          features: [
+            "Всё из Arctic",
+            "До 5 виртуальных карт",
+            "Мгновенная смена номера карты",
+            "Одноразовые карты",
+            "AI-категории трат",
+            "Премиальные дизайны карт"
+          ]
         },
         {
           name: "Graphite",
@@ -179,10 +194,11 @@ export const siteCopy = {
           features: [
             "Всё из Midnight",
             "Безлимитные виртуальные карты",
-            "AI-подтверждение покупок",
-            "Контроль мерчантов",
+            "Блокировка отдельных продавцов",
+            "Блокировка по странам",
+            "Правила карты по времени",
+            "AI-защита от мошенничества",
             "Динамический номер карты",
-            "Лимитированные карты",
             "Страхование поездок"
           ]
         }

@@ -37,7 +37,7 @@ export function Pricing() {
       <div className="container min-h-[1320px] overflow-visible py-[64px]">
       <div className="mx-auto mb-[72px] flex max-w-[520px] flex-col items-center text-center">
         <span className="section-kicker">04</span>
-        <h2 className="mt-[12px] text-[clamp(52px,3.6vw,69px)] font-medium leading-[0.94]">
+        <h2 className="mt-[12px] max-w-full text-[clamp(42px,3.6vw,69px)] font-medium leading-[0.94]">
           {copy.pricing.titleTop}
           <br />
           {copy.pricing.titleBottom}
@@ -75,7 +75,7 @@ export function Pricing() {
             transition={{
               opacity: { duration: 0.72, ease, delay: index * 0.1 }
             }}
-            className={`flex min-h-[540px] transform-gpu flex-col gap-[28px] rounded-[28px] pb-[24px] pl-[28px] pr-[24px] pt-[38px] will-change-transform ${
+            className={`flex min-h-[540px] min-w-0 transform-gpu flex-col gap-[28px] rounded-[28px] pb-[24px] pl-[24px] pr-[20px] pt-[38px] will-change-transform md:pl-[28px] md:pr-[24px] ${
               plan.dark ? "bg-[linear-gradient(144.34deg,#252729_0%,#1c1e1f_127.74%)] text-white" : "bg-[#f7f7f7] text-black"
             }`}
           >
@@ -102,9 +102,9 @@ export function Pricing() {
             </div>
             <ul className="grid gap-[13px]">
               {plan.features.map((feature) => (
-                <li key={feature} className="flex items-center gap-[14px] text-[21px] font-medium leading-[0.94]">
-                  <Check size={28} strokeWidth={2.2} />
-                  <span>{feature}</span>
+                <li key={feature} className="flex min-w-0 items-start gap-[12px] text-[18px] font-medium leading-[1.05] md:items-center md:gap-[14px] md:text-[21px] md:leading-[0.94]">
+                  <Check className="size-[24px] shrink-0 md:size-[28px]" strokeWidth={2.2} />
+                  <span className="min-w-0 break-words">{feature}</span>
                 </li>
               ))}
             </ul>
@@ -121,7 +121,7 @@ export function Pricing() {
       </div>
       <div className="mt-[96px] grid items-center gap-12 md:grid-cols-[0.9fr_1.1fr]">
         <div>
-          <h3 className="max-w-[540px] text-[54px] font-medium leading-[0.94]">
+          <h3 className="max-w-[540px] text-[42px] font-medium leading-[0.94] md:text-[54px]">
             {copy.pricing.startTitleTop}
             <br />
             {copy.pricing.startTitleBottom}

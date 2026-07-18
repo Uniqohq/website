@@ -25,12 +25,12 @@ export function Hero() {
   return (
     <section
       ref={ref}
-      className="relative h-[calc(100dvh+1800px)] overflow-visible bg-[radial-gradient(circle_at_50%_50%,#e9e9ec_0%,#eeeff0_100%)] md:h-[calc(100dvh+2200px)]"
+      className="relative min-h-[100svh] overflow-visible bg-[radial-gradient(circle_at_50%_50%,#e9e9ec_0%,#eeeff0_100%)] md:h-[calc(100dvh+2200px)] md:min-h-0"
     >
       <div
         ref={progressRef}
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-[calc(100dvh+1300px)] md:h-[calc(100dvh+1550px)]"
+        className="pointer-events-none absolute inset-x-0 top-0 h-0 md:h-[calc(100dvh+1550px)]"
       />
       <motion.div
         style={reducedMotion ? undefined : { opacity: indicatorOpacity }}
@@ -42,12 +42,22 @@ export function Hero() {
           ))}
         </div>
       </motion.div>
-      <div className="sticky top-0 mx-auto flex h-[100dvh] w-full max-w-[565px] flex-col items-center justify-start overflow-visible px-4 pb-[clamp(24px,5dvh,86px)] pt-[clamp(84px,12dvh,180px)] text-center">
+      <div className="relative mx-auto flex min-h-[100svh] w-full max-w-[565px] flex-col items-center justify-center overflow-visible px-4 pb-8 pt-[112px] text-center md:sticky md:top-0 md:h-[100dvh] md:min-h-0 md:justify-start md:pb-[clamp(24px,5dvh,86px)] md:pt-[clamp(84px,12dvh,180px)]">
+        <div className="relative mb-[22px] aspect-[1.6] w-[min(88vw,480px)] md:hidden">
+          <CardImage
+            src="/assets/uniqo-card-midnight.png"
+            alt="Uniqo Midnight card"
+            width={4800}
+            height={3000}
+            priority
+            className="h-full w-full object-contain"
+          />
+        </div>
         <motion.div
           initial={reducedMotion ? false : { opacity: 0, scale: 0.96 }}
           animate={reducedMotion ? undefined : { opacity: 1, scale: 1 }}
           transition={reducedMotion ? undefined : { opacity: { duration: 0.75, ease }, scale: { duration: 0.75, ease } }}
-          className="relative mb-[clamp(22px,4dvh,84px)] aspect-[1.6] w-[min(92vw,565px,58dvh)] overflow-visible"
+          className="relative mb-[clamp(22px,4dvh,84px)] hidden aspect-[1.6] w-[min(92vw,565px,58dvh)] overflow-visible md:block"
         >
           <motion.div
             style={reducedMotion ? { opacity: 1 } : { opacity: midnightOpacity }}
@@ -97,10 +107,10 @@ export function Hero() {
           className="flex flex-col items-center"
         >
           <span className="mb-[clamp(12px,2dvh,21px)] text-[19.939px] font-medium leading-[1.102] text-[#7c7c7c]">01</span>
-          <h1 className="max-w-none text-[clamp(32px,2.394vw,45.974px)] font-medium leading-[1.102] tracking-normal">
-            <span className="whitespace-nowrap">{copy.hero.titleTop}</span>
+          <h1 className="max-w-full text-[clamp(30px,2.394vw,45.974px)] font-medium leading-[1.102] tracking-normal">
+            <span className="md:whitespace-nowrap">{copy.hero.titleTop}</span>
             <br />
-            <span className="whitespace-nowrap">{copy.hero.titleBottom}</span>
+            <span className="md:whitespace-nowrap">{copy.hero.titleBottom}</span>
           </h1>
           <p className="mt-[clamp(16px,2.4dvh,26px)] max-w-[560px] text-[clamp(18px,1.25vw,24px)] font-normal leading-[1.102] text-black opacity-40">
             {copy.hero.copy}

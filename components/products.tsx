@@ -86,7 +86,7 @@ export function Products() {
         className="mt-[31px] flex min-h-[92px] flex-col gap-4 rounded-[30px] bg-[#f7f7f7] px-[22px] py-[14px] text-[25.674px] font-medium leading-[1.102] md:flex-row md:items-center md:justify-between md:pr-[25px]"
       >
         <div className="flex min-w-0 items-center gap-[36px]">
-          <span className="flex size-[58px] items-center justify-center rounded-[20px] bg-[#f0f0f0]">
+          <span className="flex size-[58px] shrink-0 items-center justify-center rounded-[20px] bg-[#f0f0f0]">
             <Paintbrush size={28} strokeWidth={2.05} />
           </span>
           <span className="min-w-0">{copy.products.moreDesigns}</span>
