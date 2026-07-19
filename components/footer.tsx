@@ -105,8 +105,53 @@ function RegionDropdown() {
 function LanguageDropdown() {
   const { language, setLanguage, copy } = useSiteLocale();
   const [open, setOpen] = useState(false);
+  const scrollRestoreFrame = useRef<number | null>(null);
+  const previousScrollBehavior = useRef<string | null>(null);
   const selected = copy.footer.languages.find((item) => item.code === language) ?? copy.footer.languages[0];
   const dropdownRef = useDropdownDismiss(open, () => setOpen(false));
+
+  useEffect(() => {
+    return () => {
+      if (scrollRestoreFrame.current !== null) {
+        window.cancelAnimationFrame(scrollRestoreFrame.current);
+      }
+
+      if (previousScrollBehavior.current !== null) {
+        document.documentElement.style.scrollBehavior = previousScrollBehavior.current;
+      }
+    };
+  }, []);
+
+  const selectLanguage = (code: (typeof copy.footer.languages)[number]["code"]) => {
+    const root = document.documentElement;
+
+    if (scrollRestoreFrame.current !== null) {
+      window.cancelAnimationFrame(scrollRestoreFrame.current);
+    }
+
+    previousScrollBehavior.current = root.style.scrollBehavior;
+    root.style.scrollBehavior = "auto";
+    setLanguage(code);
+    setOpen(false);
+
+    let remainingFrames = 45;
+    const restorePosition = () => {
+      dropdownRef.current?.scrollIntoView({ behavior: "auto", block: "center", inline: "nearest" });
+
+      remainingFrames -= 1;
+
+      if (remainingFrames > 0) {
+        scrollRestoreFrame.current = window.requestAnimationFrame(restorePosition);
+        return;
+      }
+
+      root.style.scrollBehavior = previousScrollBehavior.current ?? "";
+      previousScrollBehavior.current = null;
+      scrollRestoreFrame.current = null;
+    };
+
+    scrollRestoreFrame.current = window.requestAnimationFrame(restorePosition);
+  };
 
   return (
     <div ref={dropdownRef} className="relative w-[72px] shrink-0">
@@ -124,10 +169,7 @@ function LanguageDropdown() {
             <button
               key={item.code}
               type="button"
-              onClick={() => {
-                setLanguage(item.code);
-                setOpen(false);
-              }}
+              onClick={() => selectLanguage(item.code)}
               className="flex h-[34px] items-center px-[12px] text-left text-[13px] font-medium text-white/78"
             >
               {item.label}
