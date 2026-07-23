@@ -30,13 +30,13 @@ export function WaitlistPageContent() {
           initial={{ opacity: 0, y: 24, scale: 0.985 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.78, ease }}
-          className="mx-auto flex w-full max-w-[660px] flex-col items-center text-center"
+          className="mx-auto flex w-full max-w-[980px] flex-col items-center text-center"
         >
           <motion.h1
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.72, ease, delay: 0.08 }}
-            className="max-w-[640px] text-[clamp(46px,5.4vw,92px)] font-medium leading-[0.94] tracking-normal"
+            className="max-w-full text-[clamp(46px,5vw,82px)] font-medium leading-[0.94] tracking-normal md:whitespace-nowrap"
           >
             {copy.waitlist.title}
           </motion.h1>
@@ -52,7 +52,7 @@ export function WaitlistPageContent() {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.68, ease, delay: 0.3 }}
-            className="w-full"
+            className="w-full max-w-[660px]"
           >
             <WaitlistForm />
           </motion.div>

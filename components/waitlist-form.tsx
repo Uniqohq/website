@@ -66,45 +66,36 @@ export function WaitlistForm() {
           <ArrowRight size={19} strokeWidth={2.1} />
         </button>
       </div>
-      <div className="mt-[16px] min-h-[24px] text-center text-[16px] font-medium leading-[1.25] text-[#7c7c7c]">
-        <AnimatePresence mode="wait">
-          {error ? (
-            <motion.span
-              key="error"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.28, ease }}
-              className="block text-black"
-            >
-              {error}
-            </motion.span>
-          ) : submitted ? (
-            <motion.span
-              key="submitted"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.28, ease }}
-              className="inline-flex items-center justify-center gap-[9px] text-black"
-            >
-              <Check size={20} strokeWidth={2.2} />
-              {copy.waitlist.success}
-            </motion.span>
-          ) : (
-            <motion.span
-              key="idle"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.28, ease }}
-              className="block"
-            >
-              {copy.waitlist.idle}
-            </motion.span>
-          )}
-        </AnimatePresence>
-      </div>
+      <AnimatePresence mode="wait">
+        {error || submitted ? (
+          <div className="mt-[16px] min-h-[24px] text-center text-[16px] font-medium leading-[1.25] text-[#7c7c7c]">
+            {error ? (
+              <motion.span
+                key="error"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.28, ease }}
+                className="block text-black"
+              >
+                {error}
+              </motion.span>
+            ) : (
+              <motion.span
+                key="submitted"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.28, ease }}
+                className="inline-flex items-center justify-center gap-[9px] text-black"
+              >
+                <Check size={20} strokeWidth={2.2} />
+                {copy.waitlist.success}
+              </motion.span>
+            )}
+          </div>
+        ) : null}
+      </AnimatePresence>
     </form>
   );
 }

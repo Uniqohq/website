@@ -120,7 +120,6 @@ export const siteCopy = {
       joining: "Joining",
       join: "Join waitlist",
       success: "You're on the list. We'll email you before launch.",
-      idle: "No spam. Just launch access and important availability updates.",
       error: "Could not join the waitlist. Please try again."
     }
   },
@@ -243,7 +242,6 @@ export const siteCopy = {
       joining: "Отправка",
       join: "Присоединиться",
       success: "Вы в списке. Мы напишем вам до запуска.",
-      idle: "Без спама. Только новости о запуске и доступности Uniqo.",
       error: "Не удалось присоединиться к листу ожидания. Попробуйте еще раз."
     }
   }
