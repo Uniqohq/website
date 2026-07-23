@@ -16,12 +16,12 @@ const plans = [
   },
   {
     monthly: "$4.99",
-    yearly: "$47.90",
+    yearly: "$48",
     dark: true
   },
   {
     monthly: "$9.99",
-    yearly: "$95.90",
+    yearly: "$96",
     dark: true
   }
 ];
