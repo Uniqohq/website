@@ -16,18 +16,18 @@ const plans = [
   },
   {
     monthly: "$4.99",
-    yearly: "$49.99",
+    yearly: "$47.90",
     dark: true
   },
   {
     monthly: "$9.99",
-    yearly: "$99.99",
+    yearly: "$95.90",
     dark: true
   }
 ];
 
 export function Pricing() {
-  const [billing, setBilling] = useState<"monthly" | "yearly">("monthly");
+  const [billing, setBilling] = useState<"monthly" | "yearly">("yearly");
   const reducedMotion = useReducedMotion();
   const { copy } = useSiteLocale();
   const localizedPlans = plans.map((plan, index) => ({ ...plan, ...copy.pricing.plans[index] }));
@@ -84,21 +84,30 @@ export function Pricing() {
               <p className={`mt-[12px] text-[22px] ${plan.dark ? "text-[#cbcbcb]" : "text-[#7c7c7c]"}`}>{plan.copy}</p>
             </div>
             <div className="h-[76px]">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={`${plan.name}-${billing}`}
-                  initial={reducedMotion ? false : { opacity: 0, y: 24 }}
-                  animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-                  exit={reducedMotion ? undefined : { opacity: 0, y: -24 }}
-                  transition={{ duration: 0.34, ease }}
-                  className="font-medium leading-[0.94]"
-                >
-                  <p className="text-[38px]">{billing === "monthly" ? plan.monthly : plan.yearly}</p>
+              {plan.monthly === plan.yearly ? (
+                <div className="font-medium leading-[0.94]">
+                  <p className="text-[38px]">{plan.yearly}</p>
                   <p className={`mt-[12px] text-[22px] ${plan.dark ? "text-[#cbcbcb]" : "text-[#7c7c7c]"}`}>
                     / {billing === "monthly" ? copy.pricing.month : copy.pricing.year}
                   </p>
-                </motion.div>
-              </AnimatePresence>
+                </div>
+              ) : (
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={`${plan.name}-${billing}`}
+                    initial={reducedMotion ? false : { opacity: 0, y: 24 }}
+                    animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+                    exit={reducedMotion ? undefined : { opacity: 0, y: -24 }}
+                    transition={{ duration: 0.34, ease }}
+                    className="font-medium leading-[0.94]"
+                  >
+                    <p className="text-[38px]">{billing === "monthly" ? plan.monthly : plan.yearly}</p>
+                    <p className={`mt-[12px] text-[22px] ${plan.dark ? "text-[#cbcbcb]" : "text-[#7c7c7c]"}`}>
+                      / {billing === "monthly" ? copy.pricing.month : copy.pricing.year}
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
+              )}
             </div>
             <ul className="grid gap-[13px]">
               {plan.features.map((feature) => (
