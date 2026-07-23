@@ -88,7 +88,7 @@ export function Pricing() {
                 <div className="font-medium leading-[0.94]">
                   <p className="text-[38px]">{plan.yearly}</p>
                   <p className={`mt-[12px] text-[22px] ${plan.dark ? "text-[#cbcbcb]" : "text-[#7c7c7c]"}`}>
-                    / {billing === "monthly" ? copy.pricing.month : copy.pricing.year}
+                    / {copy.pricing.forever}
                   </p>
                 </div>
               ) : (
