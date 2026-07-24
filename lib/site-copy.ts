@@ -38,10 +38,10 @@ export const siteCopy = {
       title: "Security",
       copy: "Built to protect your money, before anything happens",
       cards: [
-        { title: "Fraud Detection", copy: "Blocks suspicious payments before they cause harm." },
-        { title: "Freeze in One Tap", copy: "Lock your card instantly from the app. Unfreeze it when you're ready." },
-        { title: "Real-time Alerts", copy: "Get notified instantly about every transaction, login and security event." },
-        { title: "You're in Control", copy: "Set limits, control where your card works and manage everything your way." }
+        { title: "Fraud Detection", copy: "Blocks suspicious payments before money leaves your account." },
+        { title: "Freeze in One Tap", copy: "Freeze and unfreeze your card in one tap." },
+        { title: "Real-time Alerts", copy: "Instant alerts for payments and important activity." },
+        { title: "You're in Control", copy: "Set limits and choose where your card works." }
       ],
       lostCardTitle: "Lost your card? Someone else can return it.",
       lostCardCopy: "If your card is lost, anyone can tap it with their phone to contact you securely and help return it."
@@ -173,10 +173,10 @@ export const siteCopy = {
       title: "Безопасность",
       copy: "Защищает ваши деньги ещё до того, как что-то произойдёт",
       cards: [
-        { title: "Защита от мошенничества", copy: "Останавливает подозрительные платежи до того, как они причинят ущерб." },
-        { title: "Заморозка в одно касание", copy: "Мгновенно замораживайте карту в приложении и включайте её снова, когда будете готовы." },
-        { title: "Мгновенные уведомления", copy: "Сразу сообщает о каждой операции, входе в аккаунт и важном событии безопасности." },
-        { title: "Всё под контролем", copy: "Задавайте лимиты, выбирайте, где работает карта, и управляйте ею так, как удобно вам." }
+        { title: "Защита платежей", copy: "Блокирует подозрительные платежи до списания." },
+        { title: "Заморозка карты", copy: "Замораживайте и включайте карту одним касанием." },
+        { title: "Мгновенные уведомления", copy: "Сразу сообщает об операциях и важных событиях." },
+        { title: "Всё под контролем", copy: "Настраивайте лимиты и условия работы карты." }
       ],
       lostCardTitle: "Потеряли карту? Вам помогут её вернуть.",
       lostCardCopy: "Нашедшему достаточно коснуться карты телефоном, чтобы безопасно связаться с вами."
