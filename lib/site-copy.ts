@@ -25,14 +25,13 @@ export const siteCopy = {
       titleTop: "Everything you need.",
       titleBottom: "Nothing you don’t.",
       copy: "Powerful card controls and useful intelligence, kept simple from the first tap.",
-      explore: "Explore all features",
       cards: [
-        { title: "Smart card controls", copy: "Freeze, unfreeze and set spending limits without waiting for support." },
-        { title: "Virtual cards", copy: "Create separate cards for subscriptions, shopping and everyday spending." },
-        { title: "One-time cards", copy: "Use card details that refresh after payment when you need extra privacy." },
-        { title: "Merchant and country locks", copy: "Choose exactly where your card works and where it does not." },
-        { title: "AI fraud protection", copy: "Suspicious payments are assessed before money leaves your account." },
-        { title: "Spending intelligence", copy: "See patterns, categories and useful context behind every purchase." }
+        { title: "Smart card controls", copy: "Freeze your card, change limits and manage payments without support." },
+        { title: "Virtual cards", copy: "Create separate virtual cards for subscriptions, shopping and everyday spending." },
+        { title: "One-time cards", copy: "Card details refresh after every payment for additional privacy." },
+        { title: "Merchant and country locks", copy: "Decide which merchants and countries your card works with." },
+        { title: "AI fraud protection", copy: "Suspicious activity is checked before money leaves your account." },
+        { title: "Spending intelligence", copy: "Understand your spending and the context behind every purchase." }
       ]
     },
     security: {
@@ -161,14 +160,13 @@ export const siteCopy = {
       titleTop: "Всё, что нужно.",
       titleBottom: "Ничего лишнего.",
       copy: "Управление картой и полезная аналитика в простом интерфейсе с первого касания.",
-      explore: "Смотреть все возможности",
       cards: [
-        { title: "Умное управление картой", copy: "Замораживайте карту и задавайте лимиты без обращения в поддержку." },
-        { title: "Виртуальные карты", copy: "Создавайте отдельные карты для подписок, покупок и ежедневных расходов." },
-        { title: "Одноразовые карты", copy: "Используйте реквизиты, которые обновляются после оплаты для дополнительной приватности." },
-        { title: "Блокировки продавцов и стран", copy: "Сами выбирайте, где ваша карта работает, а где нет." },
-        { title: "AI-защита от мошенничества", copy: "Подозрительные платежи проверяются до списания денег со счёта." },
-        { title: "Аналитика расходов", copy: "Находите закономерности и видите полезный контекст каждой покупки." }
+        { title: "Умное управление картой", copy: "Замораживайте карту, меняйте лимиты и управляйте платежами без поддержки." },
+        { title: "Виртуальные карты", copy: "Создавайте отдельные виртуальные карты для подписок, покупок и повседневных расходов." },
+        { title: "Одноразовые карты", copy: "Реквизиты обновляются после каждой оплаты для дополнительной защиты." },
+        { title: "Блокировки продавцов и стран", copy: "Решайте, у каких продавцов и в каких странах карта будет работать." },
+        { title: "AI-защита от мошенничества", copy: "Подозрительные операции проверяются до списания денег со счёта." },
+        { title: "Аналитика расходов", copy: "Понимайте структуру расходов и контекст каждой покупки." }
       ]
     },
     security: {
