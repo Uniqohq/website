@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useSiteLocale } from "./site-locale";
 
-const navHrefs = ["#products", "#security", "#security", "#pricing", "#manifesto"];
+const navHrefs = ["#products", "#features", "#security", "#pricing", "#manifesto"];
 
 export function Header() {
   const { copy } = useSiteLocale();

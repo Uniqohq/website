@@ -31,7 +31,7 @@ export function Security() {
     <section id="security" className="bg-[#ececee]">
       <div className="container min-h-[1220px] overflow-hidden py-[58px]">
       <div className="mb-[78px]">
-        <span className="section-kicker">03</span>
+        <span className="section-kicker">04</span>
         <h2 className="section-title mt-[9px]">{copy.security.title}</h2>
         <p className="mt-[16px] max-w-[330px] text-[25.674px] font-medium leading-[1.102] text-[#7c7c7c]">{copy.security.copy}</p>
       </div>

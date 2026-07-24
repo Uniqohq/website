@@ -21,6 +21,20 @@ export const siteCopy = {
         { number: "03", name: "Graphite", copy: "Strong, reliable and distinct. For your business and beyond" }
       ]
     },
+    features: {
+      titleTop: "Everything you need.",
+      titleBottom: "Nothing you don’t.",
+      copy: "Powerful card controls and useful intelligence, kept simple from the first tap.",
+      explore: "Explore all features",
+      cards: [
+        { title: "Smart card controls", copy: "Freeze, unfreeze and set spending limits without waiting for support." },
+        { title: "Virtual cards", copy: "Create separate cards for subscriptions, shopping and everyday spending." },
+        { title: "One-time cards", copy: "Use card details that refresh after payment when you need extra privacy." },
+        { title: "Merchant and country locks", copy: "Choose exactly where your card works and where it does not." },
+        { title: "AI fraud protection", copy: "Suspicious payments are assessed before money leaves your account." },
+        { title: "Spending intelligence", copy: "See patterns, categories and useful context behind every purchase." }
+      ]
+    },
     security: {
       title: "Security",
       copy: "Built to protect your money, before anything happens",
@@ -141,6 +155,20 @@ export const siteCopy = {
         { number: "01", name: "Arctic", copy: "Чистая, сдержанная и вне времени. Для ежедневных трат." },
         { number: "02", name: "Midnight", copy: "Смелая, минималистичная и выверенная. Для тех, кто идет дальше." },
         { number: "03", name: "Graphite", copy: "Надежная, выразительная и строгая. Для бизнеса и не только." }
+      ]
+    },
+    features: {
+      titleTop: "Всё, что нужно.",
+      titleBottom: "Ничего лишнего.",
+      copy: "Управление картой и полезная аналитика в простом интерфейсе с первого касания.",
+      explore: "Смотреть все возможности",
+      cards: [
+        { title: "Умное управление картой", copy: "Замораживайте карту и задавайте лимиты без обращения в поддержку." },
+        { title: "Виртуальные карты", copy: "Создавайте отдельные карты для подписок, покупок и ежедневных расходов." },
+        { title: "Одноразовые карты", copy: "Используйте реквизиты, которые обновляются после оплаты для дополнительной приватности." },
+        { title: "Блокировки продавцов и стран", copy: "Сами выбирайте, где ваша карта работает, а где нет." },
+        { title: "AI-защита от мошенничества", copy: "Подозрительные платежи проверяются до списания денег со счёта." },
+        { title: "Аналитика расходов", copy: "Находите закономерности и видите полезный контекст каждой покупки." }
       ]
     },
     security: {

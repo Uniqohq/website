@@ -36,7 +36,7 @@ export function Pricing() {
     <section id="pricing" className="bg-[#ececee]">
       <div className="container min-h-[1320px] overflow-visible py-[64px]">
       <div className="mx-auto mb-[72px] flex max-w-[520px] flex-col items-center text-center">
-        <span className="section-kicker">04</span>
+        <span className="section-kicker">05</span>
         <h2 className="mt-[12px] max-w-full text-[clamp(42px,3.6vw,69px)] font-medium leading-[0.94]">
           {copy.pricing.titleTop}
           <br />
