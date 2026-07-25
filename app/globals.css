@@ -8,7 +8,7 @@
   --uniqo-hero-bg: #eeeff0;
   --uniqo-surface: #f7f7f7;
   --uniqo-ink: #050505;
-  --uniqo-muted: #7c7c7c;
+  --uniqo-muted: #686868;
   --uniqo-soft: #f0f0f0;
   --uniqo-radius-card: 35px;
   --uniqo-radius-pill: 999px;
@@ -64,6 +64,30 @@ a {
 
 button {
   font: inherit;
+}
+
+:where(a, button, input):focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: fixed;
+  left: 16px;
+  top: 12px;
+  z-index: 100;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: #050505;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  transform: translateY(-160%);
+  transition: transform 160ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
 }
 
 .burst-hover {

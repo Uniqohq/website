@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowRight, Paintbrush } from "lucide-react";
+import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { CardImage } from "./card-image";
 import { useSiteLocale } from "./site-locale";
@@ -9,19 +10,19 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 const products = [
   {
-    image: "/assets/uniqo-card-arctic.png",
-    width: 4800,
-    height: 3000
+    image: "/assets/uniqo-card-arctic.webp",
+    width: 2400,
+    height: 1500
   },
   {
-    image: "/assets/uniqo-card-midnight.png",
-    width: 4800,
-    height: 3000
+    image: "/assets/uniqo-card-midnight.webp",
+    width: 2400,
+    height: 1500
   },
   {
-    image: "/assets/uniqo-card-graphite.png",
-    width: 4800,
-    height: 3000
+    image: "/assets/uniqo-card-graphite.webp",
+    width: 2400,
+    height: 1500
   }
 ];
 
@@ -46,17 +47,17 @@ function ProductCard({ product, index }: { product: (typeof products)[number] & 
         />
       </div>
       <div className="mt-[52px] w-full max-w-[340px] font-medium leading-[1.102] md:mt-[83px]">
-        <span className="text-[16px] text-[#7c7c7c] md:text-[19.939px]">{product.number}</span>
+        <span className="text-[16px] text-[#686868] md:text-[19.939px]">{product.number}</span>
         <h3 className="mt-[5px] text-[32px] text-black md:text-[41.456px]">{product.name}</h3>
-        <p className="mt-[22px] text-[20px] text-[#7c7c7c] md:mt-[31px] md:text-[25.674px]">{product.copy}</p>
+        <p className="mt-[22px] text-[20px] text-[#686868] md:mt-[31px] md:text-[25.674px]">{product.copy}</p>
       </div>
-      <a
+      <Link
         href="/waitlist"
         aria-label={`View ${product.name}`}
         className="burst-hover mt-auto flex size-[60px] items-center justify-center rounded-full bg-[#f0f0f0] text-black md:size-[75px]"
       >
         <ArrowRight className="size-[28px] md:size-[34px]" strokeWidth={2.05} />
-      </a>
+      </Link>
     </motion.article>
   );
 }

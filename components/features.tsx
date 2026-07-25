@@ -10,6 +10,7 @@ import {
   SlidersHorizontal
 } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
+import Link from "next/link";
 import { useSiteLocale } from "./site-locale";
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -44,7 +45,7 @@ export function Features() {
             <br />
             {copy.features.titleBottom}
           </h2>
-          <p className="mt-[24px] max-w-[650px] text-[clamp(20px,1.45vw,28px)] font-medium leading-[1.102] text-[#7c7c7c]">
+          <p className="mt-[24px] max-w-[650px] text-[clamp(20px,1.45vw,28px)] font-medium leading-[1.102] text-[#686868]">
             {copy.features.copy}
           </p>
         </motion.div>
@@ -66,14 +67,14 @@ export function Features() {
                   <Icon size={29} strokeWidth={2.05} />
                 </span>
                 <h3 className="mt-[30px] max-w-[390px] text-[28px] font-medium leading-[1.04] md:text-[30px]">{card.title}</h3>
-                <p className="mt-[16px] max-w-[390px] text-[18px] font-medium leading-[1.16] text-[#7c7c7c] md:text-[19px]">{card.copy}</p>
-                <a
+                <p className="mt-[16px] max-w-[390px] text-[18px] font-medium leading-[1.16] text-[#686868] md:text-[19px]">{card.copy}</p>
+                <Link
                   href="/waitlist"
                   aria-label={card.title}
                   className="burst-hover mt-[24px] flex size-[56px] items-center justify-center rounded-full bg-[#f0f0f0]"
                 >
                   <ArrowRight size={27} strokeWidth={2.05} />
-                </a>
+                </Link>
               </motion.article>
             );
           })}

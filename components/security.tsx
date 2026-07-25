@@ -2,6 +2,7 @@
 
 import { ArrowRight, BellRing, Shield, SlidersHorizontal, Snowflake } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
+import Link from "next/link";
 import { CardImage } from "./card-image";
 import { useSiteLocale } from "./site-locale";
 
@@ -33,7 +34,7 @@ export function Security() {
       <div className="mb-[78px]">
         <span className="section-kicker">04</span>
         <h2 className="section-title mt-[9px]">{copy.security.title}</h2>
-        <p className="mt-[16px] max-w-[330px] text-[25.674px] font-medium leading-[1.102] text-[#7c7c7c]">{copy.security.copy}</p>
+        <p className="mt-[16px] max-w-[330px] text-[25.674px] font-medium leading-[1.102] text-[#686868]">{copy.security.copy}</p>
       </div>
       <div className="grid gap-[31px] md:grid-cols-4">
         {localizedCards.map((card, index) => {
@@ -51,10 +52,10 @@ export function Security() {
                 <Icon size={34} strokeWidth={2.05} />
               </div>
               <h3 className="break-words text-[28px] font-medium leading-[1.102] md:text-[31px]">{card.title}</h3>
-              <p className="mt-[20px] break-words text-[18px] font-medium leading-[1.102] text-[#7c7c7c] md:text-[20px]">{card.copy}</p>
-              <a href="/waitlist" aria-label={card.title} className="burst-hover mt-auto flex size-[55px] items-center justify-center rounded-full bg-[#f0f0f0]">
+              <p className="mt-[20px] break-words text-[18px] font-medium leading-[1.102] text-[#686868] md:text-[20px]">{card.copy}</p>
+              <Link href="/waitlist" aria-label={card.title} className="burst-hover mt-auto flex size-[55px] items-center justify-center rounded-full bg-[#f0f0f0]">
                 <ArrowRight size={25} strokeWidth={2.05} />
-              </a>
+              </Link>
             </motion.article>
           );
         })}
@@ -68,12 +69,12 @@ export function Security() {
       >
         <div className="flex min-h-[360px] min-w-0 flex-col p-[28px] md:min-h-0 md:p-[34px]">
           <h3 className="max-w-[660px] break-words text-[30px] font-medium leading-[1.102] md:text-[40px]">{copy.security.lostCardTitle}</h3>
-          <p className="mt-[18px] max-w-[620px] break-words text-[18px] font-medium leading-[1.102] text-[#7c7c7c] md:text-[23px]">
+          <p className="mt-[18px] max-w-[620px] break-words text-[18px] font-medium leading-[1.102] text-[#686868] md:text-[23px]">
             {copy.security.lostCardCopy}
           </p>
-          <a href="/waitlist" aria-label="Lost card help" className="burst-hover mt-auto flex size-[64px] items-center justify-center rounded-full bg-[#f0f0f0]">
+          <Link href="/waitlist" aria-label="Lost card help" className="burst-hover mt-auto flex size-[64px] items-center justify-center rounded-full bg-[#f0f0f0]">
             <ArrowRight size={30} strokeWidth={2.05} />
-          </a>
+          </Link>
         </div>
         <motion.div
           initial={reducedMotion ? false : { opacity: 0 }}
@@ -83,10 +84,10 @@ export function Security() {
           className="relative min-h-[330px] min-w-0 overflow-hidden px-6"
         >
           <CardImage
-            src="/assets/uniqo-card-midnight.png"
+            src="/assets/uniqo-card-midnight.webp"
             alt="Uniqo card security preview"
-            width={522}
-            height={353}
+            width={2400}
+            height={1500}
             className="absolute left-[4%] top-[42px] w-[min(52vw,392px)] rotate-[-7deg] md:left-[2%] md:top-[46px] md:w-[min(31vw,392px)]"
           />
           <CardImage

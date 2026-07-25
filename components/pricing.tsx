@@ -2,6 +2,7 @@
 
 import { Check } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import Link from "next/link";
 import { useState } from "react";
 import { CardImage } from "./card-image";
 import { useSiteLocale } from "./site-locale";
@@ -42,8 +43,8 @@ export function Pricing() {
           <br />
           {copy.pricing.titleBottom}
         </h2>
-        <p className="mt-[16px] max-w-[430px] text-[20px] font-medium leading-[1.102] text-[#7c7c7c]">{copy.pricing.copy}</p>
-        <div className="relative mt-[52px] flex h-[58px] w-full max-w-[340px] rounded-full border border-black md:h-[62px] md:max-w-none md:w-[336px]">
+        <p className="mt-[16px] max-w-[430px] text-[20px] font-medium leading-[1.102] text-[#686868]">{copy.pricing.copy}</p>
+        <div role="group" aria-label="Billing period" className="relative mt-[52px] flex h-[58px] w-full max-w-[340px] rounded-full border border-black md:h-[62px] md:max-w-none md:w-[336px]">
           <motion.span
             layout
             transition={{ type: "spring", stiffness: 390, damping: 34, mass: 0.8 }}
@@ -56,6 +57,7 @@ export function Pricing() {
               key={item}
               type="button"
               onClick={() => setBilling(item)}
+              aria-pressed={billing === item}
               className={`relative z-10 flex h-full items-center justify-center rounded-full text-[22px] font-medium leading-[0.94] transition-colors duration-300 md:text-[25px] ${
                 billing === item ? "text-white" : "text-black"
               } ${item === "monthly" ? "w-[47%] md:w-[157px]" : "w-[53%] md:w-[181px]"}`}
@@ -81,13 +83,13 @@ export function Pricing() {
           >
             <div className="font-medium leading-[0.94]">
               <h3 className="text-[38px]">{plan.name}</h3>
-              <p className={`mt-[12px] text-[22px] ${plan.dark ? "text-[#cbcbcb]" : "text-[#7c7c7c]"}`}>{plan.copy}</p>
+              <p className={`mt-[12px] text-[22px] ${plan.dark ? "text-[#cbcbcb]" : "text-[#686868]"}`}>{plan.copy}</p>
             </div>
             <div className="h-[76px]">
               {plan.monthly === plan.yearly ? (
                 <div className="font-medium leading-[0.94]">
                   <p className="text-[38px]">{plan.yearly}</p>
-                  <p className={`mt-[12px] text-[22px] ${plan.dark ? "text-[#cbcbcb]" : "text-[#7c7c7c]"}`}>
+                  <p className={`mt-[12px] text-[22px] ${plan.dark ? "text-[#cbcbcb]" : "text-[#686868]"}`}>
                     / {copy.pricing.forever}
                   </p>
                 </div>
@@ -102,7 +104,7 @@ export function Pricing() {
                     className="font-medium leading-[0.94]"
                   >
                     <p className="text-[38px]">{billing === "monthly" ? plan.monthly : plan.yearly}</p>
-                    <p className={`mt-[12px] text-[22px] ${plan.dark ? "text-[#cbcbcb]" : "text-[#7c7c7c]"}`}>
+                    <p className={`mt-[12px] text-[22px] ${plan.dark ? "text-[#cbcbcb]" : "text-[#686868]"}`}>
                       / {billing === "monthly" ? copy.pricing.month : copy.pricing.year}
                     </p>
                   </motion.div>
@@ -117,14 +119,14 @@ export function Pricing() {
                 </li>
               ))}
             </ul>
-            <a
+            <Link
               href="/waitlist"
               className={`burst-hover mt-auto flex h-[62px] w-full items-center justify-center rounded-[16px] text-[22px] font-medium leading-[0.94] ${
                 plan.dark ? "bg-white text-black" : "border border-[#dbdcde] bg-white text-black"
               }`}
             >
               {plan.cta}
-            </a>
+            </Link>
           </motion.article>
         ))}
       </div>
@@ -135,10 +137,10 @@ export function Pricing() {
             <br />
             {copy.pricing.startTitleBottom}
           </h3>
-          <p className="mt-[36px] max-w-[421px] text-[28px] font-medium leading-[0.94] text-[#7c7c7c]">{copy.pricing.startCopy}</p>
-          <a href="/waitlist" className="burst-hover mt-[36px] inline-flex h-[62px] w-[190px] items-center justify-center rounded-[13px] bg-black text-[20px] font-medium leading-[1.102] text-white">
+          <p className="mt-[36px] max-w-[421px] text-[28px] font-medium leading-[0.94] text-[#686868]">{copy.pricing.startCopy}</p>
+          <Link href="/waitlist" className="burst-hover mt-[36px] inline-flex h-[62px] w-[190px] items-center justify-center rounded-[13px] bg-black text-[20px] font-medium leading-[1.102] text-white">
             {copy.pricing.startCta}
-          </a>
+          </Link>
         </div>
         <motion.div
           initial={reducedMotion ? false : { opacity: 0 }}
@@ -149,10 +151,10 @@ export function Pricing() {
         >
           <span className="pointer-events-none absolute bottom-[26px] left-1/2 h-[90px] w-[72%] -translate-x-1/2 rotate-[4deg] rounded-full bg-black/16 blur-[38px]" />
           <CardImage
-            src="/assets/uniqo-card-arctic.png"
+            src="/assets/uniqo-card-arctic.webp"
             alt="Uniqo Arctic card"
-            width={4800}
-            height={3000}
+            width={2400}
+            height={1500}
             className="relative z-10 h-auto w-[min(76vw,640px)] rotate-[4deg]"
           />
         </motion.div>

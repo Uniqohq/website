@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { WaitlistForm } from "./waitlist-form";
 import { useSiteLocale } from "./site-locale";
@@ -11,19 +12,19 @@ export function WaitlistPageContent() {
   const { copy } = useSiteLocale();
 
   return (
-    <main className="min-h-screen overflow-hidden bg-[#ececee] text-black">
+    <main id="main-content" className="min-h-screen overflow-hidden bg-[#ececee] text-black">
       <motion.header
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.55, ease }}
         className="container flex h-[96px] items-center justify-between"
       >
-        <a href="/" aria-label="Uniqo home" className="flex items-center">
+        <Link href="/" aria-label="Uniqo home" className="flex items-center">
           <Image src="/assets/uniqo-logo.svg" alt="Uniqo" width={867} height={224} priority className="h-auto w-[102px]" />
-        </a>
-        <a href="/" className="text-[17.681px] font-medium leading-[1.102] text-black opacity-60 transition-opacity duration-200 hover:opacity-100">
+        </Link>
+        <Link href="/" className="text-[17.681px] font-medium leading-[1.102] text-black opacity-60 transition-opacity duration-200 hover:opacity-100">
           {copy.waitlist.back}
-        </a>
+        </Link>
       </motion.header>
       <section className="container flex min-h-[calc(100vh-96px)] items-center justify-center pb-[96px] pt-[12px]">
         <motion.div
@@ -44,7 +45,7 @@ export function WaitlistPageContent() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.68, ease, delay: 0.18 }}
-            className="mt-[22px] max-w-[520px] text-[clamp(18px,1.24vw,24px)] font-medium leading-[1.18] text-[#7c7c7c]"
+            className="mt-[22px] max-w-[520px] text-[clamp(18px,1.24vw,24px)] font-medium leading-[1.18] text-[#686868]"
           >
             {copy.waitlist.copy}
           </motion.p>

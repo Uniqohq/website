@@ -45,10 +45,10 @@ export function Hero() {
       <div className="relative mx-auto flex min-h-[100svh] w-full max-w-[565px] flex-col items-center justify-center overflow-visible px-4 pb-8 pt-[112px] text-center md:sticky md:top-0 md:h-[100dvh] md:min-h-0 md:justify-start md:pb-[clamp(24px,5dvh,86px)] md:pt-[clamp(84px,12dvh,180px)]">
         <div className="relative mb-[22px] aspect-[1.6] w-[min(88vw,480px)] md:hidden">
           <CardImage
-            src="/assets/uniqo-card-midnight.png"
+            src="/assets/uniqo-card-midnight.webp"
             alt="Uniqo Midnight card"
-            width={4800}
-            height={3000}
+            width={2400}
+            height={1500}
             priority
             className="h-full w-full object-contain"
           />
@@ -64,10 +64,10 @@ export function Hero() {
             className="absolute inset-0 transform-gpu will-change-[opacity]"
           >
             <CardImage
-              src="/assets/uniqo-card-midnight.png"
+              src="/assets/uniqo-card-midnight.webp"
               alt="Uniqo Midnight card"
-              width={4800}
-              height={3000}
+              width={2400}
+              height={1500}
               priority
               className="h-full w-full object-contain"
             />
@@ -77,11 +77,10 @@ export function Hero() {
             className="absolute inset-0 transform-gpu will-change-[opacity]"
           >
             <CardImage
-              src="/assets/uniqo-card-graphite.png"
+              src="/assets/uniqo-card-graphite.webp"
               alt="Uniqo Graphite card"
-              width={522}
-              height={353}
-              priority
+              width={2400}
+              height={1500}
               className="h-full w-full object-contain"
             />
           </motion.div>
@@ -90,11 +89,10 @@ export function Hero() {
             className="absolute inset-0 transform-gpu will-change-[opacity]"
           >
             <CardImage
-              src="/assets/uniqo-card-arctic.png"
+              src="/assets/uniqo-card-arctic.webp"
               alt="Uniqo Arctic card"
-              width={522}
-              height={353}
-              priority
+              width={2400}
+              height={1500}
               className="h-full w-full object-contain"
             />
           </motion.div>
@@ -106,13 +104,13 @@ export function Hero() {
           transition={{ duration: 0.65, ease, delay: 0.25 }}
           className="flex flex-col items-center"
         >
-          <span className="mb-[clamp(12px,2dvh,21px)] text-[19.939px] font-medium leading-[1.102] text-[#7c7c7c]">01</span>
+          <span className="mb-[clamp(12px,2dvh,21px)] text-[19.939px] font-medium leading-[1.102] text-[#686868]">01</span>
           <h1 className="max-w-full text-[clamp(30px,2.394vw,45.974px)] font-medium leading-[1.102] tracking-normal">
             <span className="md:whitespace-nowrap">{copy.hero.titleTop}</span>
             <br />
             <span className="md:whitespace-nowrap">{copy.hero.titleBottom}</span>
           </h1>
-          <p className="mt-[clamp(16px,2.4dvh,26px)] max-w-[560px] text-[clamp(18px,1.25vw,24px)] font-normal leading-[1.102] text-black opacity-40">
+          <p className="mt-[clamp(16px,2.4dvh,26px)] max-w-[560px] text-[clamp(18px,1.25vw,24px)] font-normal leading-[1.102] text-[#686868]">
             {copy.hero.copy}
           </p>
         </motion.div>

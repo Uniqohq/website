@@ -1,0 +1,10 @@
+.git
+.github
+.next
+node_modules
+npm-debug.log
+public/.DS_Store
+public/assets/uniqo-card-arctic.png
+public/assets/uniqo-card-graphite.png
+public/assets/uniqo-card-midnight.png
+
