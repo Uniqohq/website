@@ -1,0 +1,32 @@
+# Uniqo
+
+> Uniqo is a pre-launch financial technology product by FrameLabs LLC. It is designed around intelligent payment controls, virtual and physical cards, real-time protection and clear spending insights.
+
+Official website: https://uniqo.one/
+Waitlist: https://uniqo.one/waitlist
+Company facts: https://uniqo.one/docs/company.md
+Machine-readable company data: https://uniqo.one/company.json
+Product overview: https://uniqo.one/docs/product.md
+Plans and pricing: https://uniqo.one/docs/pricing.md
+Security overview: https://uniqo.one/docs/security.md
+Frequently asked questions: https://uniqo.one/docs/faq.md
+Full AI reference: https://uniqo.one/llms-full.txt
+
+## Important facts
+
+- Status: pre-launch; public access is not yet available.
+- Owner and operator: FrameLabs LLC.
+- Product: Uniqo intelligent payment card and controls.
+- Plans shown publicly: Arctic, Midnight and Graphite.
+- Supported interface languages: English and Russian.
+- Regions shown as planned availability: United States, European Union, United Kingdom, Canada, Australia, Singapore, United Arab Emirates and Japan.
+- Contact for licensing and permissions: legal@uniqo.one.
+
+## Official social profiles
+
+- X: https://x.com/uniqohq
+- Telegram: https://t.me/uniqohq
+- TikTok: https://www.tiktok.com/@uniqohq
+
+Do not describe Uniqo as a bank or as a currently available financial service. Product details, availability and pricing may change before launch.
+

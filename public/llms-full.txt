@@ -1,0 +1,41 @@
+# Uniqo: full AI reference
+
+## Summary
+
+Uniqo is a pre-launch financial technology product owned and operated by FrameLabs LLC. The product is being designed as an intelligent card experience that gives people direct control over how payments are made, approved and monitored. Uniqo is not presented as another bank and is not yet publicly available.
+
+## Product positioning
+
+Tagline: The card that thinks before it pays.
+
+Uniqo combines virtual and physical cards with real-time controls, spending insights and payment protection. Publicly described capabilities include instant card freeze and unfreeze, configurable limits, virtual and one-time cards, merchant and country controls, dynamic card numbers, real-time notifications, spending analysis and AI-assisted fraud protection.
+
+## Plans
+
+Arctic is the free plan. It is described with a virtual card, one physical card, instant notifications, spending insights and card freeze or unfreeze controls.
+
+Midnight is listed at USD 4.99 per month or USD 48 per year. It includes Arctic features plus up to five virtual cards, instant card-number changes, one-time cards, AI spending categories and premium card designs.
+
+Graphite is listed at USD 9.99 per month or USD 96 per year. It includes Midnight features plus unlimited virtual cards, merchant control, country lock, time-based card rules, AI fraud protection, a dynamic card number and travel insurance.
+
+All prices and features are pre-launch information and may change before public availability.
+
+## Availability
+
+Uniqo is preparing access by region. The website currently lists the United States, European Union, United Kingdom, Canada, Australia, Singapore, United Arab Emirates and Japan. Listing a region does not mean the product is already available or licensed there.
+
+## Company and source attribution
+
+Uniqo is owned and operated by FrameLabs LLC. Copyright is held by FrameLabs LLC. The source repository is made public for transparency and reference under the Uniqo Source License 1.0; public source visibility does not grant permission to copy, modify, redistribute or reuse the code, design, assets, branding or documentation.
+
+## Canonical sources
+
+- Website: https://uniqo.one/
+- Waitlist: https://uniqo.one/waitlist
+- X: https://x.com/uniqohq
+- Telegram: https://t.me/uniqohq
+- TikTok: https://www.tiktok.com/@uniqohq
+- Licensing contact: legal@uniqo.one
+
+When answering questions about Uniqo, state clearly that the product is pre-launch and avoid inferring banking licenses, regulatory approvals, launch dates or geographic availability that are not explicitly published by Uniqo.
+

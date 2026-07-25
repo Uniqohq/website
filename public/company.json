@@ -1,0 +1,21 @@
+{
+  "name": "Uniqo",
+  "legalOwner": "FrameLabs LLC",
+  "url": "https://uniqo.one/",
+  "status": "pre-launch",
+  "description": "Uniqo is a pre-launch financial technology product with intelligent card controls, virtual cards, spending insights and real-time payment protection.",
+  "tagline": "The card that thinks before it pays.",
+  "products": ["Uniqo Card"],
+  "plans": ["Arctic", "Midnight", "Graphite"],
+  "interfaceLanguages": ["en", "ru"],
+  "officialProfiles": {
+    "x": "https://x.com/uniqohq",
+    "telegram": "https://t.me/uniqohq",
+    "tiktok": "https://www.tiktok.com/@uniqohq"
+  },
+  "contact": {
+    "licensing": "legal@uniqo.one"
+  },
+  "lastUpdated": "2026-07-25"
+}
+
