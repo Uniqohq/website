@@ -4,7 +4,6 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { Flip } from "gsap/Flip";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SplitText } from "gsap/SplitText";
 import { Check } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
@@ -12,7 +11,7 @@ import { useLayoutEffect, useRef, useState } from "react";
 import { CardImage } from "./card-image";
 import { useSiteLocale } from "./site-locale";
 
-gsap.registerPlugin(Flip, ScrollTrigger, SplitText, useGSAP);
+gsap.registerPlugin(Flip, ScrollTrigger, useGSAP);
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -65,27 +64,21 @@ export function Pricing() {
         return;
       }
 
-      const split = SplitText.create(headingRef.current, {
-        type: "lines",
-        mask: "lines",
-        autoSplit: true,
-        onSplit(self) {
-          return gsap.from(self.lines, {
-            yPercent: 105,
-            autoAlpha: 0,
-            duration: 0.76,
-            stagger: 0.09,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: headingRef.current,
-              start: "top 82%",
-              once: true
-            }
-          });
+      const reveal = gsap.fromTo(headingRef.current, { autoAlpha: 0 }, {
+        autoAlpha: 1,
+        duration: 0.68,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: headingRef.current,
+          start: "top 82%",
+          once: true
         }
       });
 
-      return () => split.revert();
+      return () => {
+        reveal.scrollTrigger?.kill();
+        reveal.kill();
+      };
     },
     { scope: sectionRef, dependencies: [language, reducedMotion], revertOnUpdate: true }
   );
@@ -139,12 +132,11 @@ export function Pricing() {
         {localizedPlans.map((plan, index) => (
           <motion.article
             key={plan.name}
-            initial={reducedMotion ? false : { opacity: 0, y: 18 }}
-            whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+            initial={reducedMotion ? false : { opacity: 0 }}
+            whileInView={reducedMotion ? undefined : { opacity: 1 }}
             viewport={{ once: true, margin: "-120px" }}
             transition={{
-              opacity: { duration: 0.72, ease, delay: index * 0.07 },
-              y: { duration: 0.72, ease, delay: index * 0.07 }
+              opacity: { duration: 0.72, ease, delay: index * 0.07 }
             }}
             className={`flex min-h-[540px] min-w-0 transform-gpu flex-col gap-[28px] rounded-[28px] pb-[24px] pl-[24px] pr-[20px] pt-[38px] will-change-transform md:pl-[28px] md:pr-[24px] ${
               plan.dark ? "bg-[linear-gradient(144.34deg,#252729_0%,#1c1e1f_127.74%)] text-white" : "bg-[#f7f7f7] text-black"

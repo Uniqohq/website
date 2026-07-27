@@ -225,15 +225,9 @@ export function Footer() {
 
         timeline
           .fromTo(
-            footer,
-            { clipPath: "inset(12% 0 0 0)", y: 34 },
-            { clipPath: "inset(0% 0 0 0)", y: 0, duration: 0.78, ease: "power3.out" }
-          )
-          .fromTo(
             "[data-footer-reveal]",
-            { autoAlpha: 0, y: 14 },
-            { autoAlpha: 1, y: 0, duration: 0.48, stagger: 0.045, ease: "power3.out" },
-            0.2
+            { autoAlpha: 0 },
+            { autoAlpha: 1, duration: 0.48, stagger: 0.045, ease: "power2.out" }
           );
 
         return () => timeline.kill();

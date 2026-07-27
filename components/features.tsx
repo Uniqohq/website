@@ -33,8 +33,8 @@ export function Features() {
     <section id="features" className="bg-[#ececee]">
       <div className="container py-[72px] md:py-[96px]">
         <motion.div
-          initial={reducedMotion ? false : { opacity: 0, y: 18 }}
-          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+          initial={reducedMotion ? false : { opacity: 0 }}
+          whileInView={reducedMotion ? undefined : { opacity: 1 }}
           viewport={{ once: true, margin: "-120px" }}
           transition={{ duration: 0.72, ease }}
           className="mx-auto flex max-w-[900px] flex-col items-center text-center"
@@ -57,8 +57,8 @@ export function Features() {
             return (
               <motion.article
                 key={card.title}
-                initial={reducedMotion ? false : { opacity: 0, y: 24 }}
-                whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+                initial={reducedMotion ? false : { opacity: 0 }}
+                whileInView={reducedMotion ? undefined : { opacity: 1 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.68, ease, delay: index * 0.07 }}
                 className="flex min-h-[330px] min-w-0 flex-col rounded-[35px] bg-[#f7f7f7] p-[26px] md:p-[30px]"

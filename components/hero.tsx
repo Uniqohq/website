@@ -3,16 +3,15 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SplitText } from "gsap/SplitText";
 import Image from "next/image";
 import { useRef } from "react";
 import { CardImage } from "./card-image";
 import { useSiteLocale } from "./site-locale";
 
-gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP);
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export function Hero() {
-  const { copy, language } = useSiteLocale();
+  const { copy } = useSiteLocale();
   const sectionRef = useRef<HTMLElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const cardStackRef = useRef<HTMLDivElement>(null);
@@ -119,39 +118,24 @@ export function Hero() {
         .fromTo(stack, { autoAlpha: 0, scale: 0.97 }, { autoAlpha: 1, scale: 1, duration: 0.72 }, 0)
         .fromTo(
           [kickerRef.current, copyRef.current],
-          { autoAlpha: 0, y: 14 },
-          { autoAlpha: 1, y: 0, duration: 0.55, stagger: 0.08 },
+          { autoAlpha: 0 },
+          { autoAlpha: 1, duration: 0.55, stagger: 0.08 },
           0.36
         )
+        .fromTo(title, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.66 }, 0.18)
         .fromTo(scrollLinkRef.current, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.45 }, 0.62);
-
-      const split = SplitText.create(title, {
-        type: "lines,words",
-        mask: "lines",
-        autoSplit: true,
-        onSplit(self) {
-          return gsap.from(self.lines, {
-            yPercent: 105,
-            autoAlpha: 0,
-            duration: 0.76,
-            stagger: 0.09,
-            ease: "power3.out"
-          });
-        }
-      });
 
       const refresh = () => ScrollTrigger.refresh();
       document.fonts.ready.then(refresh);
       window.addEventListener("load", refresh, { once: true });
 
       return () => {
-        split.revert();
         intro.kill();
         media.revert();
         window.removeEventListener("load", refresh);
       };
     },
-    { scope: sectionRef, dependencies: [language, copy.hero.titleTop, copy.hero.titleBottom], revertOnUpdate: true }
+    { scope: sectionRef, dependencies: [copy.hero.titleTop, copy.hero.titleBottom], revertOnUpdate: true }
   );
 
   return (

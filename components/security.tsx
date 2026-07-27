@@ -36,14 +36,14 @@ export function Security() {
         <h2 className="section-title mt-[9px]">{copy.security.title}</h2>
         <p className="mt-[16px] max-w-[330px] text-[25.674px] font-medium leading-[1.102] text-[#686868]">{copy.security.copy}</p>
       </div>
-      <div className="grid gap-[31px] md:grid-cols-4">
+      <div className="grid gap-[31px] md:grid-cols-2 xl:grid-cols-4">
         {localizedCards.map((card, index) => {
           const Icon = card.icon;
           return (
             <motion.article
               key={card.title}
-              initial={reducedMotion ? false : { opacity: 0, y: 18 }}
-              whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+              initial={reducedMotion ? false : { opacity: 0 }}
+              whileInView={reducedMotion ? undefined : { opacity: 1 }}
               viewport={{ once: true, margin: "-120px" }}
               transition={{ duration: 0.68, ease, delay: index * 0.065 }}
               className="flex min-h-[420px] min-w-0 flex-col rounded-[35px] bg-[#f7f7f7] p-[28px] md:p-[34px]"
@@ -61,13 +61,13 @@ export function Security() {
         })}
       </div>
       <motion.div
-        initial={reducedMotion ? false : { opacity: 0, y: 18 }}
-        whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+        initial={reducedMotion ? false : { opacity: 0 }}
+        whileInView={reducedMotion ? undefined : { opacity: 1 }}
         viewport={{ once: true, margin: "-120px" }}
         transition={{ duration: 0.75, ease }}
-        className="mt-[31px] grid overflow-hidden rounded-[35px] bg-[#f7f7f7] md:h-[330px] md:grid-cols-[0.95fr_1.25fr]"
+        className="mt-[31px] grid overflow-hidden rounded-[35px] bg-[#f7f7f7] xl:h-[330px] xl:grid-cols-[0.95fr_1.25fr]"
       >
-        <div className="flex min-h-[360px] min-w-0 flex-col p-[28px] md:min-h-0 md:p-[34px]">
+        <div className="flex min-h-[360px] min-w-0 flex-col p-[28px] md:p-[34px] xl:min-h-0">
           <h3 className="max-w-[660px] break-words text-[30px] font-medium leading-[1.102] md:text-[40px]">{copy.security.lostCardTitle}</h3>
           <p className="mt-[18px] max-w-[620px] break-words text-[18px] font-medium leading-[1.102] text-[#686868] md:text-[23px]">
             {copy.security.lostCardCopy}
@@ -88,7 +88,7 @@ export function Security() {
             alt="Uniqo card security preview"
             width={2400}
             height={1500}
-            className="absolute left-[4%] top-[42px] w-[min(52vw,392px)] rotate-[-7deg] md:left-[2%] md:top-[46px] md:w-[min(31vw,392px)]"
+            className="absolute left-[8%] top-[42px] w-[min(72vw,430px)] rotate-[-7deg] xl:left-[2%] xl:top-[46px] xl:w-[min(31vw,392px)]"
           />
           <CardImage
             src="/assets/uniqo-phone-mockup.png"

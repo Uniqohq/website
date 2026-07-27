@@ -15,7 +15,7 @@ export function Header() {
         <Link href="/" aria-label="Uniqo home" className="flex items-center">
           <Image src="/assets/uniqo-logo.svg" alt="Uniqo" width={867} height={224} priority className="h-auto w-[102px]" />
         </Link>
-        <nav aria-label="Primary navigation" className="hidden items-center gap-[66px] text-[17.681px] font-medium leading-[1.102] text-black md:flex">
+        <nav aria-label="Primary navigation" className="hidden items-center gap-[clamp(34px,3.44vw,66px)] text-[17.681px] font-medium leading-[1.102] text-black xl:flex">
           {copy.header.nav.map((label, index) => (
             <a key={`${label}-${navHrefs[index]}`} href={navHrefs[index]}>
               {label}

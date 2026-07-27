@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
-import { BottomDepthFade } from "@/components/bottom-depth-fade";
 import { ClickBurst } from "@/components/click-burst";
 import { SiteLocaleProvider } from "@/components/site-locale";
 import { SmoothScroll } from "@/components/smooth-scroll";
@@ -91,7 +90,6 @@ export default function RootLayout({
           <SmoothScroll />
           <ClickBurst />
           {children}
-          <BottomDepthFade />
         </SiteLocaleProvider>
       </body>
     </html>
