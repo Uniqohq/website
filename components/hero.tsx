@@ -144,25 +144,25 @@ export function Hero() {
       className="relative min-h-[100svh] overflow-visible bg-[radial-gradient(circle_at_50%_50%,#e9e9ec_0%,#eeeff0_100%)]"
     >
       <div
+        ref={indicatorsRef}
+        aria-hidden="true"
+        className="pointer-events-none fixed left-[clamp(32px,4.775vw,91.68px)] top-[41.77dvh] z-40 hidden md:grid md:gap-[16px]"
+      >
+        {[0, 1, 2].map((index) => (
+          <span
+            key={index}
+            ref={(node) => {
+              indicatorRefs.current[index] = node;
+            }}
+            className="size-[5px] rounded-full bg-black"
+          />
+        ))}
+      </div>
+
+      <div
         ref={stageRef}
         className="relative mx-auto flex min-h-[100svh] w-full max-w-[565px] flex-col items-center justify-center overflow-visible px-4 pb-8 pt-[112px] text-center md:h-[100dvh] md:min-h-0 md:justify-start md:pb-[clamp(24px,5dvh,86px)] md:pt-[clamp(84px,12dvh,180px)]"
       >
-        <div
-          ref={indicatorsRef}
-          aria-hidden="true"
-          className="pointer-events-none fixed left-[91.68px] top-[375.93px] z-40 hidden md:grid md:gap-[16px]"
-        >
-          {[0, 1, 2].map((index) => (
-            <span
-              key={index}
-              ref={(node) => {
-                indicatorRefs.current[index] = node;
-              }}
-              className="size-[5px] rounded-full bg-black"
-            />
-          ))}
-        </div>
-
         <div ref={cardStackRef} className="relative mb-[22px] aspect-[1.6] w-[min(88vw,480px)] md:mb-[clamp(22px,4dvh,84px)] md:w-[min(92vw,565px,58dvh)]">
           <div ref={midnightRef} className="absolute inset-0 transform-gpu will-change-transform">
             <CardImage
