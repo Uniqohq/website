@@ -8,6 +8,7 @@ import { useRef } from "react";
 import { useSiteLocale } from "./site-locale";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
+ScrollTrigger.config({ ignoreMobileResize: true });
 
 export function Manifesto() {
   const { copy, language } = useSiteLocale();
@@ -59,6 +60,7 @@ export function Manifesto() {
                 return `+=${Math.max(distance / speed, desktop ? 1450 : 1100)}`;
               },
               pin: panel,
+              pinType: desktop ? "fixed" : "transform",
               pinSpacing: true,
               scrub: 0.65,
               anticipatePin: 1,
@@ -111,7 +113,7 @@ export function Manifesto() {
       <div ref={panelRef} className="relative h-[100svh] overflow-hidden bg-[#ececee]">
         <h2
           ref={headingRef}
-          className={`absolute left-[clamp(24px,8.542vw,164px)] right-[clamp(24px,4vw,76px)] top-[clamp(92px,13.1dvh,112px)] font-medium leading-[0.94] tracking-normal text-black ${
+          className={`absolute left-[clamp(24px,8.542vw,164px)] right-[clamp(24px,4vw,76px)] top-[clamp(92px,13.1svh,112px)] font-medium leading-[0.94] tracking-normal text-black md:top-[clamp(92px,13.1dvh,112px)] ${
             language === "ru"
               ? "text-[clamp(48px,13vw,104px)] md:text-[clamp(72px,10.6vw,203px)]"
               : "text-[clamp(54px,15vw,112px)] md:text-[clamp(84px,13.526vw,259.709px)]"
@@ -122,13 +124,13 @@ export function Manifesto() {
         </h2>
         <p
           ref={textRef}
-          className="absolute left-[clamp(24px,8.542vw,164px)] top-[64dvh] h-[70px] w-max whitespace-nowrap text-left text-[clamp(30px,6vw,46px)] font-medium leading-[1.102] text-[#8d8f91] will-change-transform md:top-[min(74.36dvh,635px)] md:text-[clamp(30px,3.33vw,63.9436px)]"
+          className="absolute left-[clamp(24px,8.542vw,164px)] top-[64svh] h-[70px] w-max whitespace-nowrap text-left text-[clamp(30px,6vw,46px)] font-medium leading-[1.102] text-[#8d8f91] will-change-transform md:top-[min(74.36dvh,635px)] md:text-[clamp(30px,3.33vw,63.9436px)]"
         >
           {copy.manifesto.line}
         </p>
         <div
           ref={indicatorRef}
-          className="absolute left-[calc(50%_-_13.585px)] top-[84dvh] h-[43.32px] w-[27.17px] -rotate-90 md:top-[min(89.6dvh,765px)]"
+          className="absolute left-[calc(50%_-_13.585px)] top-[84svh] h-[43.32px] w-[27.17px] -rotate-90 md:top-[min(89.6dvh,765px)]"
         >
           <Image src="/assets/uniqo-scroll-indicator.png" alt="" width={28} height={44} className="h-[43.32px] w-[27.17px]" />
         </div>
