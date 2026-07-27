@@ -84,17 +84,17 @@ export function Products() {
         whileInView={reducedMotion ? undefined : { opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease, delay: 0.15 }}
-        className="mt-[31px] flex min-h-[92px] flex-col gap-4 rounded-[30px] bg-[#f7f7f7] px-[22px] py-[14px] text-[25.674px] font-medium leading-[1.102] md:flex-row md:items-center md:justify-between md:pr-[25px]"
+        className="mt-[24px] flex min-h-[132px] flex-col gap-[15px] rounded-[24px] bg-[#f7f7f7] px-[18px] py-[16px] text-[18px] font-medium leading-[1.12] md:mt-[31px] md:min-h-[92px] md:flex-row md:items-center md:justify-between md:gap-4 md:rounded-[30px] md:px-[22px] md:py-[14px] md:pr-[25px] md:text-[25.674px] md:leading-[1.102]"
       >
-        <div className="flex min-w-0 items-center gap-[36px]">
-          <span className="flex size-[58px] shrink-0 items-center justify-center rounded-[20px] bg-[#f0f0f0]">
-            <Paintbrush size={28} strokeWidth={2.05} />
+        <div className="flex min-w-0 items-center gap-[14px] md:gap-[36px]">
+          <span className="flex size-[48px] shrink-0 items-center justify-center rounded-[16px] bg-[#f0f0f0] md:size-[58px] md:rounded-[20px]">
+            <Paintbrush className="size-[24px] md:size-[28px]" strokeWidth={2.05} />
           </span>
           <span className="min-w-0">{copy.products.moreDesigns}</span>
         </div>
-        <a href="#pricing" className="burst-hover flex shrink-0 items-center gap-[22px]">
+        <a href="#pricing" className="burst-hover flex w-full shrink-0 items-center justify-between gap-[18px] text-[19px] md:w-auto md:justify-start md:gap-[22px] md:text-inherit">
           {copy.products.discover}
-          <ArrowRight size={31} strokeWidth={2.05} />
+          <ArrowRight className="size-[26px] md:size-[31px]" strokeWidth={2.05} />
         </a>
       </motion.div>
       </div>

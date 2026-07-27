@@ -61,17 +61,17 @@ export function Features() {
                 whileInView={reducedMotion ? undefined : { opacity: 1 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.68, ease, delay: index * 0.07 }}
-                className="flex min-h-[330px] min-w-0 flex-col rounded-[35px] bg-[#f7f7f7] p-[26px] md:p-[30px]"
+                className="flex min-h-[275px] min-w-0 flex-col rounded-[28px] bg-[#f7f7f7] p-[24px] md:min-h-[330px] md:rounded-[35px] md:p-[30px]"
               >
                 <span aria-hidden="true" className="flex size-[62px] shrink-0 items-center justify-center rounded-[21px] bg-[#f0f0f0]">
                   <Icon size={29} strokeWidth={2.05} />
                 </span>
-                <h3 className="mt-[30px] max-w-[390px] text-[28px] font-medium leading-[1.04] md:text-[30px]">{card.title}</h3>
-                <p className="mt-[16px] max-w-[390px] text-[18px] font-medium leading-[1.16] text-[#686868] md:text-[19px]">{card.copy}</p>
+                <h3 className="mt-[24px] max-w-[390px] text-[26px] font-medium leading-[1.04] md:mt-[30px] md:text-[30px]">{card.title}</h3>
+                <p className="mt-[13px] max-w-[390px] text-[17px] font-medium leading-[1.16] text-[#686868] md:mt-[16px] md:text-[19px]">{card.copy}</p>
                 <Link
                   href="/waitlist"
                   aria-label={card.title}
-                  className="burst-hover mt-[24px] flex size-[56px] items-center justify-center rounded-full bg-[#f0f0f0]"
+                  className="burst-hover mt-auto flex size-[52px] items-center justify-center rounded-full bg-[#f0f0f0] md:mt-[24px] md:size-[56px]"
                 >
                   <ArrowRight size={27} strokeWidth={2.05} />
                 </Link>

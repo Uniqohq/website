@@ -191,15 +191,15 @@ export function Pricing() {
           </motion.article>
         ))}
       </div>
-      <div className="mt-[96px] grid items-center gap-12 md:grid-cols-[0.9fr_1.1fr]">
+      <div className="mt-[64px] grid items-center gap-[20px] md:mt-[96px] md:grid-cols-[0.9fr_1.1fr] md:gap-12">
         <div>
-          <h3 className="max-w-[540px] text-[42px] font-medium leading-[0.94] md:text-[54px]">
+          <h3 className="max-w-[540px] text-[36px] font-medium leading-[0.96] md:text-[54px] md:leading-[0.94]">
             {copy.pricing.startTitleTop}
             <br />
             {copy.pricing.startTitleBottom}
           </h3>
-          <p className="mt-[36px] max-w-[421px] text-[28px] font-medium leading-[0.94] text-[#686868]">{copy.pricing.startCopy}</p>
-          <Link href="/waitlist" className="burst-hover mt-[36px] inline-flex h-[62px] w-[190px] items-center justify-center rounded-[13px] bg-black text-[20px] font-medium leading-[1.102] text-white">
+          <p className="mt-[22px] max-w-[421px] text-[21px] font-medium leading-[1.06] text-[#686868] md:mt-[36px] md:text-[28px] md:leading-[0.94]">{copy.pricing.startCopy}</p>
+          <Link href="/waitlist" className="burst-hover mt-[28px] inline-flex h-[58px] w-[180px] items-center justify-center rounded-[13px] bg-black text-[18px] font-medium leading-[1.102] text-white md:mt-[36px] md:h-[62px] md:w-[190px] md:text-[20px]">
             {copy.pricing.startCta}
           </Link>
         </div>
@@ -208,7 +208,7 @@ export function Pricing() {
           whileInView={reducedMotion ? undefined : { opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.75, ease }}
-          className="relative max-w-full justify-self-center overflow-visible px-4 py-8"
+          className="relative mt-[8px] max-w-full justify-self-center overflow-visible px-2 py-0 md:mt-0 md:px-4 md:py-8"
         >
           <span className="pointer-events-none absolute bottom-[26px] left-1/2 h-[90px] w-[72%] -translate-x-1/2 rotate-[4deg] rounded-full bg-black/16 blur-[38px]" />
           <CardImage
