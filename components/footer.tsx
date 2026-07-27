@@ -1,14 +1,16 @@
 "use client";
 
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { SOCIAL_LINKS } from "@/lib/site-metadata";
 import { useSiteLocale } from "./site-locale";
 
-const ease = [0.16, 1, 0.3, 1] as const;
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const socialIcons = [
   { src: "/assets/uniqo-social-website.svg", label: "Uniqo on TikTok", href: SOCIAL_LINKS.tiktok },
@@ -200,19 +202,52 @@ function LanguageDropdown() {
 }
 
 export function Footer() {
-  const reducedMotion = useReducedMotion();
   const { copy } = useSiteLocale();
+  const footerRef = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      const footer = footerRef.current;
+
+      if (!footer) {
+        return;
+      }
+
+      const media = gsap.matchMedia();
+      media.add("(prefers-reduced-motion: no-preference)", () => {
+        const timeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: footer,
+            start: "top 92%",
+            once: true
+          }
+        });
+
+        timeline
+          .fromTo(
+            footer,
+            { clipPath: "inset(12% 0 0 0)", y: 34 },
+            { clipPath: "inset(0% 0 0 0)", y: 0, duration: 0.78, ease: "power3.out" }
+          )
+          .fromTo(
+            "[data-footer-reveal]",
+            { autoAlpha: 0, y: 14 },
+            { autoAlpha: 1, y: 0, duration: 0.48, stagger: 0.045, ease: "power3.out" },
+            0.2
+          );
+
+        return () => timeline.kill();
+      });
+
+      return () => media.revert();
+    },
+    { scope: footerRef }
+  );
 
   return (
-    <footer className="relative flex min-h-[clamp(430px,24vw,460px)] flex-col justify-between overflow-visible border-t border-[rgba(255,255,255,0.11)] bg-[#050506] text-white">
+    <footer ref={footerRef} className="relative flex min-h-[clamp(430px,24vw,460px)] flex-col justify-between overflow-visible border-t border-[rgba(255,255,255,0.11)] bg-[#050506] text-white">
       <div className="container relative grid grid-cols-2 gap-x-6 gap-y-12 py-[clamp(38px,2.45vw,47px)] md:grid-cols-[1.35fr_1fr_1fr_1fr] md:gap-8">
-        <motion.div
-          initial={reducedMotion ? false : { opacity: 0 }}
-          whileInView={reducedMotion ? undefined : { opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.65, ease }}
-          className="col-span-2 md:col-span-1"
-        >
+        <div data-footer-reveal className="col-span-2 md:col-span-1">
           <Link href="/" aria-label="Uniqo home" className="inline-flex">
             <Image src="/assets/uniqo-logo.svg" alt="Uniqo" width={867} height={224} className="h-auto w-[clamp(94px,5.1vw,98px)] invert" />
           </Link>
@@ -223,52 +258,37 @@ export function Footer() {
             <RegionDropdown />
             <LanguageDropdown />
           </div>
-        </motion.div>
+        </div>
         {copy.footer.columns.map((column, columnIndex) => (
-          <motion.div
-            key={column.title}
-            initial={reducedMotion ? false : { opacity: 0 }}
-            whileInView={reducedMotion ? undefined : { opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.62, ease, delay: 0.08 + columnIndex * 0.08 }}
-          >
+          <div key={column.title} data-footer-reveal>
             <h3 className="text-[clamp(12px,0.78vw,15px)] font-medium leading-[1.102] text-white opacity-60">{column.title}</h3>
             <ul className="mt-[clamp(24px,1.64vw,31px)] grid gap-[clamp(8px,0.6vw,11px)]">
               {column.links.map((link, index) => (
-                <motion.li
-                  key={link}
-                  initial={reducedMotion ? false : { opacity: 0 }}
-                  whileInView={reducedMotion ? undefined : { opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, ease, delay: 0.18 + columnIndex * 0.06 + index * 0.035 }}
-                >
+                <li key={link} data-footer-reveal>
                   <a href={footerLinkHrefs[columnIndex][index]} className="text-[clamp(14px,0.92vw,17.7px)] font-medium leading-[1.102] text-white opacity-66">
                     {link}
                   </a>
-                </motion.li>
+                </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
         ))}
       </div>
       <div className="container">
         <div className="flex flex-col gap-5 py-[clamp(18px,1.2vw,23px)] text-[clamp(14px,0.92vw,17.7px)] font-medium leading-[1.102] text-white opacity-60 md:grid md:grid-cols-[1.35fr_1fr_1fr_1fr] md:gap-8">
           <span className="md:col-span-3">{copy.footer.copyright}</span>
           <div className="flex items-center justify-start gap-[clamp(14px,0.88vw,17px)] md:col-start-4">
-            {socialIcons.map((icon, index) => (
-              <motion.a
+            {socialIcons.map((icon) => (
+              <a
                 key={icon.label}
                 href={icon.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={icon.label}
-                initial={reducedMotion ? false : { opacity: 0 }}
-                whileInView={reducedMotion ? undefined : { opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, ease, delay: 0.2 + index * 0.04 }}
+                data-footer-reveal
               >
                 <Image src={icon.src} alt="" width={28} height={28} className="size-[clamp(18px,1vw,19px)]" />
-              </motion.a>
+              </a>
             ))}
           </div>
         </div>

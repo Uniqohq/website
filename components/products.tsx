@@ -31,10 +31,10 @@ function ProductCard({ product, index }: { product: (typeof products)[number] & 
 
   return (
     <motion.article
-      initial={reducedMotion ? false : { opacity: 0 }}
-      whileInView={reducedMotion ? undefined : { opacity: 1 }}
+      initial={reducedMotion ? false : { opacity: 0, y: 18 }}
+      whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-120px" }}
-      transition={{ duration: 0.72, ease, delay: index * 0.11 }}
+      transition={{ duration: 0.72, ease, delay: index * 0.07 }}
       className="flex h-auto min-h-[560px] min-w-0 w-full flex-col rounded-[35px] bg-[#f7f7f7] px-[24px] pb-[28px] pt-[24px] md:h-[740px] md:px-[30px] md:pb-[33px] md:pt-[30px]"
     >
       <div className="aspect-[1.6] w-full overflow-visible">

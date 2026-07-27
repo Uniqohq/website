@@ -99,29 +99,10 @@ button {
 .burst-particle {
   position: fixed;
   z-index: 90;
-  height: 2px;
   border-radius: 999px;
-  background: var(--burst-color, #111);
   pointer-events: none;
-  transform: translate(-50%, -50%) rotate(var(--burst-rotate)) scaleX(0.45);
   transform-origin: center;
-  animation: burst-particle 560ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes burst-particle {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -50%) rotate(var(--burst-rotate)) scaleX(0.35);
-  }
-
-  22% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-    transform: translate(calc(-50% + var(--burst-x)), calc(-50% + var(--burst-y))) rotate(var(--burst-end-rotate)) scaleX(1);
-  }
+  will-change: transform, opacity;
 }
 
 ::selection {

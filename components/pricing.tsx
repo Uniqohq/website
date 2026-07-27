@@ -1,11 +1,18 @@
 "use client";
 
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { Flip } from "gsap/Flip";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
 import { Check } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { CardImage } from "./card-image";
 import { useSiteLocale } from "./site-locale";
+
+gsap.registerPlugin(Flip, ScrollTrigger, SplitText, useGSAP);
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -30,24 +37,85 @@ const plans = [
 export function Pricing() {
   const [billing, setBilling] = useState<"monthly" | "yearly">("yearly");
   const reducedMotion = useReducedMotion();
-  const { copy } = useSiteLocale();
+  const { copy, language } = useSiteLocale();
+  const sectionRef = useRef<HTMLElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const switchThumbRef = useRef<HTMLSpanElement>(null);
+  const switchStateRef = useRef<ReturnType<typeof Flip.getState> | null>(null);
   const localizedPlans = plans.map((plan, index) => ({ ...plan, ...copy.pricing.plans[index] }));
 
+  useLayoutEffect(() => {
+    if (!switchStateRef.current || reducedMotion) {
+      switchStateRef.current = null;
+      return;
+    }
+
+    Flip.from(switchStateRef.current, {
+      duration: 0.46,
+      ease: "power3.out",
+      scale: true,
+      absolute: false
+    });
+    switchStateRef.current = null;
+  }, [billing, reducedMotion]);
+
+  useGSAP(
+    () => {
+      if (!headingRef.current || reducedMotion) {
+        return;
+      }
+
+      const split = SplitText.create(headingRef.current, {
+        type: "lines",
+        mask: "lines",
+        autoSplit: true,
+        onSplit(self) {
+          return gsap.from(self.lines, {
+            yPercent: 105,
+            autoAlpha: 0,
+            duration: 0.76,
+            stagger: 0.09,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: headingRef.current,
+              start: "top 82%",
+              once: true
+            }
+          });
+        }
+      });
+
+      return () => split.revert();
+    },
+    { scope: sectionRef, dependencies: [language, reducedMotion], revertOnUpdate: true }
+  );
+
+  const selectBilling = (nextBilling: "monthly" | "yearly") => {
+    if (nextBilling === billing) {
+      return;
+    }
+
+    if (!reducedMotion && switchThumbRef.current) {
+      switchStateRef.current = Flip.getState(switchThumbRef.current);
+    }
+    setBilling(nextBilling);
+  };
+
   return (
-    <section id="pricing" className="bg-[#ececee]">
+    <section id="pricing" ref={sectionRef} className="bg-[#ececee]">
       <div className="container min-h-[1320px] overflow-visible py-[64px]">
       <div className="mx-auto mb-[72px] flex max-w-[520px] flex-col items-center text-center">
         <span className="section-kicker">05</span>
-        <h2 className="mt-[12px] max-w-full text-[clamp(42px,3.6vw,69px)] font-medium leading-[0.94]">
+        <h2 ref={headingRef} className="mt-[12px] max-w-full text-[clamp(42px,3.6vw,69px)] font-medium leading-[0.94]">
           {copy.pricing.titleTop}
           <br />
           {copy.pricing.titleBottom}
         </h2>
         <p className="mt-[16px] max-w-[430px] text-[20px] font-medium leading-[1.102] text-[#686868]">{copy.pricing.copy}</p>
         <div role="group" aria-label="Billing period" className="relative mt-[52px] flex h-[58px] w-full max-w-[340px] rounded-full border border-black md:h-[62px] md:max-w-none md:w-[336px]">
-          <motion.span
-            layout
-            transition={{ type: "spring", stiffness: 390, damping: 34, mass: 0.8 }}
+          <span
+            ref={switchThumbRef}
+            data-flip-id="pricing-switch-thumb"
             className={`absolute top-[-1px] h-[58px] rounded-full bg-black md:h-[62px] ${
               billing === "monthly" ? "left-[-1px] w-[47%] md:w-[157px]" : "left-[47%] w-[53%] md:left-[156px] md:w-[181px]"
             }`}
@@ -56,7 +124,7 @@ export function Pricing() {
             <button
               key={item}
               type="button"
-              onClick={() => setBilling(item)}
+              onClick={() => selectBilling(item)}
               aria-pressed={billing === item}
               className={`relative z-10 flex h-full items-center justify-center rounded-full text-[22px] font-medium leading-[0.94] transition-colors duration-300 md:text-[25px] ${
                 billing === item ? "text-white" : "text-black"
@@ -71,11 +139,12 @@ export function Pricing() {
         {localizedPlans.map((plan, index) => (
           <motion.article
             key={plan.name}
-            initial={reducedMotion ? false : { opacity: 0 }}
-            whileInView={reducedMotion ? undefined : { opacity: 1 }}
+            initial={reducedMotion ? false : { opacity: 0, y: 18 }}
+            whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-120px" }}
             transition={{
-              opacity: { duration: 0.72, ease, delay: index * 0.1 }
+              opacity: { duration: 0.72, ease, delay: index * 0.07 },
+              y: { duration: 0.72, ease, delay: index * 0.07 }
             }}
             className={`flex min-h-[540px] min-w-0 transform-gpu flex-col gap-[28px] rounded-[28px] pb-[24px] pl-[24px] pr-[20px] pt-[38px] will-change-transform md:pl-[28px] md:pr-[24px] ${
               plan.dark ? "bg-[linear-gradient(144.34deg,#252729_0%,#1c1e1f_127.74%)] text-white" : "bg-[#f7f7f7] text-black"

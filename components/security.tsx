@@ -42,10 +42,10 @@ export function Security() {
           return (
             <motion.article
               key={card.title}
-              initial={reducedMotion ? false : { opacity: 0 }}
-              whileInView={reducedMotion ? undefined : { opacity: 1 }}
+              initial={reducedMotion ? false : { opacity: 0, y: 18 }}
+              whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-120px" }}
-              transition={{ duration: 0.68, ease, delay: index * 0.09 }}
+              transition={{ duration: 0.68, ease, delay: index * 0.065 }}
               className="flex min-h-[420px] min-w-0 flex-col rounded-[35px] bg-[#f7f7f7] p-[28px] md:p-[34px]"
             >
               <div className="mb-[82px] flex size-[75px] items-center justify-center rounded-[25px] bg-[#f0f0f0]">
@@ -61,8 +61,8 @@ export function Security() {
         })}
       </div>
       <motion.div
-        initial={reducedMotion ? false : { opacity: 0 }}
-        whileInView={reducedMotion ? undefined : { opacity: 1 }}
+        initial={reducedMotion ? false : { opacity: 0, y: 18 }}
+        whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-120px" }}
         transition={{ duration: 0.75, ease }}
         className="mt-[31px] grid overflow-hidden rounded-[35px] bg-[#f7f7f7] md:h-[330px] md:grid-cols-[0.95fr_1.25fr]"

@@ -1,5 +1,6 @@
 "use client";
 
+import gsap from "gsap";
 import { useEffect } from "react";
 
 function getBurstColor(target: Element) {
@@ -19,39 +20,57 @@ function getBurstColor(target: Element) {
 export function ClickBurst() {
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {
-      const target = event.target instanceof Element ? event.target.closest(".burst-hover") : null;
+      const target = event.target instanceof Element ? event.target.closest<HTMLElement>(".burst-hover") : null;
 
       if (!target) {
         return;
       }
 
-      const count = 7 + Math.floor(Math.random() * 4);
+      const count = 8 + Math.floor(Math.random() * 5);
       const color = getBurstColor(target);
+      const offset = Math.random() * Math.PI * 2;
+
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        gsap.fromTo(target, { scale: 0.975 }, { scale: 1, duration: 0.38, ease: "back.out(2.1)", clearProps: "transform" });
+      }
 
       for (let index = 0; index < count; index += 1) {
         const particle = document.createElement("span");
-        const angle = Math.random() * Math.PI * 2;
-        const distance = 18 + Math.random() * 42;
+        const angle = offset + (index / count) * Math.PI * 2 + (Math.random() - 0.5) * 0.34;
+        const distance = 24 + Math.random() * 38;
         const length = 5 + Math.random() * 8;
-        const height = Math.random() > 0.72 ? 3 : 2;
-        const drift = (Math.random() - 0.5) * 18;
-        const rotation = Math.random() * 220 - 110;
-        const duration = 360 + Math.random() * 240;
+        const rotation = (angle * 180) / Math.PI + (Math.random() - 0.5) * 42;
 
         particle.className = "burst-particle";
-        particle.style.left = `${event.clientX}px`;
-        particle.style.top = `${event.clientY}px`;
-        particle.style.width = `${length}px`;
-        particle.style.height = `${height}px`;
-        particle.style.animationDuration = `${duration}ms`;
-        particle.style.setProperty("--burst-x", `${Math.cos(angle) * distance + drift}px`);
-        particle.style.setProperty("--burst-y", `${Math.sin(angle) * distance - 8 - Math.random() * 22}px`);
-        particle.style.setProperty("--burst-rotate", `${rotation}deg`);
-        particle.style.setProperty("--burst-end-rotate", `${rotation + Math.random() * 180 - 90}deg`);
-        particle.style.setProperty("--burst-color", color);
-
         document.body.appendChild(particle);
-        window.setTimeout(() => particle.remove(), duration + 80);
+
+        gsap.set(particle, {
+          left: event.clientX,
+          top: event.clientY,
+          width: length,
+          height: Math.random() > 0.78 ? 3 : 2,
+          backgroundColor: color,
+          rotation,
+          scaleX: 0.35,
+          autoAlpha: 0,
+          xPercent: -50,
+          yPercent: -50
+        });
+
+        gsap.timeline({ onComplete: () => particle.remove() })
+          .to(particle, { autoAlpha: 1, scaleX: 1, duration: 0.08, ease: "power2.out" })
+          .to(
+            particle,
+            {
+              x: Math.cos(angle) * distance,
+              y: Math.sin(angle) * distance + 9 + Math.random() * 13,
+              rotation: rotation + (Math.random() - 0.5) * 150,
+              autoAlpha: 0,
+              duration: 0.38 + Math.random() * 0.22,
+              ease: "power2.out"
+            },
+            0.045 + Math.random() * 0.035
+          );
       }
     };
 
