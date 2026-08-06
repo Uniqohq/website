@@ -7,11 +7,12 @@ import Image from "next/image";
 import { useRef } from "react";
 import { CardImage } from "./card-image";
 import { useSiteLocale } from "./site-locale";
+import { getCardAsset } from "@/lib/card-assets";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export function Hero() {
-  const { copy } = useSiteLocale();
+  const { copy, region } = useSiteLocale();
   const sectionRef = useRef<HTMLElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const cardStackRef = useRef<HTMLDivElement>(null);
@@ -166,7 +167,7 @@ export function Hero() {
         <div ref={cardStackRef} className="relative mb-[22px] aspect-[1.6] w-[min(88vw,480px)] md:mb-[clamp(22px,4dvh,84px)] md:w-[min(92vw,565px,58dvh)]">
           <div ref={midnightRef} className="absolute inset-0 transform-gpu will-change-transform">
             <CardImage
-              src="/assets/uniqo-card-midnight.webp"
+              src={getCardAsset(region, "midnight")}
               alt="Uniqo Midnight card"
               width={2400}
               height={1500}
@@ -176,7 +177,7 @@ export function Hero() {
           </div>
           <div ref={graphiteRef} className="invisible absolute inset-0 hidden opacity-0 transform-gpu will-change-transform md:block">
             <CardImage
-              src="/assets/uniqo-card-graphite.webp"
+              src={getCardAsset(region, "graphite")}
               alt="Uniqo Graphite card"
               width={2400}
               height={1500}
@@ -185,7 +186,7 @@ export function Hero() {
           </div>
           <div ref={arcticRef} className="invisible absolute inset-0 hidden opacity-0 transform-gpu will-change-transform md:block">
             <CardImage
-              src="/assets/uniqo-card-arctic.webp"
+              src={getCardAsset(region, "arctic")}
               alt="Uniqo Arctic card"
               width={2400}
               height={1500}

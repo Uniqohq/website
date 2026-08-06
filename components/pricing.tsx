@@ -10,6 +10,7 @@ import Link from "next/link";
 import { useLayoutEffect, useRef, useState } from "react";
 import { CardImage } from "./card-image";
 import { useSiteLocale } from "./site-locale";
+import { getCardAsset } from "@/lib/card-assets";
 
 gsap.registerPlugin(Flip, ScrollTrigger, useGSAP);
 
@@ -36,7 +37,7 @@ const plans = [
 export function Pricing() {
   const [billing, setBilling] = useState<"monthly" | "yearly">("yearly");
   const reducedMotion = useReducedMotion();
-  const { copy, language } = useSiteLocale();
+  const { copy, language, region } = useSiteLocale();
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const switchThumbRef = useRef<HTMLSpanElement>(null);
@@ -212,7 +213,7 @@ export function Pricing() {
         >
           <span className="pointer-events-none absolute bottom-[26px] left-1/2 h-[90px] w-[72%] -translate-x-1/2 rotate-[4deg] rounded-full bg-black/16 blur-[38px]" />
           <CardImage
-            src="/assets/uniqo-card-arctic.webp"
+            src={getCardAsset(region, "arctic")}
             alt="Uniqo Arctic card"
             width={2400}
             height={1500}

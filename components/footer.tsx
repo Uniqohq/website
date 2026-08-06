@@ -25,15 +25,16 @@ const footerLinkHrefs = [
 ] as const;
 
 const regions = [
-  { flag: "/assets/flags/us.svg" },
-  { flag: "/assets/flags/eu.svg" },
-  { flag: "/assets/flags/gb.svg" },
-  { flag: "/assets/flags/ca.svg" },
-  { flag: "/assets/flags/au.svg" },
-  { flag: "/assets/flags/sg.svg" },
-  { flag: "/assets/flags/ae.svg" },
-  { flag: "/assets/flags/jp.svg" }
-];
+  { code: "us", flag: "/assets/flags/us.svg" },
+  { code: "eu", flag: "/assets/flags/eu.svg" },
+  { code: "gb", flag: "/assets/flags/gb.svg" },
+  { code: "ca", flag: "/assets/flags/ca.svg" },
+  { code: "au", flag: "/assets/flags/au.svg" },
+  { code: "sg", flag: "/assets/flags/sg.svg" },
+  { code: "ae", flag: "/assets/flags/ae.svg" },
+  { code: "jp", flag: "/assets/flags/jp.svg" },
+  { code: "ru", flag: "/assets/flags/ru.svg" }
+] as const;
 
 function useDropdownDismiss(open: boolean, close: () => void) {
   const ref = useRef<HTMLDivElement>(null);
@@ -68,11 +69,10 @@ function useDropdownDismiss(open: boolean, close: () => void) {
 }
 
 function RegionDropdown() {
-  const { copy } = useSiteLocale();
+  const { copy, region, setRegion } = useSiteLocale();
   const localizedRegions = regions.map((region, index) => ({ ...region, ...copy.footer.regions[index] }));
   const [open, setOpen] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const selected = localizedRegions[selectedIndex];
+  const selected = localizedRegions.find((item) => item.code === region) ?? localizedRegions[0];
   const dropdownRef = useDropdownDismiss(open, () => setOpen(false));
 
   return (
@@ -96,19 +96,19 @@ function RegionDropdown() {
       </button>
       {open ? (
         <div id="region-menu" role="group" aria-label="Region options" className="absolute bottom-[50px] left-0 z-50 grid w-[222px] overflow-hidden rounded-[16px] border border-white/10 bg-[#111112] py-[6px] shadow-[0_18px_45px_rgba(0,0,0,0.35)]">
-          {localizedRegions.map((region, index) => (
+          {localizedRegions.map((item) => (
             <button
-              key={`${region.label}-${index}`}
+              key={item.code}
               type="button"
-              aria-pressed={selectedIndex === index}
+              aria-pressed={region === item.code}
               onClick={() => {
-                setSelectedIndex(index);
+                setRegion(item.code);
                 setOpen(false);
               }}
               className="flex h-[34px] items-center gap-[9px] px-[12px] text-left text-[13px] font-medium text-white/78"
             >
-              <Image src={region.flag} alt="" width={24} height={16} className="h-[16px] w-[24px] rounded-[3px] object-cover" />
-              <span className="truncate">{"menuLabel" in region ? region.menuLabel : region.label}</span>
+              <Image src={item.flag} alt="" width={24} height={16} className="h-[16px] w-[24px] rounded-[3px] object-cover" />
+              <span className="truncate">{"menuLabel" in item ? item.menuLabel : item.label}</span>
             </button>
           ))}
         </div>

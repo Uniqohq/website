@@ -5,28 +5,37 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { CardImage } from "./card-image";
 import { useSiteLocale } from "./site-locale";
+import { getCardAsset, type CardStyle } from "@/lib/card-assets";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
 const products = [
   {
-    image: "/assets/uniqo-card-arctic.webp",
+    style: "arctic",
     width: 2400,
     height: 1500
   },
   {
-    image: "/assets/uniqo-card-midnight.webp",
+    style: "midnight",
     width: 2400,
     height: 1500
   },
   {
-    image: "/assets/uniqo-card-graphite.webp",
+    style: "graphite",
     width: 2400,
     height: 1500
   }
-];
+] satisfies Array<{ style: CardStyle; width: number; height: number }>;
 
-function ProductCard({ product, index }: { product: (typeof products)[number] & { number: string; name: string; copy: string }; index: number }) {
+function ProductCard({
+  product,
+  index,
+  region
+}: {
+  product: (typeof products)[number] & { number: string; name: string; copy: string };
+  index: number;
+  region: Parameters<typeof getCardAsset>[0];
+}) {
   const reducedMotion = useReducedMotion();
 
   return (
@@ -39,7 +48,7 @@ function ProductCard({ product, index }: { product: (typeof products)[number] & 
     >
       <div className="aspect-[1.6] w-full overflow-visible">
         <CardImage
-          src={product.image}
+          src={getCardAsset(region, product.style)}
           alt={`${product.name} Uniqo card`}
           width={product.width}
           height={product.height}
@@ -64,7 +73,7 @@ function ProductCard({ product, index }: { product: (typeof products)[number] & 
 
 export function Products() {
   const reducedMotion = useReducedMotion();
-  const { copy } = useSiteLocale();
+  const { copy, region } = useSiteLocale();
   const localizedProducts = products.map((product, index) => ({ ...product, ...copy.products.cards[index] }));
 
   return (
@@ -76,7 +85,7 @@ export function Products() {
       </div>
       <div className="grid min-w-0 gap-[31px] md:grid-cols-[repeat(3,minmax(0,1fr))]">
         {localizedProducts.map((product, index) => (
-          <ProductCard key={product.name} product={product} index={index} />
+          <ProductCard key={product.name} product={product} index={index} region={region} />
         ))}
       </div>
       <motion.div

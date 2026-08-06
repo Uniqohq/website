@@ -5,6 +5,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { CardImage } from "./card-image";
 import { useSiteLocale } from "./site-locale";
+import { getCardAsset } from "@/lib/card-assets";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -25,7 +26,7 @@ const securityCards = [
 
 export function Security() {
   const reducedMotion = useReducedMotion();
-  const { copy } = useSiteLocale();
+  const { copy, region } = useSiteLocale();
   const localizedCards = securityCards.map((card, index) => ({ ...card, ...copy.security.cards[index] }));
 
   return (
@@ -84,7 +85,7 @@ export function Security() {
           className="relative h-[275px] min-w-0 overflow-hidden px-4 md:h-auto md:min-h-[330px] md:px-6"
         >
           <CardImage
-            src="/assets/uniqo-card-midnight.webp"
+            src={getCardAsset(region, "midnight")}
             alt="Uniqo card security preview"
             width={2400}
             height={1500}
