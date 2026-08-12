@@ -240,7 +240,7 @@ export function Footer() {
 
   return (
     <footer ref={footerRef} className="relative flex min-h-[clamp(430px,24vw,460px)] flex-col justify-between overflow-visible border-t border-[rgba(255,255,255,0.11)] bg-[#050506] text-white">
-      <div className="container relative grid grid-cols-2 gap-x-6 gap-y-12 py-[clamp(38px,2.45vw,47px)] md:grid-cols-[1.35fr_1fr_1fr_1fr] md:gap-8">
+      <div className="footer-header-grid container relative grid grid-cols-2 gap-x-6 gap-y-12 py-[clamp(38px,2.45vw,47px)]">
         <div data-footer-reveal className="col-span-2 md:col-span-1">
           <Link href="/" aria-label="Uniqo home" className="inline-flex">
             <Image src="/assets/uniqo-logo.svg" alt="Uniqo" width={867} height={224} className="h-auto w-[clamp(94px,5.1vw,98px)] invert" />
@@ -269,7 +269,7 @@ export function Footer() {
         ))}
       </div>
       <div className="container">
-        <div className="flex flex-col gap-5 py-[clamp(18px,1.2vw,23px)] text-[clamp(14px,0.92vw,17.7px)] font-medium leading-[1.102] text-white opacity-60 md:grid md:grid-cols-[1.35fr_1fr_1fr_1fr] md:gap-8">
+        <div className="footer-header-grid flex flex-col gap-5 py-[clamp(18px,1.2vw,23px)] text-[clamp(14px,0.92vw,17.7px)] font-medium leading-[1.102] text-white opacity-60 md:grid">
           <span className="md:col-span-3">{copy.footer.copyright}</span>
           <div className="flex items-center justify-start gap-[clamp(14px,0.88vw,17px)] md:col-start-4">
             {socialIcons.map((icon) => (

@@ -114,6 +114,24 @@ button {
   margin-inline: auto;
 }
 
+@media (min-width: 768px) {
+  .footer-header-grid {
+    grid-template-columns: 1.35fr 1fr 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .footer-header-grid {
+    grid-template-columns:
+      clamp(342px, calc(34.88% - 93px), 458px)
+      clamp(330px, calc(19.2% + 90px), 396px)
+      minmax(0, 1fr)
+      163.655px;
+    column-gap: 0;
+  }
+}
+
 .section-kicker {
   color: var(--uniqo-muted);
   font-size: clamp(14px, 1.038vw, 19.939px);
