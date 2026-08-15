@@ -33,7 +33,8 @@ const regions = [
   { code: "sg", flag: "/assets/flags/sg.svg" },
   { code: "ae", flag: "/assets/flags/ae.svg" },
   { code: "jp", flag: "/assets/flags/jp.svg" },
-  { code: "ru", flag: "/assets/flags/ru.svg" }
+  { code: "ru", flag: "/assets/flags/ru.svg" },
+  { code: "by", flag: "/assets/flags/by.svg" }
 ] as const;
 
 function useDropdownDismiss(open: boolean, close: () => void) {

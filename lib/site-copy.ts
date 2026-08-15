@@ -123,7 +123,8 @@ export const siteCopy = {
         { label: "Singapore" },
         { label: "United Arab Emirates" },
         { label: "Japan" },
-        { label: "Russia" }
+        { label: "Russia" },
+        { label: "Belarus" }
       ]
     },
     waitlist: {
@@ -259,7 +260,8 @@ export const siteCopy = {
         { label: "Сингапур" },
         { label: "ОАЭ" },
         { label: "Япония" },
-        { label: "Россия" }
+        { label: "Россия" },
+        { label: "Беларусь" }
       ]
     },
     waitlist: {

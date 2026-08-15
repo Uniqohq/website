@@ -123,12 +123,8 @@ button {
 
 @media (min-width: 1280px) {
   .footer-header-grid {
-    grid-template-columns:
-      clamp(342px, calc(34.88% - 93px), 458px)
-      clamp(330px, calc(19.2% + 90px), 396px)
-      minmax(0, 1fr)
-      163.655px;
-    column-gap: 0;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: clamp(32px, 2.08vw, 40px);
   }
 }
 

@@ -11,11 +11,11 @@ type LocaleContextValue = {
   copy: (typeof siteCopy)[SiteLanguage];
 };
 
-export type SiteRegion = "us" | "eu" | "gb" | "ca" | "au" | "sg" | "ae" | "jp" | "ru";
+export type SiteRegion = "us" | "eu" | "gb" | "ca" | "au" | "sg" | "ae" | "jp" | "ru" | "by";
 
 const LANGUAGE_STORAGE_KEY = "uniqo-language";
 const REGION_STORAGE_KEY = "uniqo-region";
-const regions: SiteRegion[] = ["us", "eu", "gb", "ca", "au", "sg", "ae", "jp", "ru"];
+const regions: SiteRegion[] = ["us", "eu", "gb", "ca", "au", "sg", "ae", "jp", "ru", "by"];
 
 const LocaleContext = createContext<LocaleContextValue | null>(null);
 
