@@ -1,6 +1,11 @@
 "use client";
 
+import gsap from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect } from "react";
+
+gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
 export function SmoothScroll() {
   useEffect(() => {
@@ -25,7 +30,23 @@ export function SmoothScroll() {
 
       event.preventDefault();
 
-      if (hash !== "#") {
+      if (hash === "#manifesto") {
+        ScrollTrigger.refresh();
+        const manifestoTrigger = ScrollTrigger.getById("uniqo-manifesto");
+        const destination = manifestoTrigger?.start;
+
+        if (typeof destination === "number") {
+          gsap.killTweensOf(window);
+          gsap.to(window, {
+            duration: 0.9,
+            scrollTo: { y: destination + 1, autoKill: false },
+            ease: "power3.inOut",
+            overwrite: "auto"
+          });
+        } else {
+          document.querySelector(hash)?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      } else if (hash !== "#") {
         document.querySelector(hash)?.scrollIntoView({ behavior: "smooth", block: "start" });
       }
 
