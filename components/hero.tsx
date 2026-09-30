@@ -169,8 +169,8 @@ export function Hero() {
             <CardImage
               src={getCardAsset(region, "midnight")}
               alt="Uniqo Midnight card"
-              width={2400}
-              height={1500}
+              width={2000}
+              height={1273}
               priority
               className="h-full w-full object-contain"
             />
@@ -179,8 +179,8 @@ export function Hero() {
             <CardImage
               src={getCardAsset(region, "graphite")}
               alt="Uniqo Graphite card"
-              width={2400}
-              height={1500}
+              width={2000}
+              height={1273}
               className="h-full w-full object-contain"
             />
           </div>
@@ -188,8 +188,8 @@ export function Hero() {
             <CardImage
               src={getCardAsset(region, "arctic")}
               alt="Uniqo Arctic card"
-              width={2400}
-              height={1500}
+              width={2000}
+              height={1273}
               className="h-full w-full object-contain"
             />
           </div>
