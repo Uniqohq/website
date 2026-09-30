@@ -12,18 +12,18 @@ const ease = [0.16, 1, 0.3, 1] as const;
 const products = [
   {
     style: "arctic",
-    width: 2000,
-    height: 1273
+    width: 1600,
+    height: 1019
   },
   {
     style: "midnight",
-    width: 2000,
-    height: 1273
+    width: 1600,
+    height: 1019
   },
   {
     style: "graphite",
-    width: 2000,
-    height: 1273
+    width: 1600,
+    height: 1019
   }
 ] satisfies Array<{ style: CardStyle; width: number; height: number }>;
 
