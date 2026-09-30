@@ -87,8 +87,8 @@ export function Security() {
           <CardImage
             src={getCardAsset(region, "midnight")}
             alt="Uniqo card security preview"
-            width={2000}
-            height={1273}
+            width={1600}
+            height={1019}
             className="absolute left-[4%] top-[22px] w-[min(67vw,260px)] rotate-[-7deg] md:left-[8%] md:top-[42px] md:w-[min(72vw,430px)] xl:left-[2%] xl:top-[46px] xl:w-[min(31vw,392px)]"
           />
           <CardImage
