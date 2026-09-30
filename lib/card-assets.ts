@@ -3,15 +3,15 @@ import type { SiteRegion } from "@/components/site-locale";
 export type CardStyle = "arctic" | "midnight" | "graphite";
 
 const defaultCards: Record<CardStyle, string> = {
-  arctic: "/assets/uniqo-card-arctic.webp",
-  midnight: "/assets/uniqo-card-midnight.webp",
-  graphite: "/assets/uniqo-card-graphite.webp"
+  arctic: "/assets/uniqo-card-arctic.png",
+  midnight: "/assets/uniqo-card-midnight.png",
+  graphite: "/assets/uniqo-card-graphite.png"
 };
 
 const mirCards: Record<CardStyle, string> = {
-  arctic: "/assets/uniqo-card-arctic-mir.webp",
-  midnight: "/assets/uniqo-card-midnight-mir.webp",
-  graphite: "/assets/uniqo-card-graphite-mir.webp"
+  arctic: "/assets/uniqo-card-arctic-mir.png",
+  midnight: "/assets/uniqo-card-midnight-mir.png",
+  graphite: "/assets/uniqo-card-graphite-mir.png"
 };
 
 export function getCardAsset(region: SiteRegion, style: CardStyle) {
