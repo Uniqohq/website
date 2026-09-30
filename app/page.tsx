@@ -85,9 +85,9 @@ const homeStructuredData = {
       manufacturer: { "@id": `${SITE_URL}/#organization` },
       category: "Payment card",
       image: [
-        `${SITE_URL}/assets/uniqo-card-midnight.webp`,
-        `${SITE_URL}/assets/uniqo-card-graphite.webp`,
-        `${SITE_URL}/assets/uniqo-card-arctic.webp`
+        `${SITE_URL}/assets/uniqo-card-midnight.png`,
+        `${SITE_URL}/assets/uniqo-card-graphite.png`,
+        `${SITE_URL}/assets/uniqo-card-arctic.png`
       ],
       offers: [
         { "@type": "Offer", name: "Arctic", price: "0", priceCurrency: "USD", availability: "https://schema.org/PreOrder", url: `${SITE_URL}/waitlist` },
