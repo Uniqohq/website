@@ -215,8 +215,8 @@ export function Pricing() {
           <CardImage
             src={getCardAsset(region, "arctic")}
             alt="Uniqo Arctic card"
-            width={2400}
-            height={1500}
+            width={2000}
+            height={1273}
             className="relative z-10 h-auto w-[min(76vw,640px)] rotate-[4deg]"
           />
         </motion.div>
