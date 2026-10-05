@@ -26,6 +26,9 @@ const nextConfig: NextConfig = {
     qualities: [90],
     minimumCacheTTL: 31536000
   },
+  async redirects() {
+    return [{ source: "/brand", destination: "/press", permanent: false }];
+  },
   async headers() {
     const securityHeaders = [
       { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },

@@ -15,7 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       ]
     },
     {
-      url: `${SITE_URL}/brand`,
+      url: `${SITE_URL}/press`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.4
