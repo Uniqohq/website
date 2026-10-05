@@ -1,0 +1,18 @@
+UNIQO — BOILERPLATE
+
+One line
+Uniqo is the card that thinks before it pays.
+
+Short (about 30 words)
+Uniqo is a pre-launch financial technology product by FrameLabs LLC. It is built around one idea: control. Intelligent payment controls, virtual and physical cards, and real-time protection.
+
+Long
+Uniqo is a pre-launch financial technology product by FrameLabs LLC, designed around control. Not another bank and not another card: a simpler way to manage how money moves. Planned features include virtual and physical cards, instant freeze and unfreeze, spending limits, real-time notifications and AI-assisted fraud protection. Plans: Arctic (free), Midnight (USD 4.99 per month) and Graphite (USD 9.99 per month). Plans and prices are pre-launch information and may change.
+
+Please note
+Uniqo is not a bank and is not currently available as a financial service. Please do not describe it as one.
+
+Contact
+Press and licensing: legal@uniqo.one
+Website: https://uniqo.one
+X and Telegram: @uniqohq

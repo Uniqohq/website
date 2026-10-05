@@ -1,0 +1,22 @@
+{
+  "name": "Uniqo colours",
+  "light": {
+    "ink": "#050505",
+    "muted": "#686868",
+    "background": "#ECECEE",
+    "hero": "#EEEFF1",
+    "surface": "#F7F7F7"
+  },
+  "dark": {
+    "night": "#0E1013",
+    "night2": "#1B1D22",
+    "paper": "#F4F5F7",
+    "secondary": "#9AA0AB",
+    "control": "#FFFFFF"
+  },
+  "cards": {
+    "arctic": "#CCCFD6",
+    "midnight": "#3D4D75",
+    "graphite": "#6B6B70"
+  }
+}

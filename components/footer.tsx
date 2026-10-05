@@ -20,7 +20,7 @@ const socialIcons = [
 
 const footerLinkHrefs = [
   ["#products", "/waitlist", "/waitlist", "#pricing", "#pricing"],
-  ["#manifesto", "/waitlist", "/waitlist", "/waitlist", "mailto:legal@uniqo.one"],
+  ["#manifesto", "/waitlist", "/waitlist", "/press", "mailto:legal@uniqo.one"],
   ["/waitlist", "#security", "/legal/terms", "/legal/privacy", "/legal/cookies"]
 ] as const;
 
