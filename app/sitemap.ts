@@ -13,6 +13,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
         `${SITE_URL}/assets/uniqo-card-graphite.png`,
         `${SITE_URL}/assets/uniqo-card-arctic.png`
       ]
+    },
+    {
+      url: `${SITE_URL}/brand`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.4
     }
   ];
 }
