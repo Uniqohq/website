@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import type { ReactNode } from "react";
+import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
 import { SITE_URL } from "@/lib/site-metadata";
 
 const PRESS = "/press";
@@ -64,12 +65,15 @@ const previews = [
 
 const pdf = `${PRESS}/Uniqo-Brand-Guidelines.pdf`;
 
-function Section({ id, title, intro, children }: { id: string; title: string; intro?: string; children: ReactNode }) {
+function Section({ id, kicker, title, intro, children }: { id: string; kicker: string; title: string; intro?: string; children: ReactNode }) {
   return (
-    <section id={id} className="scroll-mt-24 border-t border-black/10 pt-12">
-      <h2 className="text-[clamp(26px,2.4vw,40px)] font-medium leading-[1.1] tracking-[-0.01em]">{title}</h2>
-      {intro ? <p className="mt-3 max-w-[620px] text-[17px] leading-[1.35] text-[#686868]">{intro}</p> : null}
-      <div className="mt-8">{children}</div>
+    <section id={id} className="scroll-mt-[110px] py-[58px]">
+      <div className="mb-[56px]">
+        <span className="section-kicker">{kicker}</span>
+        <h2 className="section-title mt-[9px]">{title}</h2>
+        {intro ? <p className="mt-[16px] max-w-[560px] text-[clamp(18px,1.34vw,25.674px)] font-medium leading-[1.102] text-[#686868]">{intro}</p> : null}
+      </div>
+      {children}
     </section>
   );
 }
@@ -84,37 +88,30 @@ function DownloadLink({ href, children }: { href: string; children: ReactNode })
 
 export default function PressPage() {
   return (
-    <main id="main-content" className="min-h-screen bg-[#ececee] text-black">
-      <header className="container flex h-[96px] items-center justify-between">
-        <Link href="/" aria-label="Uniqo home" className="flex items-center">
-          <Image src="/assets/uniqo-logo.svg" alt="Uniqo" width={867} height={224} priority className="h-auto w-[102px]" />
-        </Link>
-        <Link href="/" className="text-[15px] font-medium text-black opacity-60 transition-opacity duration-200 hover:opacity-100">
-          Back to site
-        </Link>
-      </header>
-
-      <div className="container max-w-[1100px] space-y-16 pb-24 pt-8">
-        <div>
-          <p className="text-[15px] font-medium text-[#686868]">Press</p>
-          <h1 className="mt-3 text-[clamp(40px,5.5vw,88px)] font-medium leading-[1.02] tracking-[-0.02em]">Press kit</h1>
-          <p className="mt-6 max-w-[620px] text-[clamp(18px,1.4vw,24px)] leading-[1.3] text-[#686868]">
-            Everything you need to write about Uniqo: the brand guidelines, logos, card renders, app screens and colours.
+    <>
+      <Header />
+      <main id="main-content" className="bg-[#ececee] pt-[96px] text-black">
+        <div className="container">
+        <section className="flex min-h-[calc(70vh-96px)] flex-col justify-center py-[58px]">
+          <span className="section-kicker">Press</span>
+          <h1 className="section-title mt-[9px]">Press kit</h1>
+          <p className="mt-[16px] max-w-[560px] text-[clamp(18px,1.34vw,25.674px)] font-medium leading-[1.102] text-[#686868]">
+            Brand guidelines, logos, card renders, app screens and colours. Everything you need to write about Uniqo.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a href={`${PRESS}/uniqo-press-kit.zip`} download className="inline-flex h-[52px] items-center rounded-full bg-black px-8 text-[16px] font-medium text-white transition-opacity hover:opacity-85">
-              Download everything (ZIP, 19 MB)
+          <div className="mt-[36px] flex flex-wrap gap-3">
+            <a href={`${PRESS}/uniqo-press-kit.zip`} download className="burst-hover flex h-[52.759px] items-center justify-center rounded-[11px] bg-black px-7 text-[17.681px] font-medium leading-[1.102] text-white">
+              Download everything · ZIP 19 MB
             </a>
-            <a href={pdf} target="_blank" rel="noopener noreferrer" className="inline-flex h-[52px] items-center rounded-full bg-white px-8 text-[16px] font-medium text-black transition-opacity hover:opacity-85">
+            <a href={pdf} target="_blank" rel="noopener noreferrer" className="flex h-[52.759px] items-center justify-center rounded-[11px] bg-[#f7f7f7] px-7 text-[17.681px] font-medium leading-[1.102] text-black">
               Open brand guidelines
             </a>
           </div>
-        </div>
+        </section>
 
-        <Section id="brand-guidelines" title="Brand guidelines" intro="Philosophy, logo, colour, typography, cards and the app, in one document.">
-          <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <Section id="brand-guidelines" kicker="01" title="Brand guidelines" intro="Philosophy, logo, colour, typography, cards and the app, in one document.">
+          <ul className="grid grid-cols-1 gap-[31px] sm:grid-cols-2 lg:grid-cols-3">
             {previews.map((page) => (
-              <li key={page.src} className="overflow-hidden rounded-[24px] bg-[#f7f7f7]">
+              <li key={page.src} className="overflow-hidden rounded-[35px] bg-[#f7f7f7]">
                 <a href={pdf} target="_blank" rel="noopener noreferrer" aria-label={`Open the guidelines: ${page.label}`}>
                   <Image src={page.src} alt={page.label} width={960} height={540} sizes="(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw" className="h-auto w-full" />
                 </a>
@@ -129,11 +126,11 @@ export default function PressPage() {
           </div>
         </Section>
 
-        <Section id="logo" title="Logo" intro="Use the wordmark in black on light and in white on dark. Do not recolour, outline, stretch or add effects. Keep a margin of one logo height around it.">
-          <div className="grid gap-4 sm:grid-cols-2">
+        <Section id="logo" kicker="02" title="Logo" intro="Use the wordmark in black on light and in white on dark. Do not recolour, outline, stretch or add effects. Keep a margin of one logo height around it.">
+          <div className="grid gap-[31px] sm:grid-cols-2">
             {logos.map((logo) => (
               <div key={logo.name}>
-                <div className={`flex h-[220px] items-center justify-center rounded-[28px] ${logo.dark ? "bg-[#050505]" : "bg-[#f7f7f7]"}`}>
+                <div className={`flex h-[220px] items-center justify-center rounded-[35px] ${logo.dark ? "bg-[#050505]" : "bg-[#f7f7f7]"}`}>
                   <Image src={logo.svg} alt={logo.name} width={867} height={224} className="h-auto w-[200px]" />
                 </div>
                 <div className="mt-3 flex items-center justify-between gap-3">
@@ -146,7 +143,7 @@ export default function PressPage() {
               </div>
             ))}
           </div>
-          <div className="mt-6 flex items-center gap-4">
+          <div className="mt-6 flex items-center gap-[31px]">
             <Image src={`${PRESS}/icon/uniqo-app-icon-1024.png`} alt="Uniqo app icon" width={96} height={96} className="size-[96px] rounded-[22px] border border-black/10" />
             <div>
               <p className="text-[15px] font-medium">App icon</p>
@@ -158,12 +155,12 @@ export default function PressPage() {
           </div>
         </Section>
 
-        <Section id="cards" title="Cards" intro="Three designs, three plans. Plans and prices are pre-launch information and may change.">
-          <div className="grid gap-4 sm:grid-cols-3">
+        <Section id="cards" kicker="03" title="Cards" intro="Three designs, three plans. Plans and prices are pre-launch information and may change.">
+          <div className="grid gap-[31px] sm:grid-cols-3">
             {cards.map((card) => (
               <div key={card.name}>
-                <div className="flex h-[210px] items-center justify-center rounded-[28px] bg-[#e3e4e8] p-6">
-                  <Image src={card.src} alt={`Uniqo ${card.name} card`} width={1600} height={1019} sizes="(min-width: 640px) 320px, 100vw" className="h-auto w-full" />
+                <div className="flex aspect-[16/11] items-center justify-center rounded-[35px] bg-[#e3e4e8]">
+                  <Image src={card.src} alt={`Uniqo ${card.name} card`} width={1600} height={1019} sizes="(min-width: 640px) 480px, 90vw" className="h-auto w-[82%]" />
                 </div>
                 <div className="mt-3 flex items-center justify-between gap-3">
                   <span className="text-[15px] font-medium">
@@ -176,11 +173,11 @@ export default function PressPage() {
           </div>
         </Section>
 
-        <Section id="app" title="App screens" intro="Native iOS, light theme, shown on an iPhone. Transparent PNG.">
-          <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+        <Section id="app" kicker="04" title="App screens" intro="Native iOS, light theme, shown on an iPhone. Transparent PNG.">
+          <ul className="grid grid-cols-2 gap-[31px] sm:grid-cols-3 lg:grid-cols-5">
             {screens.map((screen) => (
               <li key={screen.file}>
-                <div className="flex items-center justify-center rounded-[24px] bg-[#f7f7f7] p-3">
+                <div className="flex items-center justify-center rounded-[35px] bg-[#f7f7f7] p-3">
                   <Image src={`${PRESS}/screens/${screen.file}.png`} alt={`Uniqo app: ${screen.name}`} width={792} height={1619} sizes="(min-width: 1024px) 200px, (min-width: 640px) 33vw, 50vw" className="h-auto w-full" />
                 </div>
                 <div className="mt-2 flex items-center justify-between gap-2">
@@ -194,7 +191,7 @@ export default function PressPage() {
           </ul>
         </Section>
 
-        <Section id="colour" title="Colour" intro="Quiet greys and black. The card carries the colour.">
+        <Section id="colour" kicker="05" title="Colour" intro="Quiet greys and black. The card carries the colour.">
           <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4">
             {colours.map((colour) => (
               <li key={colour.name}>
@@ -210,7 +207,7 @@ export default function PressPage() {
           </div>
         </Section>
 
-        <Section id="about" title="About Uniqo">
+        <Section id="about" kicker="06" title="About Uniqo">
           <div className="max-w-[720px] space-y-4 text-[17px] leading-[1.5] text-black/85">
             <p>
               <strong className="font-medium text-black">Uniqo is the card that thinks before it pays.</strong> It is a pre-launch financial technology
@@ -229,7 +226,7 @@ export default function PressPage() {
           </div>
         </Section>
 
-        <Section id="contact" title="Contact">
+        <Section id="contact" kicker="07" title="Contact">
           <p className="text-[17px] leading-[1.5]">
             Press and licensing:{" "}
             <a href="mailto:legal@uniqo.one" className="underline">
@@ -237,7 +234,9 @@ export default function PressPage() {
             </a>
           </p>
         </Section>
-      </div>
-    </main>
+        </div>
+      </main>
+      <Footer />
+    </>
   );
 }
