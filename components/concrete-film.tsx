@@ -40,7 +40,6 @@ export function ConcreteFilm() {
       poster="/media/concrete-film-poster.jpg"
       aria-hidden
     >
-      <source src="/media/concrete-film.webm" type="video/webm" />
       <source src="/media/concrete-film.mp4" type="video/mp4" />
     </video>
   );
