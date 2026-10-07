@@ -29,6 +29,32 @@ export function ConcreteFilm() {
     });
   }, [reducedMotion]);
 
+  // Slide the site header away while the film covers the top of the screen, from the moment it
+  // pins until it scrolls out, and bring it back on the way out in either direction.
+  useEffect(() => {
+    const root = document.documentElement;
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const rect = ref.current?.getBoundingClientRect();
+      const covering = !!rect && rect.top <= 0 && rect.bottom > 0;
+      if (covering) root.dataset.headerHidden = "";
+      else delete root.dataset.headerHidden;
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      cancelAnimationFrame(frame);
+      delete root.dataset.headerHidden;
+    };
+  }, []);
+
   const video = (
     <video
       className="size-full object-cover object-[50%_40%]"
