@@ -10,7 +10,7 @@ export function Header() {
   const { copy } = useSiteLocale();
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-[rgba(236,236,238,0.82)] backdrop-blur-[18px]">
+    <header className="site-header fixed inset-x-0 top-0 z-50 bg-[rgba(236,236,238,0.82)] backdrop-blur-[18px]">
       <div className="container flex h-[96px] items-center justify-between">
         <Link href="/" aria-label="Uniqo home" className="flex items-center">
           <Image src="/assets/uniqo-logo.svg" alt="Uniqo" width={867} height={224} priority className="h-auto w-[102px]" />

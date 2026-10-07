@@ -34,6 +34,10 @@ export const siteCopy = {
         { title: "Spending intelligence", copy: "Understand your spending and the context behind every purchase." }
       ]
     },
+    film: {
+      title: "The card is a key, not a vault.",
+      copy: "Your money stays in your accounts. Uniqo decides where each payment comes from."
+    },
     security: {
       title: "Security",
       copy: "Built to protect your money, before anything happens",
@@ -170,6 +174,10 @@ export const siteCopy = {
         { title: "AI-защита от мошенничества", copy: "Подозрительные операции проверяются до списания денег со счёта." },
         { title: "Аналитика расходов", copy: "Понимайте структуру расходов и контекст каждой покупки." }
       ]
+    },
+    film: {
+      title: "Карта — это ключ, а не сейф.",
+      copy: "Деньги остаются на ваших счетах. Uniqo решает, откуда взять каждый платёж."
     },
     security: {
       title: "Безопасность",

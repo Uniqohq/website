@@ -173,3 +173,12 @@ button {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Sections that want the whole screen (the concrete film) set this while they cover the top. */
+.site-header {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html[data-header-hidden] .site-header {
+  transform: translateY(-100%);
+}
