@@ -3,23 +3,13 @@ export type SiteLanguage = "en" | "ru";
 export const siteCopy = {
   en: {
     header: {
-      nav: ["Products", "Features", "Security", "Pricing", "Manifesto"],
+      nav: ["Features", "Security", "Pricing", "Manifesto"],
       cta: "Get your card"
     },
     hero: {
       titleTop: "The card",
       titleBottom: "that thinks before it pays",
       copy: "Uniqo analyzes in real time so you always pay smarter, faster and with total control"
-    },
-    products: {
-      title: "Products",
-      discover: "Discover all cards",
-      moreDesigns: "More designs, limited editions and exclusive drops.",
-      cards: [
-        { number: "01", name: "Arctic", copy: "Clean, subtle and timeless. For everyday spending." },
-        { number: "02", name: "Midnight", copy: "Bold, minimal and refined. For those who go further." },
-        { number: "03", name: "Graphite", copy: "Strong, reliable and distinct. For your business and beyond" }
-      ]
     },
     features: {
       titleTop: "Everything you need.",
@@ -52,13 +42,21 @@ export const siteCopy = {
     },
     pricing: {
       titleTop: "One card.",
-      titleBottom: "Three ways.",
-      copy: "Choose the plan that fits your life. Upgrade or downgrade anytime.",
+      titleBottom: "Four ways.",
+      copy: "Every plan comes with its own card, free. Upgrade or downgrade anytime.",
       monthly: "Monthly",
       yearly: "Yearly",
       month: "month",
       year: "year",
       forever: "forever",
+      cardIncluded: "Card included",
+      cardsTitle: "Your card comes with your plan.",
+      cards: [
+        { title: "One free card", copy: "Every plan includes one physical card in its own design: Arctic, Midnight, Graphite or Sterling." },
+        { title: "Extra cards", copy: "Need another one? Order extra cards in the design of your plan for an additional fee." },
+        { title: "Limited editions", copy: "Special designs and drops are not tied to any plan. Order them on any plan for an additional fee." },
+        { title: "Designs stay with plans", copy: "Plan designs come with their plan. To get a different one, switch plans." }
+      ],
       startTitleTop: "Not sure yet?",
       startTitleBottom: "Start with Arctic.",
       startCopy: "You can upgrade, downgrade or cancel in any time",
@@ -66,26 +64,28 @@ export const siteCopy = {
       plans: [
         {
           name: "Arctic",
-          copy: "Build for essentials.",
+          copy: "Clean, subtle and timeless. For everyday spending.",
+          card: "Arctic card",
           cta: "Get started",
           features: ["Virtual card", "1 physical card", "Instant notifications", "Spending insights", "Freeze / Unfreeze card"]
         },
         {
           name: "Midnight",
-          copy: "More control.",
+          copy: "Bold, minimal and refined. For those who go further.",
+          card: "Midnight card",
           cta: "Choose midnight",
           features: [
             "Everything in Arctic",
             "Up to 5 virtual cards",
             "Change card number instantly",
             "One-time cards",
-            "AI spending categories",
-            "Premium card designs"
+            "AI spending categories"
           ]
         },
         {
           name: "Graphite",
-          copy: "Total control.",
+          copy: "Strong, reliable and distinct. For total control.",
+          card: "Graphite card",
           cta: "Choose graphite",
           features: [
             "Everything in Midnight",
@@ -96,6 +96,20 @@ export const siteCopy = {
             "AI fraud protection",
             "Dynamic card number",
             "Travel insurance"
+          ]
+        },
+        {
+          name: "Sterling",
+          copy: "Titanium and uncompromising. The very best of Uniqo.",
+          card: "Sterling titanium card",
+          cta: "Choose sterling",
+          features: [
+            "Everything in Graphite",
+            "Priority support, 24/7",
+            "Extended travel insurance",
+            "Express card replacement",
+            "First access to limited editions",
+            "Early access to new features"
           ]
         }
       ]
@@ -144,23 +158,13 @@ export const siteCopy = {
   },
   ru: {
     header: {
-      nav: ["Продукты", "Возможности", "Безопасность", "Тарифы", "Манифест"],
+      nav: ["Возможности", "Безопасность", "Тарифы", "Манифест"],
       cta: "Получить карту"
     },
     hero: {
       titleTop: "Карта,",
       titleBottom: "которая думает перед оплатой",
       copy: "Uniqo анализирует всё в реальном времени, чтобы каждый платёж был быстрее, умнее и полностью под вашим контролем"
-    },
-    products: {
-      title: "Продукты",
-      discover: "Смотреть все карты",
-      moreDesigns: "Больше дизайнов, лимитированные выпуски и эксклюзивные дропы.",
-      cards: [
-        { number: "01", name: "Arctic", copy: "Чистая, сдержанная и вне времени. Для ежедневных трат." },
-        { number: "02", name: "Midnight", copy: "Смелая, минималистичная и выверенная. Для тех, кто идет дальше." },
-        { number: "03", name: "Graphite", copy: "Надежная, выразительная и строгая. Для бизнеса и не только." }
-      ]
     },
     features: {
       titleTop: "Всё, что нужно.",
@@ -193,13 +197,21 @@ export const siteCopy = {
     },
     pricing: {
       titleTop: "Одна карта.",
-      titleBottom: "Три варианта.",
-      copy: "Выберите тариф под свой ритм жизни. Меняйте его в любой момент.",
+      titleBottom: "Четыре варианта.",
+      copy: "В каждый тариф входит своя карта. Меняйте тариф в любой момент.",
       monthly: "Месяц",
       yearly: "Год",
       month: "месяц",
       year: "год",
       forever: "навсегда",
+      cardIncluded: "Карта входит",
+      cardsTitle: "Карта входит в тариф.",
+      cards: [
+        { title: "Одна карта бесплатно", copy: "В каждый тариф входит одна физическая карта в его дизайне: Arctic, Midnight, Graphite или Sterling." },
+        { title: "Дополнительные карты", copy: "Нужна ещё одна? Закажите дополнительные карты в дизайне вашего тарифа за отдельную плату." },
+        { title: "Лимитированные дизайны", copy: "Особые дизайны и дропы не привязаны к тарифам. Их можно заказать на любом тарифе за отдельную плату." },
+        { title: "Дизайн идёт с тарифом", copy: "Дизайны тарифов доступны только вместе с ними. Чтобы получить другой, смените тариф." }
+      ],
       startTitleTop: "Не уверены?",
       startTitleBottom: "Начните с Arctic.",
       startCopy: "Тариф всегда можно сменить или отменить",
@@ -207,26 +219,28 @@ export const siteCopy = {
       plans: [
         {
           name: "Arctic",
-          copy: "База для главного.",
+          copy: "Чистая, сдержанная и вне времени. Для ежедневных трат.",
+          card: "Карта Arctic",
           cta: "Начать",
           features: ["Виртуальная карта", "1 физическая карта", "Мгновенные уведомления", "Аналитика трат", "Заморозка / разморозка карты"]
         },
         {
           name: "Midnight",
-          copy: "Больше контроля.",
+          copy: "Смелая, минималистичная и выверенная. Для тех, кто идёт дальше.",
+          card: "Карта Midnight",
           cta: "Выбрать Midnight",
           features: [
             "Всё из Arctic",
             "До 5 виртуальных карт",
             "Мгновенная смена номера карты",
             "Одноразовые карты",
-            "AI-категории трат",
-            "Премиальные дизайны карт"
+            "AI-категории трат"
           ]
         },
         {
           name: "Graphite",
-          copy: "Максимум контроля.",
+          copy: "Надёжная, выразительная и строгая. Для полного контроля.",
+          card: "Карта Graphite",
           cta: "Выбрать Graphite",
           features: [
             "Всё из Midnight",
@@ -237,6 +251,20 @@ export const siteCopy = {
             "AI-защита от мошенничества",
             "Динамический номер карты",
             "Страхование поездок"
+          ]
+        },
+        {
+          name: "Sterling",
+          copy: "Титан без компромиссов. Лучшее от Uniqo.",
+          card: "Титановая карта Sterling",
+          cta: "Выбрать Sterling",
+          features: [
+            "Всё из Graphite",
+            "Приоритетная поддержка 24/7",
+            "Расширенное страхование поездок",
+            "Срочная замена карты",
+            "Первый доступ к лимитированным дизайнам",
+            "Ранний доступ к новым функциям"
           ]
         }
       ]

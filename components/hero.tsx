@@ -19,6 +19,7 @@ export function Hero() {
   const midnightRef = useRef<HTMLDivElement>(null);
   const graphiteRef = useRef<HTMLDivElement>(null);
   const arcticRef = useRef<HTMLDivElement>(null);
+  const sterlingRef = useRef<HTMLDivElement>(null);
   const indicatorsRef = useRef<HTMLDivElement>(null);
   const indicatorRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -34,10 +35,11 @@ export function Hero() {
       const midnight = midnightRef.current;
       const graphite = graphiteRef.current;
       const arctic = arcticRef.current;
+      const sterling = sterlingRef.current;
       const indicators = indicatorsRef.current;
       const title = titleRef.current;
 
-      if (!section || !stage || !stack || !midnight || !graphite || !arctic || !indicators || !title) {
+      if (!section || !stage || !stack || !midnight || !graphite || !arctic || !sterling || !indicators || !title) {
         return;
       }
 
@@ -54,7 +56,7 @@ export function Hero() {
             reduceMotion: boolean;
           };
 
-          gsap.set([graphite, arctic], { autoAlpha: 0 });
+          gsap.set([graphite, arctic, sterling], { autoAlpha: 0 });
           gsap.set(midnight, { autoAlpha: 1 });
           gsap.set(indicators, { autoAlpha: desktop && !reduceMotion ? 1 : 0 });
 
@@ -62,7 +64,7 @@ export function Hero() {
             return;
           }
 
-          const cards = [midnight, graphite, arctic];
+          const cards = [midnight, graphite, arctic, sterling];
           const dots = indicatorRefs.current.filter(Boolean);
           const cardTimeline = gsap.timeline({
             defaults: { ease: "power2.inOut" },
@@ -70,7 +72,7 @@ export function Hero() {
               id: "uniqo-hero",
               trigger: section,
               start: "top top",
-              end: () => `+=${Math.max(window.innerHeight * 1.65, 1250)}`,
+              end: () => `+=${Math.max(window.innerHeight * 2.2, 1600)}`,
               pin: stage,
               pinSpacing: true,
               scrub: 0.42,
@@ -103,6 +105,16 @@ export function Hero() {
             )
             .to(dots[1], { opacity: 0.24, scale: 0.82, duration: 0.08 }, "<")
             .to(dots[2], { opacity: 1, scale: 1, duration: 0.08 }, "<")
+            .to({}, { duration: 0.1 })
+            .to(arctic, { autoAlpha: 0, scale: 0.955, rotation: -2.4, yPercent: -2, duration: 0.16 })
+            .fromTo(
+              sterling,
+              { autoAlpha: 0, scale: 1.045, rotation: 2.2, yPercent: 3 },
+              { autoAlpha: 1, scale: 1, rotation: 0, yPercent: 0, duration: 0.16 },
+              "<0.035"
+            )
+            .to(dots[2], { opacity: 0.24, scale: 0.82, duration: 0.08 }, "<")
+            .to(dots[3], { opacity: 1, scale: 1, duration: 0.08 }, "<")
             .to({}, { duration: 0.16 })
             .to(indicators, { autoAlpha: 0, y: 8, duration: 0.09 });
 
@@ -149,7 +161,7 @@ export function Hero() {
         aria-hidden="true"
         className="pointer-events-none fixed left-[clamp(32px,4.775vw,91.68px)] top-[41.77dvh] z-40 hidden md:grid md:gap-[16px]"
       >
-        {[0, 1, 2].map((index) => (
+        {[0, 1, 2, 3].map((index) => (
           <span
             key={index}
             ref={(node) => {
@@ -193,6 +205,15 @@ export function Hero() {
               className="h-full w-full object-contain"
             />
           </div>
+          <div ref={sterlingRef} className="invisible absolute inset-0 hidden opacity-0 transform-gpu will-change-transform md:block">
+            <CardImage
+              src={getCardAsset(region, "sterling")}
+              alt="Uniqo Sterling titanium card"
+              width={1600}
+              height={1019}
+              className="h-full w-full object-contain"
+            />
+          </div>
         </div>
 
         <div className="flex flex-col items-center">
@@ -208,7 +229,7 @@ export function Hero() {
             {copy.hero.copy}
           </p>
         </div>
-        <a ref={scrollLinkRef} href="#products" aria-label="Scroll to products" className="mt-[clamp(24px,4dvh,60px)]">
+        <a ref={scrollLinkRef} href="#features" aria-label="Scroll to features" className="mt-[clamp(24px,4dvh,60px)]">
           <Image src="/assets/uniqo-scroll-indicator.png" alt="" width={28} height={44} className="h-[43px] w-[27px]" />
         </a>
       </div>

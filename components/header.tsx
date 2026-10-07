@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSiteLocale } from "./site-locale";
 
-const navHrefs = ["/#products", "/#features", "/#security", "/#pricing", "/#manifesto"];
+const navHrefs = ["/#features", "/#security", "/#pricing", "/#manifesto"];
 
 export function Header() {
   const { copy } = useSiteLocale();

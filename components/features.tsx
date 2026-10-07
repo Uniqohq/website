@@ -39,7 +39,7 @@ export function Features() {
           transition={{ duration: 0.72, ease }}
           className="mx-auto flex max-w-[900px] flex-col items-center text-center"
         >
-          <span className="section-kicker">03</span>
+          <span className="section-kicker">02</span>
           <h2 className="mt-[14px] text-[clamp(44px,4.2vw,76px)] font-medium leading-[0.94]">
             {copy.features.titleTop}
             <br />

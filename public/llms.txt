@@ -17,7 +17,7 @@ Full AI reference: https://uniqo.one/llms-full.txt
 - Status: pre-launch; public access is not yet available.
 - Owner and operator: FrameLabs LLC.
 - Product: Uniqo intelligent payment card and controls.
-- Plans shown publicly: Arctic, Midnight and Graphite.
+- Plans shown publicly: Arctic, Midnight, Graphite and Sterling.
 - Supported interface languages: English and Russian.
 - Regions shown as planned availability: United States, European Union, United Kingdom, Canada, Australia, Singapore, United Arab Emirates and Japan.
 - Contact for licensing and permissions: legal@uniqo.one.

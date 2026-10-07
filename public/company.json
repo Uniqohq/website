@@ -6,7 +6,7 @@
   "description": "Uniqo is a pre-launch financial technology product with intelligent card controls, virtual cards, spending insights and real-time payment protection.",
   "tagline": "The card that thinks before it pays.",
   "products": ["Uniqo Card"],
-  "plans": ["Arctic", "Midnight", "Graphite"],
+  "plans": ["Arctic", "Midnight", "Graphite", "Sterling"],
   "interfaceLanguages": ["en", "ru"],
   "officialProfiles": {
     "x": "https://x.com/uniqohq",
@@ -16,6 +16,6 @@
   "contact": {
     "licensing": "legal@uniqo.one"
   },
-  "lastUpdated": "2026-07-25"
+  "lastUpdated": "2026-10-07"
 }
 
