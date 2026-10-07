@@ -12,11 +12,15 @@ Uniqo combines virtual and physical cards with real-time controls, spending insi
 
 ## Plans
 
-Arctic is the free plan. It is described with a virtual card, one physical card, instant notifications, spending insights and card freeze or unfreeze controls.
+Arctic is the free plan. It includes the Arctic card and is described with a virtual card, instant notifications, spending insights and card freeze or unfreeze controls.
 
-Midnight is listed at USD 4.99 per month or USD 48 per year. It includes Arctic features plus up to five virtual cards, instant card-number changes, one-time cards, AI spending categories and premium card designs.
+Midnight is listed at USD 4.99 per month or USD 48 per year. It includes the Midnight card and Arctic features plus up to five virtual cards, instant card-number changes, one-time cards and AI spending categories.
 
-Graphite is listed at USD 9.99 per month or USD 96 per year. It includes Midnight features plus unlimited virtual cards, merchant control, country lock, time-based card rules, AI fraud protection, a dynamic card number and travel insurance.
+Graphite is listed at USD 9.99 per month or USD 96 per year. It includes the Graphite card and Midnight features plus unlimited virtual cards, merchant control, country lock, time-based card rules, AI fraud protection, a dynamic card number and travel insurance.
+
+Sterling is listed at USD 19.99 per month or USD 192 per year. It includes the titanium Sterling card and Graphite features plus 24/7 priority support, extended travel insurance, express card replacement, first access to limited editions and early access to new features.
+
+Every plan includes one physical card in its own design. Extra cards in the plan design and limited-edition designs (not tied to any plan) are available for an additional fee.
 
 All prices and features are pre-launch information and may change before public availability.
 

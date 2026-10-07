@@ -28,7 +28,8 @@ const logos = [
 const cards = [
   { name: "Arctic", note: "Free", src: `${PRESS}/cards/uniqo-card-arctic.png` },
   { name: "Midnight", note: "$4.99 / month", src: `${PRESS}/cards/uniqo-card-midnight.png` },
-  { name: "Graphite", note: "$9.99 / month", src: `${PRESS}/cards/uniqo-card-graphite.png` }
+  { name: "Graphite", note: "$9.99 / month", src: `${PRESS}/cards/uniqo-card-graphite.png` },
+  { name: "Sterling", note: "$19.99 / month", src: `${PRESS}/cards/uniqo-card-sterling.png` }
 ] as const;
 
 const screens = [
@@ -155,8 +156,8 @@ export default function PressPage() {
           </div>
         </Section>
 
-        <Section id="cards" kicker="03" title="Cards" intro="Three designs, three plans. Plans and prices are pre-launch information and may change.">
-          <div className="grid gap-[31px] sm:grid-cols-3">
+        <Section id="cards" kicker="03" title="Cards" intro="Four designs, four plans. Plans and prices are pre-launch information and may change.">
+          <div className="grid gap-[31px] sm:grid-cols-2 lg:grid-cols-4">
             {cards.map((card) => (
               <div key={card.name}>
                 <div className="flex aspect-[16/11] items-center justify-center rounded-[35px] bg-[#e3e4e8]">
@@ -215,7 +216,7 @@ export default function PressPage() {
             </p>
             <p>
               Planned features include virtual and physical cards, instant freeze and unfreeze, spending limits, real-time notifications and AI-assisted
-              fraud protection. Plans: Arctic (free), Midnight ($4.99 per month) and Graphite ($9.99 per month).
+              fraud protection. Plans: Arctic (free), Midnight ($4.99 per month), Graphite ($9.99 per month) and Sterling ($19.99 per month). Every plan includes one card in its own design.
             </p>
             <p className="text-[15px] text-[#686868]">
               Uniqo is not a bank and is not currently available as a financial service. Please do not describe it as one.
