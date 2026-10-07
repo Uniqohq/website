@@ -1,3 +1,4 @@
+import { ConcreteFilm } from "@/components/concrete-film";
 import type { Metadata } from "next";
 import { Footer } from "@/components/footer";
 import { Features } from "@/components/features";
@@ -109,6 +110,7 @@ export default function Home() {
         <Hero />
         <Products />
         <Features />
+        <ConcreteFilm />
         <Security />
         <Pricing />
         <Manifesto />
