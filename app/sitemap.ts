@@ -12,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         `${SITE_URL}/assets/uniqo-card-midnight.png`,
         `${SITE_URL}/assets/uniqo-card-graphite.png`,
         `${SITE_URL}/assets/uniqo-card-arctic.png`,
-        `${SITE_URL}/assets/uniqo-card-sterling.png`
+        `${SITE_URL}/assets/uniqo-card-sirius.png`
       ]
     },
     {

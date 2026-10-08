@@ -14,7 +14,7 @@ Uniqo is being designed around virtual and physical cards, real-time controls, s
 
 ## Which plans are shown?
 
-The public website shows Arctic, Midnight, Graphite and Sterling. Every plan includes one card in its own design. Prices and features are pre-launch information and may change.
+The public website shows Arctic, Midnight, Graphite and Sirius. Every plan includes one card in its own design. Prices and features are pre-launch information and may change.
 
 ## Where will Uniqo be available?
 

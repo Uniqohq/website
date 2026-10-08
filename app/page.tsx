@@ -88,7 +88,7 @@ const homeStructuredData = {
         `${SITE_URL}/assets/uniqo-card-midnight.png`,
         `${SITE_URL}/assets/uniqo-card-graphite.png`,
         `${SITE_URL}/assets/uniqo-card-arctic.png`,
-        `${SITE_URL}/assets/uniqo-card-sterling.png`
+        `${SITE_URL}/assets/uniqo-card-sirius.png`
       ],
       offers: [
         { "@type": "Offer", name: "Arctic", price: "0", priceCurrency: "USD", availability: "https://schema.org/PreOrder", url: `${SITE_URL}/waitlist` },
@@ -96,8 +96,8 @@ const homeStructuredData = {
         { "@type": "Offer", name: "Midnight yearly", price: "48", priceCurrency: "USD", availability: "https://schema.org/PreOrder", url: `${SITE_URL}/waitlist` },
         { "@type": "Offer", name: "Graphite monthly", price: "9.99", priceCurrency: "USD", availability: "https://schema.org/PreOrder", url: `${SITE_URL}/waitlist` },
         { "@type": "Offer", name: "Graphite yearly", price: "96", priceCurrency: "USD", availability: "https://schema.org/PreOrder", url: `${SITE_URL}/waitlist` },
-        { "@type": "Offer", name: "Sterling monthly", price: "19.99", priceCurrency: "USD", availability: "https://schema.org/PreOrder", url: `${SITE_URL}/waitlist` },
-        { "@type": "Offer", name: "Sterling yearly", price: "192", priceCurrency: "USD", availability: "https://schema.org/PreOrder", url: `${SITE_URL}/waitlist` }
+        { "@type": "Offer", name: "Sirius monthly", price: "19.99", priceCurrency: "USD", availability: "https://schema.org/PreOrder", url: `${SITE_URL}/waitlist` },
+        { "@type": "Offer", name: "Sirius yearly", price: "192", priceCurrency: "USD", availability: "https://schema.org/PreOrder", url: `${SITE_URL}/waitlist` }
       ]
     }
   ]
