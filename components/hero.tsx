@@ -19,7 +19,7 @@ export function Hero() {
   const midnightRef = useRef<HTMLDivElement>(null);
   const graphiteRef = useRef<HTMLDivElement>(null);
   const arcticRef = useRef<HTMLDivElement>(null);
-  const sterlingRef = useRef<HTMLDivElement>(null);
+  const siriusRef = useRef<HTMLDivElement>(null);
   const indicatorsRef = useRef<HTMLDivElement>(null);
   const indicatorRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -35,11 +35,11 @@ export function Hero() {
       const midnight = midnightRef.current;
       const graphite = graphiteRef.current;
       const arctic = arcticRef.current;
-      const sterling = sterlingRef.current;
+      const sirius = siriusRef.current;
       const indicators = indicatorsRef.current;
       const title = titleRef.current;
 
-      if (!section || !stage || !stack || !midnight || !graphite || !arctic || !sterling || !indicators || !title) {
+      if (!section || !stage || !stack || !midnight || !graphite || !arctic || !sirius || !indicators || !title) {
         return;
       }
 
@@ -56,7 +56,7 @@ export function Hero() {
             reduceMotion: boolean;
           };
 
-          gsap.set([graphite, arctic, sterling], { autoAlpha: 0 });
+          gsap.set([graphite, arctic, sirius], { autoAlpha: 0 });
           gsap.set(midnight, { autoAlpha: 1 });
           gsap.set(indicators, { autoAlpha: desktop && !reduceMotion ? 1 : 0 });
 
@@ -64,7 +64,7 @@ export function Hero() {
             return;
           }
 
-          const cards = [midnight, graphite, arctic, sterling];
+          const cards = [midnight, graphite, arctic, sirius];
           const dots = indicatorRefs.current.filter(Boolean);
           const cardTimeline = gsap.timeline({
             defaults: { ease: "power2.inOut" },
@@ -108,7 +108,7 @@ export function Hero() {
             .to({}, { duration: 0.1 })
             .to(arctic, { autoAlpha: 0, scale: 0.955, rotation: -2.4, yPercent: -2, duration: 0.16 })
             .fromTo(
-              sterling,
+              sirius,
               { autoAlpha: 0, scale: 1.045, rotation: 2.2, yPercent: 3 },
               { autoAlpha: 1, scale: 1, rotation: 0, yPercent: 0, duration: 0.16 },
               "<0.035"
@@ -205,10 +205,10 @@ export function Hero() {
               className="h-full w-full object-contain"
             />
           </div>
-          <div ref={sterlingRef} className="invisible absolute inset-0 hidden opacity-0 transform-gpu will-change-transform md:block">
+          <div ref={siriusRef} className="invisible absolute inset-0 hidden opacity-0 transform-gpu will-change-transform md:block">
             <CardImage
-              src={getCardAsset(region, "sterling")}
-              alt="Uniqo Sterling titanium card"
+              src={getCardAsset(region, "sirius")}
+              alt="Uniqo Sirius titanium card"
               width={1600}
               height={1019}
               className="h-full w-full object-contain"

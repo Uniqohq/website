@@ -52,7 +52,7 @@ export const siteCopy = {
       cardIncluded: "Card included",
       cardsTitle: "Your card comes with your plan.",
       cards: [
-        { title: "One free card", copy: "Every plan includes one physical card in its own design: Arctic, Midnight, Graphite or Sterling." },
+        { title: "One free card", copy: "Every plan includes one physical card in its own design: Arctic, Midnight, Graphite or Sirius." },
         { title: "Extra cards", copy: "Need another one? Order extra cards in the design of your plan for an additional fee." },
         { title: "Limited editions", copy: "Special designs and drops are not tied to any plan. Order them on any plan for an additional fee." },
         { title: "Designs stay with plans", copy: "Plan designs come with their plan. To get a different one, switch plans." }
@@ -99,10 +99,10 @@ export const siteCopy = {
           ]
         },
         {
-          name: "Sterling",
+          name: "Sirius",
           copy: "Titanium and uncompromising. The very best of Uniqo.",
-          card: "Sterling titanium card",
-          cta: "Choose sterling",
+          card: "Sirius titanium card",
+          cta: "Choose sirius",
           features: [
             "Everything in Graphite",
             "Priority support, 24/7",
@@ -207,7 +207,7 @@ export const siteCopy = {
       cardIncluded: "Карта входит",
       cardsTitle: "Карта входит в тариф.",
       cards: [
-        { title: "Одна карта бесплатно", copy: "В каждый тариф входит одна физическая карта в его дизайне: Arctic, Midnight, Graphite или Sterling." },
+        { title: "Одна карта бесплатно", copy: "В каждый тариф входит одна физическая карта в его дизайне: Arctic, Midnight, Graphite или Sirius." },
         { title: "Дополнительные карты", copy: "Нужна ещё одна? Закажите дополнительные карты в дизайне вашего тарифа за отдельную плату." },
         { title: "Лимитированные дизайны", copy: "Особые дизайны и дропы не привязаны к тарифам. Их можно заказать на любом тарифе за отдельную плату." },
         { title: "Дизайн идёт с тарифом", copy: "Дизайны тарифов доступны только вместе с ними. Чтобы получить другой, смените тариф." }
@@ -254,10 +254,10 @@ export const siteCopy = {
           ]
         },
         {
-          name: "Sterling",
+          name: "Sirius",
           copy: "Титан без компромиссов. Лучшее от Uniqo.",
-          card: "Титановая карта Sterling",
-          cta: "Выбрать Sterling",
+          card: "Титановая карта Sirius",
+          cta: "Выбрать Sirius",
           features: [
             "Всё из Graphite",
             "Приоритетная поддержка 24/7",
