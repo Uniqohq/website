@@ -93,9 +93,9 @@ export function Security() {
           />
           <CardImage
             src="/assets/uniqo-phone-mockup.png"
-            alt="Uniqo phone capture screen"
+            alt="Uniqo app screen for returning a found card to its owner"
             width={1310}
-            height={2708}
+            height={2678}
             className="absolute bottom-[-82px] right-[2%] h-[330px] w-auto object-contain md:bottom-[-120px] md:right-[8%] md:h-[420px]"
           />
         </motion.div>
