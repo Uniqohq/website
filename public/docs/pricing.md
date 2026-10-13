@@ -6,15 +6,15 @@ Free. Includes the Arctic card, a virtual card, instant notifications, spending 
 
 ## Midnight
 
-USD 4.99 per month or USD 48 per year. Includes the Midnight card and Arctic features plus up to five virtual cards, instant card-number changes, one-time cards and AI spending categories.
+GBP 4.99 per month or GBP 48 per year. Includes the Midnight card and Arctic features plus up to five virtual cards, instant card-number changes, one-time cards and AI spending categories.
 
 ## Graphite
 
-USD 9.99 per month or USD 96 per year. Includes the Graphite card and Midnight features plus unlimited virtual cards, merchant control, country lock, time-based card rules, AI fraud protection, a dynamic card number and travel insurance.
+GBP 9.99 per month or GBP 96 per year. Includes the Graphite card and Midnight features plus unlimited virtual cards, merchant control, country lock, time-based card rules, AI fraud protection, a dynamic card number and travel insurance.
 
 ## Sirius
 
-USD 19.99 per month or USD 192 per year. Includes the titanium Sirius card and Graphite features plus 24/7 priority support, extended travel insurance, express card replacement, first access to limited editions and early access to new features.
+GBP 19.99 per month or GBP 192 per year. Includes the titanium Sirius card and Graphite features plus 24/7 priority support, extended travel insurance, express card replacement, first access to limited editions and early access to new features.
 
 ## Cards and designs
 

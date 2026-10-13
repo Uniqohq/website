@@ -133,9 +133,9 @@ export const siteCopy = {
         { code: "ru", short: "RU", label: "Русский" }
       ],
       regions: [
-        { label: "United States", menuLabel: "United States (Default)" },
+        { label: "United Kingdom", menuLabel: "United Kingdom (Default)" },
+        { label: "United States" },
         { label: "European Union" },
-        { label: "United Kingdom" },
         { label: "Canada" },
         { label: "Australia" },
         { label: "Singapore" },
@@ -288,9 +288,9 @@ export const siteCopy = {
         { code: "ru", short: "RU", label: "Русский" }
       ],
       regions: [
-        { label: "США", menuLabel: "США (по умолчанию)" },
+        { label: "Великобритания", menuLabel: "Великобритания (по умолчанию)" },
+        { label: "США" },
         { label: "Европейский союз" },
-        { label: "Великобритания" },
         { label: "Канада" },
         { label: "Австралия" },
         { label: "Сингапур" },
