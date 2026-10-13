@@ -19,10 +19,10 @@ const ease = [0.16, 1, 0.3, 1] as const;
 type Billing = "monthly" | "yearly";
 
 const plans: Array<{ monthly: string; yearly: string; style: CardStyle }> = [
-  { monthly: "$0", yearly: "$0", style: "arctic" },
-  { monthly: "$4.99", yearly: "$48", style: "midnight" },
-  { monthly: "$9.99", yearly: "$96", style: "graphite" },
-  { monthly: "$19.99", yearly: "$192", style: "sirius" }
+  { monthly: "£0", yearly: "£0", style: "arctic" },
+  { monthly: "£4.99", yearly: "£48", style: "midnight" },
+  { monthly: "£9.99", yearly: "£96", style: "graphite" },
+  { monthly: "£19.99", yearly: "£192", style: "sirius" }
 ];
 
 // Scroll distance of one plan, in timeline seconds. The crossfade sits at the start of each segment.

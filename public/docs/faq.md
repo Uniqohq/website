@@ -18,7 +18,7 @@ The public website shows Arctic, Midnight, Graphite and Sirius. Every plan inclu
 
 ## Where will Uniqo be available?
 
-The website lists the United States, European Union, United Kingdom, Canada, Australia, Singapore, United Arab Emirates and Japan as planned regions. A listed region is not confirmation of current availability.
+The website lists the United Kingdom, United States, European Union, Canada, Australia, Singapore, United Arab Emirates and Japan as planned regions. A listed region is not confirmation of current availability.
 
 ## Who owns Uniqo?
 
