@@ -19,7 +19,7 @@ Full AI reference: https://uniqo.one/llms-full.txt
 - Product: Uniqo intelligent payment card and controls.
 - Plans shown publicly: Arctic, Midnight, Graphite and Sirius.
 - Supported interface languages: English and Russian.
-- Regions shown as planned availability: United States, European Union, United Kingdom, Canada, Australia, Singapore, United Arab Emirates and Japan.
+- Regions shown as planned availability: United Kingdom, United States, European Union, Canada, Australia, Singapore, United Arab Emirates and Japan.
 - Contact for licensing and permissions: legal@uniqo.one.
 
 ## Official social profiles

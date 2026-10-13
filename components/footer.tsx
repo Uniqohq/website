@@ -25,9 +25,9 @@ const footerLinkHrefs = [
 ] as const;
 
 const regions = [
+  { code: "gb", flag: "/assets/flags/gb.svg" },
   { code: "us", flag: "/assets/flags/us.svg" },
   { code: "eu", flag: "/assets/flags/eu.svg" },
-  { code: "gb", flag: "/assets/flags/gb.svg" },
   { code: "ca", flag: "/assets/flags/ca.svg" },
   { code: "au", flag: "/assets/flags/au.svg" },
   { code: "sg", flag: "/assets/flags/sg.svg" },

@@ -15,13 +15,13 @@ export type SiteRegion = "us" | "eu" | "gb" | "ca" | "au" | "sg" | "ae" | "jp" |
 
 const LANGUAGE_STORAGE_KEY = "uniqo-language";
 const REGION_STORAGE_KEY = "uniqo-region";
-const regions: SiteRegion[] = ["us", "eu", "gb", "ca", "au", "sg", "ae", "jp", "ru", "by"];
+const regions: SiteRegion[] = ["gb", "us", "eu", "ca", "au", "sg", "ae", "jp", "ru", "by"];
 
 const LocaleContext = createContext<LocaleContextValue | null>(null);
 
 export function SiteLocaleProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguage] = useState<SiteLanguage>("en");
-  const [region, setRegion] = useState<SiteRegion>("us");
+  const [region, setRegion] = useState<SiteRegion>("gb");
 
   useEffect(() => {
     const storedLanguage = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
