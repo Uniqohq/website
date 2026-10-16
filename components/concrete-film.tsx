@@ -8,6 +8,12 @@ import { useSiteLocale } from "./site-locale";
 // On desktop the film starts as a regular 35px-rounded tile and opens to the screen edges as it
 // pins, then the line fades in over the side of the block at the bottom left.
 export function ConcreteFilm() {
+  const { region } = useSiteLocale();
+  // The Russian version doesn't show this section.
+  return region === "ru" ? null : <ConcreteFilmSection />;
+}
+
+function ConcreteFilmSection() {
   const ref = useRef<HTMLElement>(null);
   const reducedMotion = useReducedMotion();
   const { copy } = useSiteLocale();
