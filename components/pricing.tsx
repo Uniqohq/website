@@ -66,7 +66,11 @@ export function Pricing() {
   const sceneRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const textRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const localizedPlans = plans.map((plan, index) => ({ ...plan, ...copy.pricing.plans[index] }));
+  // The titanium Sirius card isn't offered in the Russian version.
+  const localizedPlans = plans
+    .map((plan, index) => ({ ...plan, ...copy.pricing.plans[index] }))
+    .filter((plan) => !(region === "ru" && plan.style === "sirius"));
+  const planCount = localizedPlans.length;
 
   useEffect(() => {
     const query = window.matchMedia("(min-width: 1024px) and (prefers-reduced-motion: no-preference)");
@@ -105,7 +109,7 @@ export function Pricing() {
       const cards = cardRefs.current.filter((node): node is HTMLDivElement => Boolean(node));
       const texts = textRefs.current.filter((node): node is HTMLDivElement => Boolean(node));
 
-      if (!pinned || !scene || cards.length !== plans.length || texts.length !== plans.length) {
+      if (!pinned || !scene || cards.length !== planCount || texts.length !== planCount) {
         return;
       }
 
@@ -123,7 +127,7 @@ export function Pricing() {
           invalidateOnRefresh: true
         },
         onUpdate: () => {
-          const index = Math.min(plans.length - 1, Math.max(0, Math.floor((timeline.time() - 0.12) / SEGMENT)));
+          const index = Math.min(planCount - 1, Math.max(0, Math.floor((timeline.time() - 0.12) / SEGMENT)));
           setActive((current) => (current === index ? current : index));
         }
       });
@@ -147,7 +151,7 @@ export function Pricing() {
         timeline.to(items, { autoAlpha: 1, y: 0, duration: 0.12, stagger: 0.06, ease: "power2.out" }, start + 0.26);
       });
 
-      timeline.to({}, { duration: HOLD }, (plans.length - 1) * SEGMENT + 0.9);
+      timeline.to({}, { duration: HOLD }, (planCount - 1) * SEGMENT + 0.9);
 
       // This pin is created after the sections below it (it waits for the media query), so re-order
       // the triggers by page position and recalculate, otherwise the Manifesto pin starts too early.
@@ -161,7 +165,7 @@ export function Pricing() {
         texts.forEach((text) => gsap.set(text.querySelectorAll("[data-plan-feature]"), { clearProps: "all" }));
       };
     },
-    { scope: sectionRef, dependencies: [pinned, language], revertOnUpdate: true }
+    { scope: sectionRef, dependencies: [pinned, language, planCount], revertOnUpdate: true }
   );
 
   const goToPlan = (index: number) => {
@@ -171,7 +175,7 @@ export function Pricing() {
       return;
     }
 
-    const duration = (plans.length - 1) * SEGMENT + 0.9 + HOLD;
+    const duration = (planCount - 1) * SEGMENT + 0.9 + HOLD;
     const target = trigger.start + (trigger.end - trigger.start) * ((index * SEGMENT + 0.86) / duration);
     gsap.to(window, { scrollTo: { y: target, autoKill: true }, duration: 0.9, ease: "power3.inOut" });
   };
@@ -204,7 +208,7 @@ export function Pricing() {
   const details = (plan: (typeof localizedPlans)[number], index: number) => (
     <>
       <span className="text-[19px] font-medium leading-[1.102] text-[#686868]">
-        {String(index + 1).padStart(2, "0")} / {String(plans.length).padStart(2, "0")}
+        {String(index + 1).padStart(2, "0")} / {String(planCount).padStart(2, "0")}
       </span>
       <h3 className="mt-[8px] text-[clamp(40px,3.4vw,58px)] font-medium leading-[0.98]">{plan.name}</h3>
       <p className="mt-[14px] max-w-[440px] text-[19px] font-medium leading-[1.16] text-[#686868] md:text-[21px]">{plan.copy}</p>
