@@ -49,6 +49,11 @@ export const siteCopy = {
       month: "month",
       year: "year",
       forever: "forever",
+      film: {
+        title: "Every plan, its own card.",
+        copy: "Start free with Arctic and move up whenever you like.",
+        cta: "Get your card"
+      },
       cardIncluded: "Card included",
       cardsTitle: "Your card comes with your plan.",
       cards: [
@@ -204,6 +209,11 @@ export const siteCopy = {
       month: "месяц",
       year: "год",
       forever: "навсегда",
+      film: {
+        title: "Каждому тарифу — своя карта.",
+        copy: "Начните бесплатно с Arctic и переходите выше, когда захотите.",
+        cta: "Получить карту"
+      },
       cardIncluded: "Карта входит",
       cardsTitle: "Карта входит в тариф.",
       cards: [
