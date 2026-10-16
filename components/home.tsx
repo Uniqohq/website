@@ -82,34 +82,20 @@ export function HomeHero() {
   const fade = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
   return (
-    <section ref={ref} className="relative isolate flex min-h-[640px] items-end overflow-hidden bg-black md:h-[100svh] md:items-center">
+    <section ref={ref} className="relative isolate flex flex-col overflow-hidden bg-black md:h-[100svh] md:min-h-[640px] md:flex-row md:items-center">
       <motion.div
-        className="absolute inset-0 -z-10"
+        className="relative h-[62svh] min-h-[380px] md:absolute md:inset-0 md:-z-10 md:h-auto"
         style={reduced ? undefined : { y: imageY }}
-        initial={reduced ? false : { scale: 1.08, opacity: 0 }}
-        animate={reduced ? undefined : { scale: 1, opacity: 1 }}
-        transition={{ duration: 1.8, ease }}
+        initial={reduced ? false : { opacity: 0 }}
+        animate={reduced ? undefined : { opacity: 1 }}
+        transition={{ duration: 1.2, ease }}
       >
-        <Image
-          src="/media/home/hero.webp"
-          alt="Uniqo Midnight card resting on a concrete step"
-          fill
-          priority
-          sizes="100vw"
-          className="hidden object-cover object-[62%_50%] md:block"
-        />
-        <Image
-          src="/media/home/hero-mobile.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-top md:hidden"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.92)_0%,rgba(0,0,0,0.55)_42%,rgba(0,0,0,0)_70%)] max-md:bg-[linear-gradient(0deg,rgba(0,0,0,1)_18%,rgba(0,0,0,0.2)_60%,rgba(0,0,0,0)_100%)]" />
+        {/* Plays once and rests on its last frame, the card on the concrete step. */}
+        <HeroFilm reduced={Boolean(reduced)} />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.92)_0%,rgba(0,0,0,0.55)_42%,rgba(0,0,0,0)_70%)] max-md:bg-[linear-gradient(0deg,rgba(0,0,0,1)_0%,rgba(0,0,0,0)_35%)]" />
       </motion.div>
 
-      <Wrap className="pb-[56px] pt-[140px] md:pb-0 md:pt-0">
+      <Wrap className="-mt-[40px] pb-[64px] md:mt-0 md:pb-0">
         <motion.div style={reduced ? undefined : { y: textY, opacity: fade }} className="max-w-[640px] text-white">
           <motion.h1
             initial={reduced ? false : { opacity: 0, y: 40 }}
@@ -138,6 +124,35 @@ export function HomeHero() {
         </motion.div>
       </Wrap>
     </section>
+  );
+}
+
+function HeroFilm({ reduced }: { reduced: boolean }) {
+  const ref = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    const video = ref.current;
+    if (!video || reduced) return;
+    video.muted = true;
+    void video.play().catch(() => {});
+  }, [reduced]);
+  return (
+    <video
+      ref={ref}
+      className="size-full object-cover object-[64%_50%] max-md:object-[71%_50%]"
+      autoPlay={!reduced}
+      muted
+      playsInline
+      preload="auto"
+      poster={reduced ? "/media/home/hero-end.webp" : "/media/home/hero-start.webp"}
+      aria-label="A Uniqo Graphite card resting on a concrete step"
+    >
+      {reduced ? null : (
+        <>
+          <source src="/media/home/hero.webm" type="video/webm" />
+          <source src="/media/home/hero.mp4" type="video/mp4" />
+        </>
+      )}
+    </video>
   );
 }
 
