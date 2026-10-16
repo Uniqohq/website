@@ -55,6 +55,47 @@ function BillingSwitch({ billing, onChange, monthly, yearly }: { billing: Billin
   );
 }
 
+// All four cards side by side on concrete, a quiet establishing shot before the plans take over.
+// Not shown in the Russian version, where the titanium Sirius card isn't offered.
+function PricingFilm({ reducedMotion }: { reducedMotion: boolean }) {
+  const ref = useRef<HTMLVideoElement>(null);
+
+  // React doesn't reflect `muted` to the DOM attribute before load, so browsers can refuse
+  // autoplay; set it on the element and start playback ourselves.
+  useEffect(() => {
+    const element = ref.current;
+    if (!element || reducedMotion) return;
+    element.muted = true;
+    void element.play().catch(() => {});
+  }, [reducedMotion]);
+
+  return (
+    <div className="container mt-[40px] md:mt-[56px]">
+      <motion.div
+        initial={reducedMotion ? false : { opacity: 0, y: 24 }}
+        whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.8, ease }}
+        className="aspect-[4/3] overflow-hidden rounded-[28px] bg-[#e4e4e6] md:aspect-[16/9] md:rounded-[35px]"
+      >
+        <video
+          ref={ref}
+          className="size-full object-cover"
+          autoPlay={!reducedMotion}
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster="/media/pricing-motion-poster.jpg"
+          aria-hidden
+        >
+          <source src="/media/pricing-motion.mp4" type="video/mp4" />
+        </video>
+      </motion.div>
+    </div>
+  );
+}
+
 export function Pricing() {
   const [billing, setBilling] = useState<Billing>("yearly");
   const [pinned, setPinned] = useState(false);
@@ -254,6 +295,8 @@ export function Pricing() {
           )}
         </div>
       </div>
+
+      {region !== "ru" && <PricingFilm reducedMotion={Boolean(reducedMotion)} />}
 
       {pinned ? (
         <div ref={sceneRef} className="relative h-[100svh]">
