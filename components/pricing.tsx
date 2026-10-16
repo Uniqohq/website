@@ -55,10 +55,19 @@ function BillingSwitch({ billing, onChange, monthly, yearly }: { billing: Billin
   );
 }
 
-// All four cards side by side on concrete, a quiet establishing shot before the plans take over.
-// Not shown in the Russian version, where the titanium Sirius card isn't offered.
-function PricingFilm({ reducedMotion }: { reducedMotion: boolean }) {
+// All four cards side by side on concrete, full bleed, with the headline and the plans over the
+// empty floor. Not shown in the Russian version, where the titanium Sirius card isn't offered.
+function PricingFilm({
+  reducedMotion,
+  plans: planNames,
+  onSelect
+}: {
+  reducedMotion: boolean;
+  plans: string[];
+  onSelect: (index: number) => void;
+}) {
   const ref = useRef<HTMLVideoElement>(null);
+  const { copy } = useSiteLocale();
 
   // React doesn't reflect `muted` to the DOM attribute before load, so browsers can refuse
   // autoplay; set it on the element and start playback ourselves.
@@ -69,30 +78,74 @@ function PricingFilm({ reducedMotion }: { reducedMotion: boolean }) {
     void element.play().catch(() => {});
   }, [reducedMotion]);
 
-  return (
-    <div className="container mt-[40px] md:mt-[56px]">
-      <motion.div
-        initial={reducedMotion ? false : { opacity: 0, y: 24 }}
-        whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.8, ease }}
-        className="aspect-[4/3] overflow-hidden rounded-[28px] bg-[#e4e4e6] md:aspect-[16/9] md:rounded-[35px]"
-      >
-        <video
-          ref={ref}
-          className="size-full object-cover"
-          autoPlay={!reducedMotion}
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster="/media/pricing-motion-poster.jpg"
-          aria-hidden
+  const video = (
+    <video
+      ref={ref}
+      className="size-full object-cover object-[50%_20%]"
+      autoPlay={!reducedMotion}
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      poster="/media/pricing-motion-poster.jpg"
+      aria-hidden
+    >
+      <source src="/media/pricing-motion.mp4" type="video/mp4" />
+    </video>
+  );
+
+  const pills = (
+    <div role="group" aria-label="Plans" className="flex flex-wrap items-center justify-center gap-[10px]">
+      {planNames.map((name, index) => (
+        <button
+          key={name}
+          type="button"
+          onClick={() => onSelect(index)}
+          className="h-[46px] rounded-full border border-black/15 bg-white/70 px-[22px] text-[17px] font-medium leading-none text-black backdrop-blur-md transition-colors duration-300 hover:bg-black hover:text-white"
         >
-          <source src="/media/pricing-motion.mp4" type="video/mp4" />
-        </video>
-      </motion.div>
+          {name}
+        </button>
+      ))}
     </div>
+  );
+
+  const text = (
+    <>
+      <h3 className="max-w-[760px] text-[34px] font-medium leading-[1.02] text-[#161616] md:text-[clamp(44px,4.2vw,76px)] md:leading-[0.98]">
+        {copy.pricing.film.title}
+      </h3>
+      <p className="mt-[14px] max-w-[560px] text-[18px] font-medium leading-[1.14] text-[#686868] md:mt-[18px] md:text-[clamp(20px,1.45vw,26px)] md:text-[#3d3d3d]">
+        {copy.pricing.film.copy}
+      </p>
+      <Link
+        href="/waitlist"
+        className="burst-hover mt-[24px] inline-flex h-[56px] items-center justify-center rounded-full bg-black px-[30px] text-[18px] font-medium leading-none text-white"
+      >
+        {copy.pricing.film.cta}
+      </Link>
+      <div className="mt-[22px] md:mt-[26px]">{pills}</div>
+    </>
+  );
+
+  return (
+    <motion.div
+      initial={reducedMotion ? false : { opacity: 0 }}
+      whileInView={reducedMotion ? undefined : { opacity: 1 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.8, ease }}
+      className="mt-[40px] md:mt-[56px]"
+    >
+      {/* Phone: the film full width, the text underneath. */}
+      <div className="md:hidden">
+        <div className="aspect-[4/3] w-full overflow-hidden bg-[#e4e4e6]">{video}</div>
+        <div className="container flex flex-col items-center py-[32px] text-center">{text}</div>
+      </div>
+      {/* Desktop: the film fills the section; the text sits on the empty floor. */}
+      <div className="relative hidden h-[100svh] min-h-[640px] w-full overflow-hidden bg-[#e4e4e6] md:block">
+        {video}
+        <div className="absolute inset-x-0 bottom-0 flex flex-col items-center px-6 pb-[clamp(32px,6dvh,72px)] text-center">{text}</div>
+      </div>
+    </motion.div>
   );
 }
 
@@ -221,6 +274,15 @@ export function Pricing() {
     gsap.to(window, { scrollTo: { y: target, autoKill: true }, duration: 0.9, ease: "power3.inOut" });
   };
 
+  // From the film's plan buttons: the pinned scene scrolls to the plan, the plain list scrolls to its card.
+  const selectPlan = (index: number) => {
+    if (pinned) {
+      goToPlan(index);
+      return;
+    }
+    document.querySelectorAll<HTMLElement>("article[aria-label]")[index]?.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+
   const price = (plan: (typeof localizedPlans)[number]) => (
     <div className="min-h-[64px] font-medium leading-[0.94]">
       {plan.monthly === plan.yearly ? (
@@ -296,7 +358,7 @@ export function Pricing() {
         </div>
       </div>
 
-      {region !== "ru" && <PricingFilm reducedMotion={Boolean(reducedMotion)} />}
+      {region !== "ru" && <PricingFilm reducedMotion={Boolean(reducedMotion)} plans={localizedPlans.map((plan) => plan.name)} onSelect={selectPlan} />}
 
       {pinned ? (
         <div ref={sceneRef} className="relative h-[100svh]">
