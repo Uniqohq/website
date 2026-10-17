@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { Check, Plus, Snowflake, X } from "lucide-react";
+import { Plus } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -13,7 +13,7 @@ const ease = [0.16, 1, 0.3, 1] as const;
 function useHome() {
   const { language, region } = useSiteLocale();
   // The titanium Sirius card isn't offered in the Russian version.
-  return { t: homeCopy[language], ru: region === "ru" };
+  return { t: homeCopy[language], ru: region === "ru", lang: language };
 }
 
 // Revolut-style width: a calm column, never edge to edge except for the films.
@@ -49,26 +49,7 @@ function Pill({ href, children, outline = false }: { href: string; children: Rea
   );
 }
 
-// The frosted strip of app UI that sits over each illustration.
-function Chip({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return (
-    <div className={`rounded-[18px] border border-white/10 bg-[rgba(30,32,44,0.62)] p-[16px] text-white shadow-[0_18px_40px_rgba(0,0,0,0.35)] backdrop-blur-[18px] ${className}`}>
-      {children}
-    </div>
-  );
-}
 
-function ChipRow({ title, meta, value }: { title: string; meta: string; value?: string }) {
-  return (
-    <div className="flex items-center justify-between gap-[12px]">
-      <div className="min-w-0">
-        <p className="truncate text-[16px] font-medium leading-[1.2]">{title}</p>
-        <p className="mt-[3px] truncate text-[13px] leading-[1.2] text-white/55">{meta}</p>
-      </div>
-      {value ? <span className="shrink-0 text-[16px] font-medium">{value}</span> : null}
-    </div>
-  );
-}
 
 // ------------------------------------------------------------------ hero
 
@@ -218,30 +199,21 @@ function Carousel({ count, children, className = "" }: { count: number; children
   );
 }
 
-function Tile({ active, title, image, children }: { active: boolean; title: string; image?: string; children: React.ReactNode }) {
+// Each tile is a SwiftUI render with real Liquid Glass (ios WebTileRender), one per language.
+function Tile({ active, src, alt }: { active: boolean; src: string; alt: string }) {
   return (
     <motion.article
       animate={{ y: active ? -14 : 0, opacity: active ? 1 : 0.72 }}
       transition={{ duration: 0.6, ease }}
-      className="relative flex aspect-[370/520] w-[min(78vw,380px)] shrink-0 snap-center flex-col overflow-hidden rounded-[24px] bg-[radial-gradient(120%_90%_at_50%_100%,#2a2f57_0%,#171a33_55%,#101224_100%)]"
+      className="relative aspect-[380/520] w-[min(78vw,380px)] shrink-0 snap-center overflow-hidden rounded-[24px]"
     >
-      <h3 className="relative z-10 p-[30px] text-[clamp(24px,2vw,30px)] font-medium leading-[1.12] text-white">{title}</h3>
-      {image ? (
-        <motion.div
-          className="absolute inset-x-0 bottom-[60px] top-[90px] [mask-image:radial-gradient(closest-side,#000_62%,transparent)]"
-          animate={{ scale: active ? 1.04 : 0.96 }}
-          transition={{ duration: 0.9, ease }}
-        >
-          <Image src={image} alt="" fill sizes="380px" className="object-contain" />
-        </motion.div>
-      ) : null}
-      <div className="relative z-10 mt-auto p-[18px]">{children}</div>
+      <Image src={src} alt={alt} fill sizes="380px" className="object-cover" />
     </motion.article>
   );
 }
 
 export function HomeOverview() {
-  const { t } = useHome();
+  const { t, lang } = useHome();
   const tiles = t.overview.tiles;
 
   return (
@@ -262,23 +234,12 @@ export function HomeOverview() {
         <Carousel count={tiles.length} className="mt-[48px]">
           {(active) =>
             tiles.map((tile, index) => (
-              <Tile key={tile.title} active={active === index} title={tile.title} image={`/media/home/t${index + 1}.webp`}>
-                <Chip>
-                  <ChipRow title={tile.chip.title} meta={tile.chip.meta} value={"value" in tile.chip ? tile.chip.value : undefined} />
-                  {"progress" in tile.chip ? (
-                    <div className="mt-[12px] h-[5px] overflow-hidden rounded-full bg-white/15">
-                      <motion.div
-                        className="h-full rounded-full bg-[#c9dc6a]"
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${tile.chip.progress}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1.4, ease, delay: 0.3 }}
-                      />
-                    </div>
-                  ) : null}
-                  {"toggle" in tile.chip ? <FreezeToggle /> : null}
-                </Chip>
-              </Tile>
+              <Tile
+                key={tile.title}
+                active={active === index}
+                src={`/media/home/tiles/${lang}/tile-${index + 1}.webp`}
+                alt={`${tile.title}. ${tile.chip.title}, ${tile.chip.meta}`}
+              />
             ))
           }
         </Carousel>
@@ -287,29 +248,6 @@ export function HomeOverview() {
   );
 }
 
-function FreezeToggle() {
-  const { t } = useHome();
-  const [on, setOn] = useState(true);
-  return (
-    <button
-      type="button"
-      onClick={() => setOn((v) => !v)}
-      aria-pressed={on}
-      className="mt-[12px] flex w-full items-center justify-between rounded-[12px] bg-white/8 px-[12px] py-[10px] text-[14px] text-white/80"
-    >
-      <span className="flex items-center gap-[8px]">
-        <Snowflake size={16} /> {on ? t.toggle.on : t.toggle.off}
-      </span>
-      <span className={`relative h-[24px] w-[42px] rounded-full transition-colors ${on ? "bg-[#8fb6ff]" : "bg-white/25"}`}>
-        <motion.span
-          className="absolute top-[3px] size-[18px] rounded-full bg-white"
-          animate={{ left: on ? 21 : 3 }}
-          transition={{ type: "spring", stiffness: 500, damping: 32 }}
-        />
-      </span>
-    </button>
-  );
-}
 
 // ------------------------------------------------------------------ split sections
 
@@ -363,10 +301,8 @@ export function HomeMore() {
   );
 }
 
-const protectImages = ["/media/home/protect-1.webp", "/media/home/protect-2.webp", "/media/home/protect-3.webp"];
-
 export function HomeProtect() {
-  const { t } = useHome();
+  const { t, lang } = useHome();
   const cards = t.protect.cards;
 
   return (
@@ -383,36 +319,22 @@ export function HomeProtect() {
         <Reveal delay={0.1} className="min-w-0">
           <div className="flex snap-x snap-mandatory gap-[20px] overflow-x-auto pb-[8px] [scrollbar-width:none] lg:-mr-[calc(50vw-580px)] [&::-webkit-scrollbar]:hidden">
             {cards.map((card, index) => (
-              <article
+              <motion.article
                 key={card.title}
-                className="relative flex aspect-[400/560] w-[min(78vw,400px)] shrink-0 snap-start flex-col overflow-hidden rounded-[24px] bg-[radial-gradient(120%_90%_at_70%_20%,#3b3f63_0%,#1a1c30_50%,#0e0f1a_100%)]"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, ease, delay: 0.1 + index * 0.1 }}
+                className="relative aspect-[380/532] w-[min(78vw,400px)] shrink-0 snap-start overflow-hidden rounded-[24px]"
               >
-                <Image src={protectImages[index]} alt="" fill sizes="400px" className="object-cover" />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.55)_0%,rgba(0,0,0,0)_35%,rgba(0,0,0,0)_60%,rgba(0,0,0,0.6)_100%)]" />
-                <h3 className="relative p-[30px] text-[clamp(24px,2vw,30px)] font-medium leading-[1.12]">{card.title}</h3>
-                <div className="relative mt-auto p-[18px]">
-                  <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, ease, delay: 0.2 + index * 0.1 }}
-                  >
-                    <Chip>
-                      <ChipRow title={card.chip.title} meta={card.chip.meta} value={"value" in card.chip ? card.chip.value : undefined} />
-                      {"yes" in card.chip ? (
-                        <div className="mt-[14px] grid grid-cols-2 gap-[8px]">
-                          <span className="flex h-[40px] items-center justify-center gap-[6px] rounded-full bg-white text-[14px] font-medium text-black">
-                            <Check size={16} /> {card.chip.yes}
-                          </span>
-                          <span className="flex h-[40px] items-center justify-center gap-[6px] rounded-full bg-white/12 text-[14px] font-medium">
-                            <X size={16} /> {card.chip.no}
-                          </span>
-                        </div>
-                      ) : null}
-                    </Chip>
-                  </motion.div>
-                </div>
-              </article>
+                <Image
+                  src={`/media/home/tiles/${lang}/tile-${index + 6}.webp`}
+                  alt={`${card.title}. ${card.chip.title}, ${card.chip.meta}`}
+                  fill
+                  sizes="400px"
+                  className="object-cover"
+                />
+              </motion.article>
             ))}
           </div>
         </Reveal>
