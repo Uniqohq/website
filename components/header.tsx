@@ -10,9 +10,11 @@ type HeaderProps = {
   // The home page is dark; every other page keeps the light header.
   tone?: "light" | "dark";
   nav?: readonly { label: string; href: string }[];
+  // Pill-shaped call to action, as on the home page.
+  round?: boolean;
 };
 
-export function Header({ tone = "light", nav }: HeaderProps = {}) {
+export function Header({ tone = "light", nav, round = false }: HeaderProps = {}) {
   const { copy } = useSiteLocale();
   const dark = tone === "dark";
   const links = nav ?? copy.header.nav.map((label, index) => ({ label, href: navHrefs[index] }));
@@ -39,7 +41,9 @@ export function Header({ tone = "light", nav }: HeaderProps = {}) {
           className={
             dark
               ? "burst-hover flex h-[48px] items-center justify-center rounded-full bg-white px-[26px] text-[17px] font-medium leading-none text-black"
-              : "burst-hover flex h-[52.759px] w-[163.655px] items-center justify-center rounded-[11px] bg-black text-[17.681px] font-medium leading-[1.102] text-white"
+              : round
+                ? "burst-hover flex h-[48px] items-center justify-center rounded-full bg-black px-[26px] text-[17px] font-medium leading-none text-white"
+                : "burst-hover flex h-[52.759px] w-[163.655px] items-center justify-center rounded-[11px] bg-black text-[17.681px] font-medium leading-[1.102] text-white"
           }
         >
           {copy.header.cta}
