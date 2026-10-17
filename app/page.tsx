@@ -1,12 +1,7 @@
-import { ConcreteFilm } from "@/components/concrete-film";
 import type { Metadata } from "next";
 import { Footer } from "@/components/footer";
-import { Features } from "@/components/features";
-import { Header } from "@/components/header";
-import { Hero } from "@/components/hero";
-import { Manifesto } from "@/components/manifesto";
-import { Pricing } from "@/components/pricing";
-import { Security } from "@/components/security";
+import { HomeFaq, HomeFilm, HomeHero, HomeManifesto, HomeMore, HomeNumbers, HomeOverview, HomePlans, HomeProtect } from "@/components/home";
+import { HomeNav } from "@/components/home-nav";
 import { StructuredData } from "@/components/structured-data";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL, SOCIAL_IMAGE, SOCIAL_LINKS } from "@/lib/site-metadata";
 
@@ -107,14 +102,17 @@ export default function Home() {
   return (
     <>
       <StructuredData data={homeStructuredData} />
-      <Header />
-      <main id="main-content">
-        <Hero />
-        <Features />
-        <ConcreteFilm />
-        <Security />
-        <Pricing />
-        <Manifesto />
+      <HomeNav />
+      <main id="main-content" className="bg-[#ececee]">
+        <HomeHero />
+        <HomeOverview />
+        <HomeMore />
+        <HomeProtect />
+        <HomeFilm />
+        <HomeNumbers />
+        <HomePlans />
+        <HomeManifesto />
+        <HomeFaq />
       </main>
       <Footer />
     </>
