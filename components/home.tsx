@@ -213,7 +213,7 @@ function Tile({ active, src, alt }: { active: boolean; src: string; alt: string 
 }
 
 export function HomeOverview() {
-  const { t, lang } = useHome();
+  const { t, lang, ru } = useHome();
   const tiles = t.overview.tiles;
 
   return (
@@ -237,7 +237,7 @@ export function HomeOverview() {
               <Tile
                 key={tile.title}
                 active={active === index}
-                src={`/media/home/tiles/${lang}/tile-${index + 1}.webp`}
+                src={`/media/home/tiles/${lang}/tile-${index + 1}${index === 0 && ru ? "-noSirius" : ""}.webp`}
                 alt={`${tile.title}. ${tile.chip.title}, ${tile.chip.meta}`}
               />
             ))
