@@ -17,7 +17,7 @@ export const homeCopy = {
         { title: "Your money at a glance", chip: { title: "Coffee, Brick Lane", meta: "08:42 · Midnight •• 4587", value: "−£3.60" } },
         { title: "Limits that hold", chip: { title: "£612 left of £1,000", meta: "Resets on the 1st of each month", progress: 61 } },
         { title: "Freeze in one tap", chip: { title: "Card frozen", meta: "Every payment is paused", toggle: true } },
-        { title: "Works where you say", chip: { title: "Country lock", meta: "Your card works in 3 countries", value: "On" } }
+        { title: "Works where you say", chip: { title: "Country lock", meta: "Your card works in 3 countries", value: "Edit ›" } }
       ]
     },
     more: {
@@ -101,7 +101,7 @@ export const homeCopy = {
         { title: "Деньги на виду", chip: { title: "Кофе, Brick Lane", meta: "08:42 · Midnight •• 4587", value: "−£3.60" } },
         { title: "Лимиты, которые работают", chip: { title: "Осталось £612 из £1 000", meta: "Обновляется 1-го числа", progress: 61 } },
         { title: "Заморозка в одно касание", chip: { title: "Карта заморожена", meta: "Все платежи на паузе", toggle: true } },
-        { title: "Работает там, где скажете", chip: { title: "Блокировка стран", meta: "Карта работает в 3 странах", value: "Вкл" } }
+        { title: "Работает там, где скажете", chip: { title: "Блокировка стран", meta: "Работает в 3 странах", value: "Редактировать ›" } }
       ]
     },
     more: {
