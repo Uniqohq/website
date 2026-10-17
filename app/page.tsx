@@ -103,7 +103,7 @@ export default function Home() {
     <>
       <StructuredData data={homeStructuredData} />
       <HomeNav />
-      <main id="main-content" className="bg-black">
+      <main id="main-content" className="bg-[#ececee]">
         <HomeHero />
         <HomeOverview />
         <HomeMore />

@@ -10,5 +10,5 @@ const hrefs = ["#features", "#security", "#plans", "#faq"];
 export function HomeNav() {
   const { language } = useSiteLocale();
   const nav = homeCopy[language].nav.map((label, index) => ({ label, href: hrefs[index] }));
-  return <Header tone="dark" nav={nav} />;
+  return <Header nav={nav} />;
 }
